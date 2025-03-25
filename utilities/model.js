@@ -17,13 +17,13 @@ const model = {
         },
 
         overviewShoppingLists: {
-            selectedListId: '',  // myList: ''
+            selectedListId: '',  
             
         },
 
         newShoppingList: {
             name: '',
-            sharedWith: [],  // List of user IDs 
+            sharedWith: [],  
             confirm: false,
             
         },
@@ -37,21 +37,12 @@ const model = {
     },
 
     data: {
+        
         users: [
-            {
-                id: 1,
-                name: 'Rebecka',
-                email: 'rebecka@team3.no',
-                password: '*****',
-                
-            },
-            {
-                id: 2,
-                name: 'Rebecka2',
-                email: 'rebecka2@team3.no',
-                password: '*****',
-                
-            }
+          
+            { id: 1, email: 'rebecka@getacademy.no',passWord: '***' },
+            { id: 2, email: 'roar@getacademy.no',passWord: '***' },
+    
         ],
 
         shoppingLists: [
