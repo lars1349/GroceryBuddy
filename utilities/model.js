@@ -1,9 +1,9 @@
 const model = {
     app: {
-        currentPage: 'CreateNewShoppingList', 
+        currentPage: 'login', 
 
         pages: [
-            "login",
+            'CreateNewShoppingList',
             "overviewShoppingLists",
             "createNewShoppingList",
             "profile",
@@ -26,6 +26,11 @@ const model = {
             sharedWith: [],  // List of user IDs 
             confirm: false,
             
+        },
+
+        profile:{
+            id: '',
+            status: ''
         },
 
         
