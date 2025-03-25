@@ -39,12 +39,14 @@ const model = {
                 id: 1,
                 name: 'Rebecka',
                 email: 'rebecka@team3.no',
+                password: '*****',
                 profilePicture: 'rebecka.jpg',
             },
             {
                 id: 2,
                 name: 'Rebecka2',
                 email: 'rebecka2@team3.no',
+                password: '*****',
                 profilePicture: 'rebecka2.jpg',
             }
         ],
