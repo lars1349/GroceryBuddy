@@ -50,6 +50,12 @@ const model = {
       SaveToHistoryList: "goes to historylist",
     },
 
+     // editShoppingList:{
+        //     ListId: '',
+        //     Newname: '',
+        //     confirm: false,
+        // }
+        
     historyOverview: {
       name: "",
       date: "25.03.2025",
