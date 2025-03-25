@@ -3,13 +3,12 @@ const model = {
             currentPage: 'viewShoppingList'
         },
         groceryInput: [
-            { name: 'Bananer', id: 1, },
-            { name: 'Epler', id: 2, },
-            { name: 'Cola', id: 3, },
-            { name: 'Sjokolade', id: 4, },
-            { name: 'Melk', id: 5, },
-            { name: 'Egg', id: 6, },
-            { name: 'Pølser', id: 7, },
+            { name: 'Brød', id: 1, },
+            { name: 'Fiskepinner', id: 2, },
+            { name: 'Melk', id: 3, },
+            { name: 'Brus', id: 4, },
+            { name: 'Skinke', id: 5, },
+            { name: 'Ost', id: 6, },
     ]
 }
 

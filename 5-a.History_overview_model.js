@@ -10,16 +10,17 @@ const model = {
 
       //  4A
       historyOverview:{
-         data: '25.03.2025',
+         name: '',
+         date: '25.03.2025',
       },
    },
-
+   
 
    data: {
 
      historyList: [
-         { id: 1, date: 'onsdag 03.19' },
-         { id: 2, date: 'mandag 03.17' },
+         { id: 1, name: 'Weekly groceries', date: 'onsdag 03.19' },
+         { id: 2, name: 'Birthday party supplies', date: 'mandag 03.17' },
         
       ]
 

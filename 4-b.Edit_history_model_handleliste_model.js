@@ -14,3 +14,14 @@ const model = {
         ]
     },
 }
+
+input: {
+    editShoppingList: {
+        listId: '',
+        name: '',
+        confirm: false,
+    }
+    addFavouriteList: {
+        fav
+    }
+}

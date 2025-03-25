@@ -1,9 +1,9 @@
 const model = {
     app: {
-        currentPage: 'CreateNewShoppingList', 
+        currentPage: 'login', 
 
         pages: [
-            "login",
+            'CreateNewShoppingList',
             "overviewShoppingLists",
             "createNewShoppingList",
             "profile",
@@ -28,9 +28,12 @@ const model = {
             
         },
 
-        profile: {
-            updatePicture: '',
+        profile:{
+            id: '',
+            status: ''
         },
+
+        
     },
 
     data: {
@@ -40,37 +43,36 @@ const model = {
                 name: 'Rebecka',
                 email: 'rebecka@team3.no',
                 password: '*****',
-                profilePicture: 'rebecka.jpg',
+                
             },
             {
                 id: 2,
                 name: 'Rebecka2',
                 email: 'rebecka2@team3.no',
                 password: '*****',
-                profilePicture: 'rebecka2.jpg',
+                
             }
         ],
 
         shoppingLists: [
             { id: 1, name: "Weekly Groceries", ownerId: 1, sharedWith: [2] },
-            { id: 2, name: "Birthday Party Supplies", ownerId: 2, sharedWith: [] },
+            { id: 2, name: "Birthday Party Supplies", ownerId: 2, sharedWith: [1] },
         ],
 
         shoppingListItems: [
-            { id: 1, listId: 1, itemId: 1, quantity: 2 },
-            { id: 2, listId: 1, itemId: 2, quantity: 1 },
-            { id: 3, listId: 2, itemId: 3, quantity: 5 },
+            { id: 1, listId: 1, productId: 1, quantity: 2 },
+            { id: 2, listId: 1, productId: 2, quantity: 1 },
+            { id: 3, listId: 2, productId: 3, quantity: 5 },
         ],
 
-        items: [
-            { id: 1, name: "Milk", category: "groceries", price: 20, image: "milk.jpg" },
-            { id: 2, name: "Bread", category: "groceries", price: 15, image: "bread.jpg" },
-            { id: 3, name: "Balloons", category: "birthday party", price: 50, image: "balloons.jpg" },
+        products: [
+            { id: 1, name: "Milk" },
+            { id: 2, name: "Bread" },
+            { id: 3, name: "Balloons" },
         ],
 
-        authentication: [   // Or profile 
-            { id: 1, userId: 1, status: "logged_in", lastLogin: "2025-03-24" },
-            { id: 2, userId: 2, status: "logged_out", lastLogin: "2025-03-20" },
+        profile: [   
+         { id: 2, userId: 1, status: "logged_out" },
         ],
     },
 };

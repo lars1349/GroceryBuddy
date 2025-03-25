@@ -1,16 +1,16 @@
-// en test, to tester, tre tester
+// 
 
 const model = {
     app: {
         currentPage: 'shareCodePage',
         currentListId: 1,
     },
+
     inputs: {
         userInfo:{
         email:'',
-        userName: '',
+       
         removeBuddy:false
-        
     },
       
     },
@@ -18,14 +18,14 @@ const model = {
     data: {
         sharedUsers: [
             {
-            shareCode: null,
+            shareCode: null, //generer kode
             sharedWith: ['roar@getacademy.no'],
         }
     ],
         users: [
           
-            { id: 1, userName:'Rebecka2000', userEmail: 'rebecka@getacademy.no', },
-            { id: 2,userName: 'SuperRoar', userEmail: 'roar@getacademy.no'},
+            { id: 1, email: 'rebecka@getacademy.no'},
+            { id: 2, email: 'roar@getacademy.no'},
     
         ],
     }

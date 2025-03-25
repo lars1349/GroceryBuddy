@@ -4,19 +4,26 @@
 const model = {
     app: {
         currentPage: 'grocerySettings',
-        currentListId: 1,
+        listId: 1,
     },
     inputs: {
+        listId: '',
         deleteList: false,
-        favoriteToggle: false,
+
+        codeManagement: '',
+
+        addFavoriteProducts: [],
+        favoriteToggleList: false,
+
+        confirm: false,
         
-        //lag code
+        
     },
         
   
       
     data: {
-        groceryLists: [
+        shoppingLists:[
           {
             id: 1,
             name: 'Handleliste "fredag"',
@@ -25,17 +32,10 @@ const model = {
           
             
         },
-            
-              
-             
-           
-            
+
+        
           
         ],   
-        favoriteGroceries: [             // Favorittliste.model
-            { id: 'melk', name: 'Melk' },
-            { id: 'brød', name: 'Brød' },
-            { id: 'egg', name: 'Egg' }
-        ]
+  
       }
     };

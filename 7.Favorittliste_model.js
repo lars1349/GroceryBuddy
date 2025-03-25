@@ -8,20 +8,23 @@ const model = {
   inputs: {
 
   favoriteItems:{
-   name: '',
-   add: 'add to list'
+ products:'',
+   
+
+  
   },
 
-  addToList:{
-   name: ''
 
-  }
 
 
   },
 
   //    Er data fra handle liste
  data: {
+  favoriteProducts: 
+  [{id: 1, userId: 1, productId: 1},
+    {id: 2, userId: 2, productId: 3},
+  ],
   handleliste: [
     { id: 1, name: 'Brød' },
     { id: 2, name: 'Fiskepinner' },

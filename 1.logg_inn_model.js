@@ -8,15 +8,15 @@ const model = {
         userInfo:{
         email:'',
         passWord:'',
-        userName: ''
+        
         },
     },
 
     data: {
         users: [
           
-            { id: 1, userName:'Rebecka2000', userEmail: 'rebecka@getacademy.no',passWord: '123' },
-            { id: 2,userName: 'SuperRoar', userEmail: 'roar@getacademy.no',passWord: '1234' },
+            { id: 1, email: 'rebecka@getacademy.no',passWord: '123' },
+            { id: 2, email: 'roar@getacademy.no',passWord: '1234' },
     
         ],
     }
