@@ -3,9 +3,8 @@ const model = {
         currentPage: 'login', 
 
         pages: [
-            'CreateNewShoppingList',
             "overviewShoppingLists",
-            "createNewShoppingList",
+            'CreateNewShoppingList',
             "profile",
         ],
     },
