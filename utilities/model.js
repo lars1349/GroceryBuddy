@@ -38,12 +38,12 @@ const model = {
     
         viewShoppingList: {
           listId: "",
-          products: null,
+          products: [],
         },
 
     newShoppingList: {
       name: "",
-      sharedWith: null,
+      sharedWith: [],
       confirm: false,
     },
 
@@ -53,22 +53,26 @@ const model = {
        isActive: false,
        isFavorite: true,
        confirm: false,
-       deleteProduct: false,
-       mostBoughtProducts:"",
+       deleteProduct: false
     },
 
-    shoppingListHistoryOverview: {
+    historyOverview: {
       historyId:"",
       name: "",
       date: "",
     },
 
-    editShoppingListHistory: {
+    editHistory: {
       historyId: "",
       name: "",
       isActive: false, // "history list to homePage",
       date: "",
-      deleteProduct: false,
+      deleteProduct: false
+    },
+
+    profile: {
+      id: "",
+      status: "",
     },
 
     shoppingListSettings: {
@@ -91,12 +95,6 @@ const model = {
     favoriteProducts: {
       products: "",
     },
-
-      profile: {
-      id: "",
-      status: "",
-    },
-    
   },
 
   data: {
@@ -109,14 +107,14 @@ const model = {
       {
         id: 1, name: "Handleliste fredag",
         ownerId: 1,
-        sharedWith: 2,
+        sharedWith: [2],
         isFavorite: true,
       },
       {
         id: 2,
         name: "min liste",
         ownerId: 2,
-        sharedWith: 1,
+        sharedWith: [1],
         isFavorite: false,
       },
     ],
@@ -146,20 +144,26 @@ const model = {
       { id: 2, userId: 2, productId: 3 },
     ],
 
-    sharedUsers: [
-      { id: 1, listId: 1, shareCode: "abc123", sharedWith: 2 }, //generer kode,
-      { id: 2, listId: 2, shareCode: "xyz456", sharedWith: 1 },
+    shareCodes: [
+      { id: 1, listId: 1, shareCode: "abc123" }, //generer kode,
+      { id: 2, listId: 2, shareCode: "xyz456" },
     ],
 
+    listShares:[
+      {id: 1, listId: 1, userId: 2},
+      {id: 2, listId: 2, userId: 1}
+   ],
     profile: [{ id: 1, userId: 1, status: "logged_out" }],
+  
+
+    mostBoughtProducts: [
+      { id:1, userId: 1, productId: 2 },
+      { id:1, userId: 2, productId: 4 }
+    ],
+    
   },
 
-mostBoughtProducts: [
-// { id:1, userId: 1, productId: 2 },
-// { id:2, userId: 2, productId: 1 },
-],
 
 
-shareCode:[],
 
 };
