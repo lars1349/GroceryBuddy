@@ -3,9 +3,10 @@ const model = {
     currentPage: "login",
 
     pages: [
+      "register",
       "overviewShoppingLists",
-      "CreateNewShoppingList",
       "viewShoppingList",
+      "CreateNewShoppingList",
       "editShoppingList",
       "historyOverview",
       "editHistory",
@@ -16,10 +17,17 @@ const model = {
     ],
   },
 
-  inputs: {
+  inputs:{
+    
     login: {
       email: "",
       password: "",
+    },
+    
+    register: { 
+      email: "",
+      password: "",
+      register: false,
     },
 
     overviewShoppingLists: {
@@ -27,75 +35,68 @@ const model = {
       isActive: true,
       isFavorite: true,
     },
+    
+        viewShoppingList: {
+          listId: "",
+          products: null,
+        },
 
     newShoppingList: {
       name: "",
-      sharedWith: [],
+      sharedWith: null,
       confirm: false,
-    },
-
-    viewShoppingList: {
-      listId: "",
-      products: [],
     },
 
     editShoppingList: {
       listId: "",
-      inputTextName: "",
-
-      // Action button
-      add: "addTofavoritt",
-      add: "addToShoppingList",
-      edit: "editShoppingList",
-      SaveToHistoryList: "goes to historylist",
+      inputProductName: "",
+       isActive: false,
+       isFavorite: true,
+       confirm: false,
+       deleteProduct: false,
+       mostBoughtProducts:"",
     },
 
-     // editShoppingList:{
-        //     ListId: '',
-        //     Newname: '',
-        //     confirm: false,
-        // }
-        
-    historyOverview: {
+    shoppingListHistoryOverview: {
+      historyId:"",
       name: "",
-      date: "25.03.2025",
+      date: "",
     },
 
-    editHistory: {
+    editShoppingListHistory: {
       historyId: "",
       name: "",
       isActive: false, // "history list to homePage",
       date: "",
-
-      // Action button
-      delete: "delete button",
+      deleteProduct: false,
     },
 
-    profile: {
-      id: "",
-      status: "",
-    },
-
-    grocerySettings: {
+    shoppingListSettings: {
       listId: "",
       deleteList: false,
       codeManagement: "",
-      addFavoriteProducts: [],
       favoriteToggle: false,
       confirm: false,
+      isActive: true,
     },
 
     shareCodePage: {
-      currentListId: 1,
+      listId: "",
       email: "",
       userId: "",
       shareCode: "",
-      removeBuddy: false,
+      removeSharedUser: false,
     },
 
     favoriteProducts: {
       products: "",
     },
+
+      profile: {
+      id: "",
+      status: "",
+    },
+    
   },
 
   data: {
@@ -106,17 +107,16 @@ const model = {
 
     shoppingLists: [
       {
-        id: 1,
-        name: "Handleliste fredag",
+        id: 1, name: "Handleliste fredag",
         ownerId: 1,
-        sharedWith: [2],
+        sharedWith: 2,
         isFavorite: true,
       },
       {
         id: 2,
         name: "min liste",
         ownerId: 2,
-        sharedWith: [1],
+        sharedWith: 1,
         isFavorite: false,
       },
     ],
@@ -137,13 +137,8 @@ const model = {
     ],
 
     historyList: [
-      {
-        id: 1,
-        name: "Handleliste fredag",
-        date: "onsdag 03.19",
-        isActive: false,
-      },
-      { id: 2, name: "min liste", date: "mandag 03.17", isActive: false },
+      { id: 1, listId: 1, name: "Handleliste fredag", date: "onsdag 03.19", isActive: false },
+      { id: 2, listId: 2, name: "min liste", date: "mandag 03.17", isActive: false },
     ],
 
     favoriteProducts: [
@@ -152,10 +147,19 @@ const model = {
     ],
 
     sharedUsers: [
-      { shareCode: null }, //generer kode,
-      { sharedWith: ["roar@getacademy.no"] },
+      { id: 1, listId: 1, shareCode: "abc123", sharedWith: 2 }, //generer kode,
+      { id: 2, listId: 2, shareCode: "xyz456", sharedWith: 1 },
     ],
 
     profile: [{ id: 1, userId: 1, status: "logged_out" }],
   },
+
+mostBoughtProducts: [
+// { id:1, userId: 1, productId: 2 },
+// { id:2, userId: 2, productId: 1 },
+],
+
+
+shareCode:[],
+
 };
