@@ -1,169 +1,138 @@
 const model = {
-  app: {
+  app:{
     currentPage: "login",
+    
+    selectedListId: "",
 
-    pages: [
-      "register",
-      "overviewShoppingLists",
-      "viewShoppingList",
-      "CreateNewShoppingList",
-      "editShoppingList",
-      "historyOverview",
-      "editHistory",
-      "grocerySettings",
-      "shareCodePage",
-      "favoriteProducts",
-      "profile",
-    ],
+    currentLoggedInUserId: 1,
+
+    
   },
-
-  inputs:{
-    
-    login: {
-      email: "",
-      password: "",
-    },
-    
-    register: { 
-      email: "",
-      password: "",
-      register: false,
-    },
-
-    overviewShoppingLists: {
-      selectedListId: "",
-      isActive: true,
-      isFavorite: true,
-    },
-    
-        viewShoppingList: {
-          listId: "",
-          products: [],
-        },
-
-    newShoppingList: {
-      name: "",
-      sharedWith: [],
-      confirm: false,
-    },
-
-    editShoppingList: {
-      listId: "",
-      inputProductName: "",
-       isActive: false,
-       isFavorite: true,
-       confirm: false,
-       deleteProduct: false
-    },
-
-    historyOverview: {
-      historyId:"",
-      name: "",
-      date: "",
-    },
-
-    editHistory: {
-      historyId: "",
-      name: "",
-      isActive: false, // "history list to homePage",
-      date: "",
-      deleteProduct: false
-    },
-
-    profile: {
-      id: "",
-      status: "",
-    },
-
-    shoppingListSettings: {
-      listId: "",
-      deleteList: false,
-      codeManagement: "",
-      favoriteToggle: false,
-      confirm: false,
-      isActive: true,
-    },
-
-    shareCodePage: {
-      listId: "",
-      email: "",
-      userId: "",
-      shareCode: "",
-      removeSharedUser: false,
-    },
-
-    favoriteProducts: {
-      products: "",
-    },
-  },
-
-  data: {
-    users: [
-      { id: 1, email: "rebecka@getacademy.no", passWord: "***" },
-      { id: 2, email: "roar@getacademy.no", passWord: "***" },
-    ],
-
-    shoppingLists: [
-      {
-        id: 1, name: "Handleliste fredag",
-        ownerId: 1,
-        sharedWith: [2],
-        isFavorite: true,
+  
+    inputs:{
+      
+      login: {
+        email: "",
+        password: "",
       },
-      {
-        id: 2,
-        name: "min liste",
-        ownerId: 2,
-        sharedWith: [1],
-        isFavorite: false,
+      
+      register: { 
+        email: "",
+        password: "",
       },
-    ],
 
-    shoppingListProducts: [
-      { id: 1, listId: 1, productId: 1, quantity: 2 },
-      { id: 2, listId: 1, productId: 2, quantity: 1 },
-      { id: 3, listId: 2, productId: 3, quantity: 5 },
-    ],
+      overviewFeedShoppingLists: {
+        // selectedListId: "",
+      },
 
-    products: [
-      { id: 1, name: "Brød", isFavorite: false },
-      { id: 2, name: "Fiskepinner", isFavorite: false },
-      { id: 3, name: "Melk", isFavorite: false },
-      { id: 4, name: "Brus", isFavorite: false },
-      { id: 5, name: "Skinke", isFavorite: false },
-      { id: 6, name: "Ost", isFavorite: false },
-    ],
+      newShoppingList: {
+        name: "",
+      },
 
-    historyList: [
-      { id: 1, listId: 1, name: "Handleliste fredag", date: "onsdag 03.19", isActive: false },
-      { id: 2, listId: 2, name: "min liste", date: "mandag 03.17", isActive: false },
-    ],
+      viewShoppingList: {
+        shoppingListId: "",
+      },
+      
+          editShoppingList: {
+            inputProductName: "",
+           
+            //  mostBoughtProducts: "",
+          },
+  
+          shoppingListHistoryOverview: {
+            recentShoppingList: "",
+    
+          },
 
-    favoriteProducts: [
-      { id: 1, userId: 1, productId: 1 },
-      { id: 2, userId: 2, productId: 3 },
-    ],
+      addOrDeleteShoppingListHistory: {
+        recentShoppingList: "",
+      },
 
-    shareCodes: [
-      { id: 1, listId: 1, shareCode: "abc123" }, //generer kode,
-      { id: 2, listId: 2, shareCode: "xyz456" },
-    ],
+      shoppingListSettings: {
+        shoppingListId: "",
+      },
+  
+      shareShoppingListCodePage: {
+        shoppingListId: "",
+        
+      },
+  
+      // favoriteProducts: {
+      //    products: "",
+      // },
 
-    listShares:[
-      {id: 1, listId: 1, userId: 2},
-      {id: 2, listId: 2, userId: 1}
-   ],
-    profile: [{ id: 1, userId: 1, status: "logged_out" }],
+
+      //   profile: {
+      //   id: "",
+      //   status: "",
+      // },
+      
+    },
+  
+    data: {
+      users: [
+        { id: 1, email: "rebecka@getacademy.no", passWord: "***" },
+        { id: 2, email: "roar@getacademy.no", passWord: "***" },
+      ],
   
 
-    mostBoughtProducts: [
-      { id:1, userId: 1, productId: 2 },
-      { id:1, userId: 2, productId: 4 }
-    ],
+        // shoppingListId: [],
+
+      shoppingLists: [
+        {
+          id: 1, name: "Handleliste fredag",
+          ownerUserId: 1,
+          sharedWithUserId: 1,
+          isFavorite: true,
+        },
+        {
+          id: 2,
+          name: "min liste",
+          ownerUserId: 2,
+          sharedWithUserId: 2,
+          isFavorite: false,
+        },
+      ],
+  
+      shoppingListProducts: [
+        { id: 1, shoppingListId: 1, productId: 1, quantity: 2 },
+        { id: 2, shoppingListId: 1, productId: 2, quantity: 1 },
+        { id: 3, shoppingListId: 2, productId: 3, quantity: 5 },
+      ],
+  
+      products: [
+        { id: 1, name: "Brød" },
+        { id: 2, name: "Fiskepinner" },
+        { id: 3, name: "Melk" },
+        { id: 4, name: "Brus" },
+        { id: 5, name: "Skinke" },
+        { id: 6, name: "Ost" },
+      ],
+  
+      shoppingListHistories: [
+        { id: 1, shoppingListId: 1, date: "2025-03-19", isActive: false },
+        { id: 2, shoppingListId: 2, date: "2025-03-17", isActive: false },
+      ],
+      
+  
+      favoriteProducts: [
+        { id: 1, userId: 1, productId: 1 },
+        { id: 2, userId: 2, productId: 3 },
+      ],
+  
+      shareCodes: [
+        { id: 1, shoppingListId: 1, shareCode: "abc123", userId:2 }, //generer kode,
+        { id: 2, shoppingListId: 2, shareCode: "xyz456", userId:1 },
+      ],
+      
+
+    },
     
-  },
 
+// mostBoughtProducts: [
+//   { id:1, userId: 1, productId: 2 },
+//   { id:2, userId: 2, productId: 4 },
+// ],
 
+  };
 
-
-};
