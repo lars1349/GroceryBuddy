@@ -25,13 +25,19 @@ function updateView() {
     case 'profile':
         currentView = profilView();
         break;
+        case 'home':
+            currentView = homeView();
+            break;
     
 }
 
     document.getElementById('app').innerHTML = /*HTML*/ `
-        <header>
-            <img src="logo.png" alt="App Logo" />
-            <h1>GroceryBuddy</h1>
+      
+            <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;">
+    <img src="logo.png" alt="App Logo" />
+    <h1>GroceryBuddy</h1>
+</header>
+
         </header>
 
         <main id="content">
