@@ -21,7 +21,7 @@ function productView() {
 
 function getProducts() {
     let productHtml = '';
-    for(const product of model.data.products) {
+    for(let product of model.data.products) {
         productHtml += /*HTML*/`
             <tr>
                 <td>${product.id}</td>
@@ -38,7 +38,7 @@ function getProducts() {
 }
 
 function addProduct() {
-    const productNameInput = document.getElementById("productName");
+    const productNameInput = document.getElementById('productName');
     const productName = productNameInput.value.trim();
     
     if (!productName) {
@@ -49,14 +49,14 @@ function addProduct() {
     
     let newId = 1;
     if (model.data.products.length > 0) {
-        for (const product of model.data.products) {
+        for (let product of model.data.products) {
             if (product.id >= newId) {
                 newId = product.id + 1;
             }
         }
     }
 
-    const newProduct = {
+    let newProduct = {
         id: newId,
         name: productName,
         isChecked: false
