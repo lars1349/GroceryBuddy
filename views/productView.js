@@ -1,14 +1,15 @@
 function productView() {
     return /*HTML*/`
         <h2>Products</h2>
+        
         <input id='productName' type='text' placeholder='Product Name'>
         <button onclick='addProduct()'>Add </button>
+
         <table>
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            
-            <th></th>
+            <th>Name</th>           
+          
         </tr>
         ${getProducts()}
 
