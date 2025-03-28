@@ -1,14 +1,14 @@
 function productView() {
     return /*HTML*/`
-        <h2>Products</h2>
-        
-        <input id='productName' type='text' placeholder='Product Name'>
-        <button onclick='addProduct()'>Add </button>
+        <h2> Produkter </h2>
+
+        <input id='produktnavn' type='text' placeholder='produktnavn'>
+        <button onclick='addProduct()'>legge til </button>
 
         <table>
         <tr>
             <th>ID</th>
-            <th>Name</th>           
+            <th>Navn</th>           
           
         </tr>
         ${getProducts()}
@@ -42,7 +42,7 @@ function addProduct() {
     const productName = productNameInput.value.trim();
     
     if (!productName) {
-        alert('Product name cannot be empty');
+        alert('Produktnavnet kan ikke være tomt');
         return;
     }
 
