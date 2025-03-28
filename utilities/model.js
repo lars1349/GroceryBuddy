@@ -1,66 +1,91 @@
+// (1-A) LOGIN MODEL
 const model = {
-  app: {
-    currentPage: "login",
-  },
+    app: {
+        currentPage: 'login',
 
-  inputs: {
-    login: {
-      email: "",
-      password: "",
+          pages: [
+            "overviewShoppingLists",
+            "createNewShoppingList",
+
+            "viewShoppingList",
+
+            "profile",
+        ],
     },
 
-    register: {
-      email: "",
-      password: "",
+    inputs: {
+
+    //  LOGIN
+        login:{
+        email:'',
+        passWord:'',
+        },
+
+    // (2-A) OVERVIEW / HOMEPAGE
+           overviewShoppingLists: {
+            selectedListId: '',  // myList: '' 
+        },
+
+        newShoppingList: {
+            name: '',
+            sharedWith: [],  // List of user IDs 
+            confirm: false,
+            
+        },
+
+    // (3) SKRIVE SHOPPING LIST
+
+
     },
 
-    newShoppingList: {
-      titleName: "",
-    },
+    //  USERS
+        data: {
+            users: [
+            {
+                id: 1,
+                name: 'Rebecka',
+                email: 'rebecka@team3.no',
+                password: '*****',
+                
+            },
+            {
+                id: 2,
+                name: 'Rebecka2',
+                email: 'rebecka2@team3.no',
+                password: '*****',
+                
+            }
+        ],
 
-    editShoppingList: {
-      productName: "",
-    },
-  },
+// (4-A) VIEW SHOPPINGLISTS
+        shoppingLists: [
+            { id: 1, name: "Weekly Groceries", ownerId: 1, sharedWith: [2] },
+            { id: 2, name: "Birthday Party Supplies", ownerId: 2, sharedWith: [1] },
+        ],
 
-  data: {
-    users: [
-      { id: 1, email: "rebecka@getacademy.no", passWord: "***" },
-      { id: 2, email: "roar@getacademy.no", passWord: "***" },
-    ],
+        shoppingListItems: [
+            { id: 1, listId: 1, productId: 1, quantity: 2 },
+            { id: 2, listId: 1, productId: 2, quantity: 1 },
+            { id: 3, listId: 2, productId: 3, quantity: 5 },
+        ],
 
-    shoppingLists: [
-      {
-        id: 1,
-        name: "Handleliste fredag",
-        ownerUserId: 1,
-        sharedWithUserId: 1,
-        isFavorite: true,
-      },
-      {
-        id: 2,
-        name: "min liste",
-        ownerUserId: 2,
-        sharedWithUserId: 2,
-        isFavorite: false,
-      },
-    ],
+        products: [
+            { name: 'Brød', id: 1, },
+            { name: 'Fiskepinner', id: 2, },
+            { name: 'Melk', id: 3, },
+            { name: 'Brus', id: 4, },
+            { name: 'Skinke', id: 5, },
+            { name: 'Ost', id: 6, },
+        ]
+},
 
-    shoppingListProducts: [
-      { id: 1, shoppingListId: 1, productId: 1, quantity: 2 },
-      { id: 2, shoppingListId: 1, productId: 2, quantity: 1 },
-      { id: 3, shoppingListId: 2, productId: 3, quantity: 5 },
-    ],
+    // PROFILE
+         profile: [   
+        { id: 2, userId: 1, status: "logged_out" },
+       ],
 
-    products: [
-      { id: 1, name: "Brød" },
-      { id: 2, name: "Fiskepinner" },
-      { id: 3, name: "Melk" },
-      { id: 4, name: "Brus" },
-      { id: 5, name: "Skinke" },
-      { id: 6, name: "Ost" },
-    ],
 
+<<<<<<< HEAD
     shoppingListHistories: [
       {
         id: 1,
@@ -87,3 +112,6 @@ const model = {
     ],
   },
 };
+=======
+};
+>>>>>>> 79180a90397ef45e1702fef34457384545fb2dc6
