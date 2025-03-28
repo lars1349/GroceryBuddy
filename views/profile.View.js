@@ -1,4 +1,4 @@
-function userViewView() {
+function profilView() {
     return /*HTML*/`
     profil works!
     `
