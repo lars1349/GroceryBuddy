@@ -1,4 +1,6 @@
+// Navigation 
+// 
 
-
-
-
+function updateView() {
+    mainView();
+}
