@@ -86,6 +86,4 @@ const model = {
       { id: 2, shoppingListId: 2, shareCode: "xyz456", userId: 1 },
     ],
   },
-
-  
 };
