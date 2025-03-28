@@ -19,7 +19,7 @@ function updateView() {
             currentView = shoppingListView();
             break;
         case 'products':
-            currentView = productsView();
+            currentView = productView();
             break;
    
     case 'profile':
