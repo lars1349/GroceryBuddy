@@ -1,14 +1,15 @@
 function productView() {
     return /*HTML*/`
-        <h2>Products</h2>
-        <input id='productName' type='text' placeholder='Product Name'>
-        <button onclick='addProduct()'>Add </button>
+        <h2> Produkter </h2>
+
+        <input id='produktnavn' type='text' placeholder='produktnavn'>
+        <button onclick='addProduct()'>legge til </button>
+
         <table>
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            
-            <th></th>
+            <th>Navn</th>           
+          
         </tr>
         ${getProducts()}
 
@@ -20,7 +21,7 @@ function productView() {
 
 function getProducts() {
     let productHtml = '';
-    for(const product of model.data.products) {
+    for(let product of model.data.products) {
         productHtml += /*HTML*/`
             <tr>
                 <td>${product.id}</td>
@@ -37,25 +38,25 @@ function getProducts() {
 }
 
 function addProduct() {
-    const productNameInput = document.getElementById("productName");
+    const productNameInput = document.getElementById('productName');
     const productName = productNameInput.value.trim();
     
     if (!productName) {
-        alert('Product name cannot be empty');
+        alert('Produktnavnet kan ikke være tomt');
         return;
     }
 
     
     let newId = 1;
     if (model.data.products.length > 0) {
-        for (const product of model.data.products) {
+        for (let product of model.data.products) {
             if (product.id >= newId) {
                 newId = product.id + 1;
             }
         }
     }
 
-    const newProduct = {
+    let newProduct = {
         id: newId,
         name: productName,
         isChecked: false
