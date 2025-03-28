@@ -1,45 +1,45 @@
 const model = {
   app: {
-    currentPage: "login",
+    currentPage: 'login',
   },
 
   inputs: {
     login: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
 
     register: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
 
     newShoppingList: {
-      titleName: "",
+      titleName: '',
     },
 
     editShoppingList: {
-      productName: "",
+      productName: '',
     },
   },
 
   data: {
     users: [
-      { id: 1, email: "rebecka@getacademy.no", passWord: "***" },
-      { id: 2, email: "roar@getacademy.no", passWord: "***" },
+      { id: 1, email: 'rebecka@getacademy.no', passWord: '***' },
+      { id: 2, email: 'roar@getacademy.no', passWord: '***' },
     ],
 
     shoppingLists: [
       {
         id: 1,
-        name: "Handleliste fredag",
+        name: 'Handleliste fredag',
         ownerUserId: 1,
         sharedWithUserId: 1,
         isFavorite: true,
       },
       {
         id: 2,
-        name: "min liste",
+        name: 'min liste',
         ownerUserId: 2,
         sharedWithUserId: 2,
         isFavorite: false,
@@ -53,25 +53,25 @@ const model = {
     ],
 
     products: [
-      { id: 1, name: "Brød" },
-      { id: 2, name: "Fiskepinner" },
-      { id: 3, name: "Melk" },
-      { id: 4, name: "Brus" },
-      { id: 5, name: "Skinke" },
-      { id: 6, name: "Ost" },
+      { id: 1, name: 'Brød' },
+      { id: 2, name: 'Fiskepinner' },
+      { id: 3, name: 'Melk' },
+      { id: 4, name: 'Brus' },
+      { id: 5, name: 'Skinke' },
+      { id: 6, name: 'Ost' },
     ],
 
     shoppingListHistories: [
       {
         id: 1,
         shoppingListId: 1,
-        completedDate: "2025-03-19",
+        completedDate: '2025-03-19',
         isActive: false,
       },
       {
         id: 2,
         shoppingListId: 2,
-        completedDate: "2025-03-17",
+        completedDate: '2025-03-17',
         isActive: false,
       },
     ],
@@ -82,8 +82,8 @@ const model = {
     ],
 
     shareCodes: [
-      { id: 1, shoppingListId: 1, shareCode: "abc123", userId: 2 },
-      { id: 2, shoppingListId: 2, shareCode: "xyz456", userId: 1 },
+      { id: 1, shoppingListId: 1, shareCode: 'abc123', userId: 2 },
+      { id: 2, shoppingListId: 2, shareCode: 'xyz456', userId: 1 },
     ],
   },
 
