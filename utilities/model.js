@@ -45,6 +45,7 @@ const model = {
         sharedWithUserId: 1,
         isFavorite: true,
         
+        
       },
       {
         id: 2,
@@ -58,6 +59,7 @@ const model = {
     shoppingListProducts: [
       { id: 1, shoppingListId: 1, productId: 1, quantity: 2 },
       { id: 2, shoppingListId: 1, productId: 2, quantity: 1 },
+      { id: 2, shoppingListId: 1, productId: 3, quantity: 1 },
       { id: 3, shoppingListId: 2, productId: 3, quantity: 5 },
     ],
 

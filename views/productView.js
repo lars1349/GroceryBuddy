@@ -35,13 +35,9 @@ function productView() {
     `;
 }
 
-<<<<<<< HEAD
-function createProductTableRows() {
-=======
 
 
 function getProducts() {
->>>>>>> 511b171ef9bd4f5da061281cd0b21653db0e0568
     let productHtml = '';
     for (const product of model.data.products) {
         const isEditing = model.inputs.editProduct?.id === product.id;
