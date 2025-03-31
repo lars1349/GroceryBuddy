@@ -4,7 +4,7 @@ function productView() {
         <h2>Produkter</h2>
         <div class='product-input-group'>
             <input id='productName' type='text' placeholder='Product Name'>
-            <button onclick="addProduct()">Add </button>
+            <button onclick="addProduct()">Legge til</button>
         </div>
 
         <table class="product-table">
