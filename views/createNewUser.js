@@ -7,7 +7,7 @@ function whenCreateNewUserButtonIsClicked() {
 
     if (newUsername && newPassword) {
         localStorage.setItem('username', newUsername);
-        window.location.href = 'successfully_registered.html';
+        window.location.href = '';
     } else {
         document.getElementById('outputMessage').textContent = "Du må fylle ut begge felter.";
         document.getElementById('outputMessage').style.color = 'red';
@@ -17,7 +17,6 @@ function whenCreateNewUserButtonIsClicked() {
 function createNewUser() {
     document.getElementById('app').innerHTML = /*HTML*/ `
     <div>
-        <h1>GroceryBuddy</h1>
         <h2>Registrering ny bruker:</h2>
     </div>
     <form id="registerNewUser">
