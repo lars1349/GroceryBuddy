@@ -38,7 +38,7 @@ function createProductTableRows() {
 
     let productHtml = '';
     for (const product of model.data.products) {
-        const isEditing = model.inputs.editProduct?.id === product.id;
+        const isEditing = (model.inputs.editProduct && model.inputs.editProduct.id === product.id);
         
         productHtml += /*HTML*/`
             <tr>
