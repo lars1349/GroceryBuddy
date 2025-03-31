@@ -1,15 +1,18 @@
 function productView() {
     return /*HTML*/`
-        <h2> Produkter </h2>
+    
+        <h2>Products</h2>
+        <div class='product-input-group'>
+            <input id='productName' type='text' placeholder='Product Name'>
+            <button onclick="addProduct()">Add </button>
+        </div>
 
-        <input id='produktnavn' type='text' placeholder='produktnavn'>
-        <button onclick='addProduct()'>legge til </button>
-
-        <table>
+        <table class="product-table">
         <tr>
             <th>ID</th>
-            <th>Navn</th>           
-          
+            <th>Name</th>
+            
+            <th></th>
         </tr>
         ${getProducts()}
 
@@ -21,62 +24,27 @@ function productView() {
 
 function getProducts() {
     let productHtml = '';
-    for(let product of model.data.products) {
+    for (const product of model.data.products) {
+        const isEditing = model.inputs.editProduct?.id === product.id;
+        
         productHtml += /*HTML*/`
             <tr>
                 <td>${product.id}</td>
-                <td> ${product.name} </td>
-                
                 <td>
-                    <button onclick='deleteProduct(${product.id})'>X</button>
+                    ${isEditing ? `<input value='${model.inputs.editProduct.name}' 
+                                         onchange='model.inputs.editProduct.name = this.value'>`
+                                : product.name}
+                </td>
+                <td class='product-actions'>
+                    
+                    ${isEditing ? `<button class='save-btn' onclick='saveEditProduct()'>Spare</button>` 
+                                : `<button class='edit-btn' onclick='editProduct(${product.id})'>Redigere</button>`} 
+                     <button class='delete-btn' onclick='deleteProduct(${product.id})'>X</button>   
+                    
                 </td>
             </tr>
         `;
     }
-
     return productHtml;
-}
-
-function addProduct() {
-    const productNameInput = document.getElementById('productName');
-    const productName = productNameInput.value.trim();
-    
-    if (!productName) {
-        alert('Produktnavnet kan ikke være tomt');
-        return;
-    }
-
-    
-    let newId = 1;
-    if (model.data.products.length > 0) {
-        for (let product of model.data.products) {
-            if (product.id >= newId) {
-                newId = product.id + 1;
-            }
-        }
-    }
-
-    let newProduct = {
-        id: newId,
-        name: productName,
-        isChecked: false
-    };
-    
-    model.data.products.push(newProduct);
-    productNameInput.value = '';
-    updateView();
-}
-
-function deleteProduct(id) {
-    let index = 0;
-    for(const product of model.data.products) {
-        if(product.id === id) {
-            model.data.products.splice(index, 1);
-            break;
-        }
-        index++;
-    }
-
-    updateView();
 }
 

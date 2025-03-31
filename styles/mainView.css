@@ -67,21 +67,120 @@
   
 
 
-  
-/*productTable */
-table {
-  font-family: arial;
-  border-collapse: collapse;
-  width: 55%;
-}
+  /*Product Section and table */
 
-td, th {
-  border: 1px solid #dddddd;
+
+
+.product-container h2 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
   text-align: left;
-  padding: 8px;
-  width: 15%; 
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+
+.product-input-group {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: flex-start; 
+  margin-bottom: 1rem;
+}
+
+
+.product-input-group input {
+  flex: 1;
+  max-width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.product-input-group button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #66bb6a;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.product-input-group button:hover {
+  background-color: #5aa65a;
+}
+
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  max-width: 600px;
+  text-align: left;
+}
+
+.product-table th, .product-table td {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.product-table th {
+  background-color: #81c784;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.product-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+.product-actions {
+  display: flex;
+  gap: 5px;
+}
+
+
+.product-table button {
+  padding: 6px 10px;
+  border: none;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+
+.edit-btn {
+  background-color: #2196F3; /* #ffa726*/
+  color: white;
+}
+
+.edit-btn:hover {
+  opacity: 0.8;
+}
+
+
+.save-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.save-btn:hover {
+  opacity: 0.8;
+}
+
+
+.delete-btn {
+  background-color: #e57373;
+  color: white;
+}
+
+.delete-btn:hover {
+  opacity: 0.8;
 }
