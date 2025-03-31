@@ -10,6 +10,7 @@ const model = {
 
 
   inputs: {
+    
     login: {
       email: '',
       password: '',
@@ -19,7 +20,7 @@ const model = {
       email: '',
       password: '',
     },
-
+    
     newShoppingList: {
       titleName: '',
     },
