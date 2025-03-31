@@ -44,6 +44,7 @@ const model = {
         ownerUserId: 1,
         sharedWithUserId: 1,
         isFavorite: true,
+        
       },
       {
         id: 2,
