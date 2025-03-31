@@ -156,27 +156,27 @@
 }
 
 
-.edit-btn {
+.editButton {
   background-color: #2196F3; /* #ffa726*/
   color: white;
 }
 
-.edit-btn:hover {
+.editButton:hover {
   opacity: 0.8;
 }
 
 
-.save-btn {
+.saveButton {
   background-color: #4caf50;
   color: white;
 }
 
-.save-btn:hover {
+.saveButton:hover {
   opacity: 0.8;
 }
 
 
-.delete-btn {
+.deleteButton {
   background-color: #e57373;
   color: white;
 }

@@ -3,7 +3,7 @@ function productView() {
     
         <h2>Produkter</h2>
         <div class='product-input-group'>
-            <input id='productName' type='text' placeholder='Product Name'>
+            <input id='productName' type='text' placeholder='Produktnavn'>
             <button onclick="addProduct()">Legge til</button>
         </div>
 
@@ -37,9 +37,9 @@ function getProducts() {
                 </td>
                 <td class='product-actions'>
                     
-                    ${isEditing ? `<button class='save-btn' onclick='saveEditProduct()'>Spare</button>` 
-                                : `<button class='edit-btn' onclick='editProduct(${product.id})'>Redigere</button>`} 
-                     <button class='delete-btn' onclick='deleteProduct(${product.id})'>X</button>   
+                    ${isEditing ? `<button class='saveButton ' onclick='saveEditProduct()'>Spare</button>` 
+                                : `<button class='editButton' onclick='editProduct(${product.id})'>Redigere</button>`} 
+                     <button class='deleteButton' onclick='deleteProduct(${product.id})'>X</button>   
                     
                 </td>
             </tr>
