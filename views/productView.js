@@ -14,7 +14,7 @@ function productView() {
             
             <th></th>
         </tr>
-        ${getProducts()}
+        ${createProductTableRows()}
 
         </table>
 
@@ -22,7 +22,7 @@ function productView() {
     `;
 }
 
-function getProducts() {
+function createProductTableRows() {
     let productHtml = '';
     for (const product of model.data.products) {
         const isEditing = (model.inputs.editProduct && model.inputs.editProduct.id === product.id);
