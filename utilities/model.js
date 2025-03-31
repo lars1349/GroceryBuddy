@@ -1,7 +1,13 @@
 const model = {
   app: {
     currentPage: 'home',
+    currentUserId: 1,
+    selectedShoppingListId: null,
+    
   },
+
+  
+
 
   inputs: {
     login: {
@@ -24,6 +30,8 @@ const model = {
   },
 
   data: {
+
+    
     users: [
       { id: 1, email: 'rebecka@getacademy.no', passWord: '***' },
       { id: 2, email: 'roar@getacademy.no', passWord: '***' },
