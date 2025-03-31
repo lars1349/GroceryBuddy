@@ -8,6 +8,8 @@ function productView() {
        <h2>${model.app.shoppingList}</h2>
       
        <button class='btn products' onclick='toggleProductView()'>Legg til varer</button>
+       <button class='btn products' onclick=''>Lagre</button>
+
       
        ${model.app.showProducts ? `
         
