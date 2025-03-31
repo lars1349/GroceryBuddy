@@ -28,6 +28,10 @@ function updateView() {
         case 'home':
             currentView = homeView();
             break;
+        case 'newShoppingList':
+            currentView = makeNewShoppingList();
+            break;
+            
     
 }
 
@@ -46,19 +50,10 @@ function updateView() {
         </main>
 
         <footer>
-            <button onclick="model.app.currentPage='shoppingListView'; updateView()">Lag ny</button>
+            <button onclick="model.app.currentPage='newShoppingList'; updateView()">Lag ny</button>
             <button onclick="model.app.currentPage='products'; updateView()">Favoritter</button>
             <button onclick="model.app.currentPage='history'; updateView()">Historie</button>
             <button onclick="model.app.currentPage='profile'; updateView()">Profil</button>
         </footer>
     `;
-}
-function openShoppingList(listId) {
-    model.app.selectedShoppingListId = listId;
-    model.app.currentPage = 'shoppingListView';
-    updateView();
-}
-function goHome() {
-    model.app.currentPage = 'home';
-    updateView();
 }

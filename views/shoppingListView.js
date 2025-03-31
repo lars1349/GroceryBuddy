@@ -20,3 +20,4 @@ function shoppingListView() {
 
     return html;
 }
+
