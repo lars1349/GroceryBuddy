@@ -1,10 +1,19 @@
+
+
+
+
 function productView() {
     return /*HTML*/`
     
-        <h2>Produkter</h2>
-        <div class='product-input-group'>
-            <input id='productName' type='text' placeholder='Produktnavn'>
-            <button onclick="addProduct()">Legge til</button>
+       <h2>${model.app.shoppingList}</h2>
+      
+       <button class='btn products' onclick='toggleProductView()'>Legg til varer</button>
+      
+       ${model.app.showProducts ? `
+        
+         <div class='product-input-group'>
+            <input id='productName' type='text' placeholder='Product Name'>
+            <button onclick="addProduct()">Add </button>
         </div>
 
         <table class="product-table">
@@ -18,14 +27,18 @@ function productView() {
 
         </table>
 
+        `: ''}
+
         
     `;
 }
 
+
+
 function getProducts() {
     let productHtml = '';
     for (const product of model.data.products) {
-        const isEditing = (model.inputs.editProduct && model.inputs.editProduct.id === product.id);
+        const isEditing = model.inputs.editProduct?.id === product.id;
         
         productHtml += /*HTML*/`
             <tr>
@@ -46,5 +59,11 @@ function getProducts() {
         `;
     }
     return productHtml;
+}
+
+
+function toggleProductView() {
+    model.app.showProducts = !model.app.showProducts;
+    updateView();
 }
 
