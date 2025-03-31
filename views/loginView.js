@@ -1,4 +1,4 @@
-function profilView() {
+function loginView() {
     return /*HTML*/`
     Login works!!
     `
