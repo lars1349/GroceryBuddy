@@ -24,7 +24,8 @@ function historyView() {
                         ">
                         ${list.name} <br />
                         <small>Fullført: ${history.completedDate}</small>
-                        <button onclick="setListActive(${history.id})">Set Active</button>
+                        <button onclick="toggleListActive(${list.id}, true)">Gjør aktiv</button>
+
 
                     </div>
                 `;

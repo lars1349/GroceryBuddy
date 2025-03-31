@@ -1,10 +1,19 @@
-function setListActive(historyId) {
-    const history = model.data.shoppingListHistories.find(h => h.id === historyId);
+function toggleListActive(listId, setActive) {
+    const history = model.data.shoppingListHistories.find(h => h.shoppingListId === listId);
+
     if (history) {
-        history.isActive = true;
-        history.completedDate = null; // Optionally clear the completed date
+        history.isActive = setActive;
+        history.completedDate = setActive ? null : new Date().toISOString().split('T')[0]; // optional: set date
+    } else {
+       
+        model.data.shoppingListHistories.push({
+            id: generateNewId(model.data.shoppingListHistories),
+            shoppingListId: listId,
+            completedDate: setActive ? null : new Date().toISOString().split('T')[0],
+            isActive: setActive,
+        });
     }
 
-    model.app.currentPage = 'home';
+    model.app.currentPage = setActive ? 'home' : 'history';
     updateView();
 }
