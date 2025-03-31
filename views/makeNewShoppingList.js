@@ -1,6 +1,6 @@
 function makeNewShoppingList () {
     return /*HTML*/ `
-      shoppinglist feed  works!
+      
   
        <div id='shopping_list_container'>
                <input type='text' name='' id='shopping_list_name'>

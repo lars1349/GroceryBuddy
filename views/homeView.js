@@ -1,10 +1,13 @@
 function homeView() {
-    let html = '<h2>Dine handlelister</h2>';
+    let html = '<h2>Dine aktive handlelister</h2>';
     const currentUserId = model.app.currentUserId;
     const shoppingLists = model.data.shoppingLists;
 
     for (const list of shoppingLists) {
-        if (list.ownerUserId === currentUserId) {
+        const history = model.data.shoppingListHistories.find(h => h.shoppingListId === list.id);
+        const isActive = history?.isActive ?? true; // If no history entry, assume it's active
+
+        if (list.ownerUserId === currentUserId && isActive) {
             html += /*HTML*/ `
                 <div 
                     onclick="openShoppingList(${list.id})"
@@ -20,6 +23,7 @@ function homeView() {
             `;
         }
     }
+    
 
     return html;
 }
