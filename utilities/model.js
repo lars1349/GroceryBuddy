@@ -1,13 +1,12 @@
 const model = {
   app: {
     currentPage: 'home',
+     errorMessage: '',
+    showProducts :'',
     currentUserId: 1,
     selectedShoppingListId: null,
-    
+
   },
-
-  
-
 
   inputs: {
     
