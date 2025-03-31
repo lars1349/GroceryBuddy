@@ -9,7 +9,7 @@ function loginInput(username, password) {
     if (username === userData.username && password === userData.password) {
         window.location.href = 'logged_in.html';
     } else {
-        document.getElementById('outputMessage').textContent = "Feil brukernavn eller passord. PrÃ¸v igjen.";
+        document.getElementById('outputMessage').textContent = "Feil brukernavn eller passord. Prøv igjen.";
         document.getElementById('outputMessage').style.color = 'red';
     }
 }
