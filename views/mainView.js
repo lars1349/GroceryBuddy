@@ -33,8 +33,9 @@ function updateView() {
 
     document.getElementById('app').innerHTML = /*HTML*/ `
       
-            <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;">
-    <img src="logo.png" alt="App Logo" />
+            <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;  ">
+            <img src="/img/GroceryBuddy.png" alt="App Logo" style="border-radius: 15px; width: 80px;" />
+
     <h1>GroceryBuddy</h1>
 </header>
 
