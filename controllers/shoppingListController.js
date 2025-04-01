@@ -1,8 +1,9 @@
 function openShoppingList(listId) {
     model.app.selectedShoppingListId = listId;
-    model.app.currentPage = 'shoppingListView';
+    model.app.currentPage = 'products'; 
     updateView();
 }
+
 function goHome() {
     model.app.currentPage = 'home';
     updateView();
