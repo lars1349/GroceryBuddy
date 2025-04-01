@@ -37,7 +37,7 @@ function loginView() {
                 ">
                     Logg inn
                 </button>
-                <button type="button" onclick="createNewUserView()" style="
+                <button type="button" onclick="model.app.currentPage='createUser'; updateView()"  style="
                     margin-top: 1rem;
                     padding: 0.5rem 1rem;
                     border: none;

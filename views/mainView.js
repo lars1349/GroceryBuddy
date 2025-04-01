@@ -35,10 +35,13 @@ function updateView() {
         case 'settings':
             currentView =shoppingListsSettingsView();
             break;
-        case 'createUser':
-            currentView = createNewUserView();
-            break;
+            case 'createUser':
+                currentView = createNewUserView(); 
+                break;
+            
         } 
+        console.log('🧾 currentView content:', currentView);
+
                 
 
     document.getElementById('app').innerHTML = /*HTML*/ `
