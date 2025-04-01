@@ -1,11 +1,7 @@
-
 function updateView() {
     let currentView = '';
 
-    switch(model.app.currentPage) {
-        case 'login': 
-            currentView = userView();
-            break;
+    switch (model.app.currentPage) {
         case 'history':
             currentView = historyView();
             break;
@@ -21,10 +17,9 @@ function updateView() {
         case 'products':
             currentView = productView();
             break;
-   
-    case 'profile':
-        currentView = profilView();
-        break;
+        case 'profile':
+            currentView = profilView();
+            break;
         case 'home':
             currentView = homeView();
             break;
@@ -34,18 +29,13 @@ function updateView() {
         case 'login':
             currentView = loginView();
             break;
-            
-    
-}
+    } 
 
     document.getElementById('app').innerHTML = /*HTML*/ `
-      
-            <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;  ">
+        <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;">
             <img src="/img/GroceryBuddy.png" alt="App Logo" style="border-radius: 15px; width: 80px;" />
-
-    <h1>GroceryBuddy</h1>
-</header>
-
+            <h1>GroceryBuddy</h1>
+            
         </header>
 
         <main id="content">

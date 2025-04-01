@@ -1,6 +1,6 @@
 const model = {
   app: {
-    currentPage: 'home',
+    currentPage: 'login',
      errorMessage: '',
     showProducts :'',
     currentUserId: 1,
