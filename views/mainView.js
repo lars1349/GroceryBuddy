@@ -31,6 +31,9 @@ function updateView() {
         case 'newShoppingList':
             currentView = makeNewShoppingList();
             break;
+        case 'login':
+            currentView = loginView();
+            break;
             
     
 }
