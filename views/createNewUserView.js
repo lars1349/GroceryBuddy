@@ -5,7 +5,7 @@ function createNewUserView() {
             flex-direction: column; 
             align-items: center; 
             justify-content: center; 
-            height: 80vh;
+            height: 60vh;
             text-align: center;
         ">
             <h2 style="margin-bottom: 1rem;">Registrering ny bruker</h2>
