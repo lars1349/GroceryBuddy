@@ -12,6 +12,7 @@ function productView() {
         </div>
       
         <button class='btn products' onclick='toggleProductView()'>Legg til varer</button>
+        <button>Rediger Liste</button>
 
         ${model.app.showProducts ? `
             <div class='product-input-group'>
