@@ -26,6 +26,8 @@ function loginView() {
                 <label for="password">Passord:</label>
                 <input type="password" id="password" />
                 
+                    <div id="outputMessage" style="margin-top: 1rem;"></div>
+
                 <button type="button" onclick="whenLoginButtonIsClicked()" style="
                     margin-top: 1rem;
                     padding: 0.5rem 1rem;
@@ -37,6 +39,8 @@ function loginView() {
                 ">
                     Logg inn
                 </button>
+                
+
                 <button type="button" onclick="createNewUserView()" style="
                     margin-top: 1rem;
                     padding: 0.5rem 1rem;
@@ -46,17 +50,12 @@ function loginView() {
                     border-radius: 5px;
                     cursor: pointer;
                 ">
-                    Registrer ny bruker
+                    Opprett ny bruker
                 </button>
             </form>
-            <div id="outputMessage" style="margin-top: 1rem;"></div>
         </div>
     `;
 }
-
-
-
-
 
 
 function loginInput(username, password) {
