@@ -64,12 +64,12 @@ const model = {
     ],
 
     products: [
-      { id: 1, name: 'Brød' },
-      { id: 2, name: 'Fiskepinner' },
-      { id: 3, name: 'Melk' },
-      { id: 4, name: 'Brus' },
-      { id: 5, name: 'Skinke' },
-      { id: 6, name: 'Ost' },
+      // { id: 1, name: 'Brød' },
+      // { id: 2, name: 'Fiskepinner' },
+      // { id: 3, name: 'Melk' },
+      // { id: 4, name: 'Brus' },
+      // { id: 5, name: 'Skinke' },
+      // { id: 6, name: 'Ost' },
     ],
 
     shoppingListHistories: [

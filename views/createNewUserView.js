@@ -1,4 +1,4 @@
-
+createNewUserView();
 
 function whenCreateNewUserButtonIsClicked() {
     
@@ -14,7 +14,7 @@ function whenCreateNewUserButtonIsClicked() {
     }
 }
 
-function createNewUser() {
+function createNewUserView() {
     document.getElementById('app').innerHTML = /*HTML*/ `
     <div>
         <h2>Registrering ny bruker:</h2>
