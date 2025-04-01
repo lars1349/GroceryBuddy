@@ -11,7 +11,10 @@ function shoppingListView() {
         html += `<ul>`;
         for (const item of listProducts) {
             const product = model.data.products.find(p => p.id === item.productId);
-            html += `<li>${product.name} – ${item.quantity} stk</li>`;
+            if (product) {
+                const quantity = item.quantity || 1; // fallback i tilfelle quantity mangler
+                html += `<li>${product.name} - ${quantity} stk</li>`;
+            }
         }
         html += `</ul>`;
     }
@@ -20,4 +23,3 @@ function shoppingListView() {
 
     return html;
 }
-
