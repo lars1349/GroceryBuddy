@@ -7,7 +7,8 @@ function whenCreateNewUserButtonIsClicked() {
 
     if (newUsername && newPassword) {
         localStorage.setItem('username', newUsername);
-        window.location.href = '';
+        model.app.currentPage = 'createUser'; 
+        updateView();
     } else {
         document.getElementById('outputMessage').textContent = "Du må fylle ut begge felter.";
         document.getElementById('outputMessage').style.color = 'red';

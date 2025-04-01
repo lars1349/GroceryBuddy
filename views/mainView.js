@@ -35,9 +35,9 @@ function updateView() {
         case 'settings':
             currentView =shoppingListsSettingsView();
             break;
-            case 'newUser':
-                currentView = createNewUserView(); // ✅ make sure this is spelled correctly
-                break
+        case 'createUser':
+            currentView = createNewUserView();
+            break;
         } 
                 
 
