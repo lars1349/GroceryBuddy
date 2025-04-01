@@ -10,7 +10,7 @@ function loginView() {
             flex-direction: column; 
             align-items: center; 
             justify-content: center; 
-            height: 80vh;
+            height: 60vh;
             text-align: center;
         ">
             <h2 style="margin-bottom: 1rem;">Logg inn</h2>
@@ -36,6 +36,17 @@ function loginView() {
                     cursor: pointer;
                 ">
                     Logg inn
+                </button>
+                <button type="button" onclick="createNewUserView()" style="
+                    margin-top: 1rem;
+                    padding: 0.5rem 1rem;
+                    border: none;
+                    background-color: #66bb6a;
+                    color: white;
+                    border-radius: 5px;
+                    cursor: pointer;
+                ">
+                    Registrer ny bruker
                 </button>
             </form>
             <div id="outputMessage" style="margin-top: 1rem;"></div>
