@@ -49,7 +49,7 @@ function whenCreateNewUserButtonIsClicked() {
 
     if (newUsername && newPassword) {
         localStorage.setItem('username', newUsername);
-        model.app.currentPage = 'createUser'; 
+        model.app.currentPage = 'home'; 
         updateView();
     } else {
         document.getElementById('outputMessage').textContent = "Du må fylle ut begge felter.";
