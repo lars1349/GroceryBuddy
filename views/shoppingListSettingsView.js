@@ -18,7 +18,7 @@ function shoppingListsSettingsView() {
 
          
                 <button>Slett liste</button>
-                <button>Administrer Liste</button>
+                <button>Administrer kode</button>
                 <button>legg til fav varer</button>
                 <button>aktiver liste</button>
                 <button>deaktiver liste</button>
