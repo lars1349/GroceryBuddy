@@ -40,7 +40,7 @@ function updateView() {
                 break;
             
         } 
-        console.log('🧾 currentView content:', currentView);
+        
 
                 
 

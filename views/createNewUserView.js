@@ -41,6 +41,7 @@ function createNewUserView() {
 
 
 
+
 function whenCreateNewUserButtonIsClicked() {
     
     let newUsername = document.getElementById('newUsername').value;
