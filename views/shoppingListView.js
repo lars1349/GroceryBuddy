@@ -20,7 +20,6 @@ function shoppingListView() {
     }
 
     html += `<button onclick="goHome()">← Tilbake</button>`;
-    <button>gf</button>
     
 
     return html;
