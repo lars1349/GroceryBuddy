@@ -15,8 +15,8 @@ function productView() {
 
         ${model.app.showProducts ? `
             <div class='product-input-group'>
-                <input id='productName' type='text' placeholder='Product Name'>
-                <button onclick="addProduct()">Add </button>
+                <input id='productName' type='text' placeholder='Produktnavn'>
+                <button onclick="addProduct()">Legge til </button>
             </div>
 
             <table class="product-table">
@@ -25,13 +25,13 @@ function productView() {
                 <th>Name</th>
                 <th></th>
             </tr>
-            ${getProducts()}
+            ${CreateProductTableRows()}
             </table>
         ` : ''}
     `;
 }
 
-function getProducts() {
+function CreateProductTableRows() {
     let productHtml = '';
     for (const product of model.data.products) {
         const isEditing = model.inputs.editProduct?.id === product.id;
@@ -51,6 +51,8 @@ function getProducts() {
                 </td>
             </tr>
         `;
+
+       
     }
     return productHtml;
 }
