@@ -12,7 +12,7 @@ function productView() {
         </div>
       
         <button class='btn products' onclick='toggleProductView()'>Legg til varer</button>
-        <button>Rediger Liste</button>
+        <button onclick="model.app.currentPage='settings'; updateView()" style="cursor: pointer;">Rediger Liste</button>
 
         ${model.app.showProducts ? `
             <div class='product-input-group'>

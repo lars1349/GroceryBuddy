@@ -31,9 +31,12 @@ function updateView() {
             break;
         case 'favouriteProducts':
             currentView =favoriteProductsView();
-                
             break;
-    } 
+        case 'settings':
+            currentView =shoppingListsSettingsView();
+            break;
+        } 
+                
 
     document.getElementById('app').innerHTML = /*HTML*/ `
         <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;">
