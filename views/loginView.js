@@ -1,3 +1,8 @@
+const userData = {
+    username: "Rebecka",
+    password: "123",
+};
+
 function loginView() {
     return /*HTML*/ `
         <div style="
