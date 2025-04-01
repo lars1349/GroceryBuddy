@@ -24,7 +24,7 @@ function productView() {
             <table class="product-table">
             <tr>
                 <th>ID</th>
-                <th>Name</th>
+                <th>Navn</th>
                 <th></th>
             </tr>
             ${CreateProductTableRows()}
