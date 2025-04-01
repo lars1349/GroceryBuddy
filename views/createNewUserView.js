@@ -21,6 +21,8 @@ function createNewUserView() {
 
                 <label for="newPassword">Passord:</label>
                 <input type="password" id="newPassword" name="password" />
+                
+                    <div id="outputMessage" style="margin-top: 1rem; color: red;"></div>
 
                 <button type="submit" style="
                     margin-top: 1rem;
@@ -33,14 +35,18 @@ function createNewUserView() {
                 ">Opprett bruker</button>
             </form>
 
-            <div id="outputMessage" style="margin-top: 1rem; color: red;"></div>
+            <button onclick="model.app.currentPage='login'; updateView()" style="
+                    margin-top: 1rem;
+                    padding: 0.5rem 1rem;
+                    background-color: #66bb6a;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                ">Tilbake</button>
         </div>
     `;
 }
-
-
-
-
 
 function whenCreateNewUserButtonIsClicked() {
     
