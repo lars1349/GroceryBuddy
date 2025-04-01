@@ -31,14 +31,22 @@ function addShoppingListName() {
         ownerUserId: model.app.currentUserId,
     };
 
-    model.data.shoppingLists.push(newList);
+      const newHistory = {
+        id: generateNewId(model.data.shoppingListHistories),
+        shoppingListId: newId,
+        completedDate: null,
+        isActive: true,
+    };
 
+    model.data.shoppingLists.push(newList);
     model.app.errorMessage = '';
     model.app.selectedShoppingListId = newId;
+    model.data.shoppingListHistories.push(newHistory);
     model.app.currentPage = 'products'; // eller 'productView' hvis det er navnet i din app
 
     updateView();
 }
+
 
 function generateNewId(array) {
     if (!array.length) return 1;
