@@ -29,6 +29,10 @@ function updateView() {
         case 'login':
             currentView = loginView();
             break;
+        case 'favouriteProducts':
+            currentView =favoriteProductsView();
+                
+            break;
     } 
 
     document.getElementById('app').innerHTML = /*HTML*/ `
@@ -44,7 +48,7 @@ function updateView() {
 
         <footer>
             <button onclick="model.app.currentPage='newShoppingList'; updateView()">Lag ny</button>
-            <button onclick="model.app.currentPage='products'; updateView()">Favoritter</button>
+            <button onclick="model.app.currentPage='favouriteProducts'; updateView()">Favoritter</button>
             <button onclick="model.app.currentPage='history'; updateView()">Historie</button>
             <button onclick="model.app.currentPage='profile'; updateView()">Profil</button>
         </footer>
