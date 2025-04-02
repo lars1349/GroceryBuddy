@@ -21,7 +21,8 @@ function shoppingListsSettingsView() {
                 <button onclick="shareCodeView()">Administrer kode</button>
                 <button>legg til fav varer</button>
                 <button>aktiver liste</button>
-                <button>deaktiver liste</button>
+                <button onclick="toggleListActive(${list.id}, false)">Deaktiver liste</button>
+                <button onclick="goHome()">← Tilbake</button>
                 
             </div>
         </div>
