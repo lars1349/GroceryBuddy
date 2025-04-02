@@ -22,17 +22,23 @@ function createShareCodeHtml() {
     }
 
     return /*HTML*/ `
+    <div class="share-code-container">
+        <h1 class="share-code-title">Dele kode</h1>
         
-        <div>
-        <h1>Dele kode</h1>
-            <label>Handleliste:
-                <select id="shoppingListId">${shoppingListOptions}</select>
-            </label>
-            <label>Bruker:
-                <select id="userId">${userOptions}</select>
-            </label>
-            <button onclick="generateInvitationCode()">Generer delekode</button>
-            <button onclick="deleteShareCode()">Slett delingskode</button>
+        <div class="share-code-field">
+            <label for="shoppingListId">Handleliste:</label>
+            <select id="shoppingListId" class="share-code-select">${shoppingListOptions}</select>
         </div>
-    `;
+
+        <div class="share-code-field">
+            <label for="userId">Bruker:</label>
+            <select id="userId" class="share-code-select">${userOptions}</select>
+        </div>
+
+        <div class="share-code-buttons">
+            <button onclick="generateInvitationCode()" class="share-code-button">Generer delekode</button>
+            <button onclick="deleteShareCode()" class="share-code-button delete">Slett delingskode</button>
+        </div>
+    </div>
+`;
 }
