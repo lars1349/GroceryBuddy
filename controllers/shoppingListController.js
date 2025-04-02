@@ -28,3 +28,7 @@ function toggleListActive(listId, setActive) {
     updateView();
 }
 
+function goToProductView() {
+    model.app.currentPage = 'products';
+    updateView();
+}

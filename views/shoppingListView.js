@@ -1,26 +1,53 @@
 function shoppingListView() {
     const listId = model.app.selectedShoppingListId;
-    const list = model.data.shoppingLists.find(l => l.id === listId);
-    const listProducts = model.data.shoppingListProducts.filter(p => p.shoppingListId === listId);
+    const list = model.data.shoppingLists.find(function(l) {
+        return l.id === listId;
+    });
+    const listProducts = model.data.shoppingListProducts.filter(function(p) {
+        return p.shoppingListId === listId;
+    });
 
-    let html = `<h2>${list.name}</h2>`;
+    let html = `
+      
+        <h2>${list.name}</h2>
+    `;
 
     if (listProducts.length === 0) {
         html += `<p>Ingen produkter i denne listen.</p>`;
     } else {
-        html += `<ul>`;
-        for (const item of listProducts) {
-            const product = model.data.products.find(p => p.id === item.productId);
+        html += `<ul class="product-list">`;
+
+        for (let i = 0; i < listProducts.length; i++) {
+            const item = listProducts[i];
+            const product = model.data.products.find(function(p) {
+                return p.id === item.productId;
+            });
+
             if (product) {
-                const quantity = item.quantity || 1; // fallback i tilfelle quantity mangler
-                html += `<li>${product.name} - ${quantity} stk</li>`;
+                const quantity = item.quantity || 1;
+                const isChecked = product.isChecked ? 'checked' : '';
+                const checkedClass = product.isChecked ? 'checked-product' : '';
+
+                html += `
+                    <li class="${checkedClass}">
+                        <input 
+                            type="checkbox" 
+                            onchange="toggleProductChecked(${product.id})"
+                            ${isChecked}
+                        >
+                        ID: ${product.id} - ${product.name} - ${quantity} stk
+                    </li>
+                `;
             }
         }
+
         html += `</ul>`;
     }
 
-    html += `<button onclick="goHome()">← Tilbake</button>`;
-    
+    html += `
+        <button class='btn' onclick="goHome()">← Tilbake</button>
+        <button class='btn' onclick="goToProductView()">✏️ Rediger varer</button>
+    `;
 
     return html;
 }

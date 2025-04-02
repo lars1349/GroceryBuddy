@@ -17,7 +17,6 @@ function addProduct() {
         productId = existingProduct.id;
     } else {
 
-        // Lag nytt produkt
         productId = model.data.products.length > 0
             ? Math.max(...model.data.products.map(p => p.id)) + 1
             : 1;
@@ -29,16 +28,14 @@ function addProduct() {
         });
     }
 
-    // 2. Sjekk om produktet allerede er i denne handlelisten
+
     let existingLink = model.data.shoppingListProducts.find(
         p => p.shoppingListId === listId && p.productId === productId
     );
 
     if (existingLink) {
-        // 3. Øk quantity
         existingLink.quantity += 1;
     } else {
-        // 4. Lag ny kobling
         const newLinkId = model.data.shoppingListProducts.length > 0
             ? Math.max(...model.data.shoppingListProducts.map(p => p.id)) + 1
             : 1;
@@ -89,7 +86,6 @@ function saveEditProduct() {
     }
 }
 
-
 function setSaving() {
     model.app.isSaving = true;
     updateView();
@@ -99,3 +95,16 @@ function setSaving() {
         updateView();
     }, 600); 
 }
+
+function toggleProductChecked(productId) {
+    var product = model.data.products.find(function(p) {
+        return p.id === productId;
+    });
+
+    if (product) {
+        product.isChecked = !product.isChecked;
+        setSaving();
+        updateView();
+    }
+}
+
