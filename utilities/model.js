@@ -11,12 +11,12 @@ const model = {
   inputs: {
     
     login: {
-      email: '',
+      username: '',
       password: '',
     },
 
     register: {
-      email: '',
+      username: '',
       password: '',
     },
     
