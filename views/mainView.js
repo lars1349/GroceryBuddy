@@ -18,32 +18,31 @@ function updateView() {
             currentView = productView();
             break;
         case 'profile':
-            currentView = profilView();
+            currentView = profileView();
             break;
         case 'home':
             currentView = homeView();
             break;
         case 'newShoppingList':
-            currentView = makeNewShoppingList();
+            currentView = makeNewShoppingListView();
             break;
         case 'login':
             currentView = loginView();
             break;
         case 'favouriteProducts':
-            currentView =favoriteProductsView();
+            currentView = favoriteProductsView();
             break;
-            case 'shoppingListSettings':
-                currentView = shoppingListsSettingsView();
+        case 'shoppingListSettings':
+            currentView = shoppingListsSettingsView();
             break;
-            case 'createUser':
-                currentView = createNewUserView(); 
-                break;
+        case 'createUser':
+            currentView = createNewUserView(); 
+            break;
             
         } 
         
 
-                
-
+        
     document.getElementById('app').innerHTML = /*HTML*/ `
         <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;">
             <img src="/img/GroceryBuddy.png" alt="App Logo" style="border-radius: 15px; width: 80px;" />

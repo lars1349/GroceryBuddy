@@ -1,62 +1,101 @@
-function productView() {
-    const list = model.data.shoppingLists.find(
-        l => l.id === model.app.selectedShoppingListId
+function addProduct() {
+    const productNameInput = document.getElementById('productName');
+    const productName = productNameInput.value.trim();
+
+    if (!productName) {
+        alert('Produktnavnet kan ikke være tomt');
+        return;
+    }
+
+    const listId = model.app.selectedShoppingListId;
+
+    let existingProduct = model.data.products.find(p => p.name.toLowerCase() === productName.toLowerCase());
+
+    let productId;
+    if (existingProduct) {
+        productId = existingProduct.id;
+    } else {
+
+        // Lag nytt produkt
+        productId = model.data.products.length > 0
+            ? Math.max(...model.data.products.map(p => p.id)) + 1
+            : 1;
+
+        model.data.products.push({
+            id: productId,
+            name: productName,
+            isChecked: false
+        });
+    }
+
+    // 2. Sjekk om produktet allerede er i denne handlelisten
+    let existingLink = model.data.shoppingListProducts.find(
+        p => p.shoppingListId === listId && p.productId === productId
     );
-    const listName = list?.name || 'Ukjent liste';
 
-    return /*HTML*/`
-        <h2>${listName}</h2>
+    if (existingLink) {
+        // 3. Øk quantity
+        existingLink.quantity += 1;
+    } else {
+        // 4. Lag ny kobling
+        const newLinkId = model.data.shoppingListProducts.length > 0
+            ? Math.max(...model.data.shoppingListProducts.map(p => p.id)) + 1
+            : 1;
 
-        <div id="saveStatus" style="margin-bottom: 10px; color: ${model.app.isSaving ? 'red' : 'green'};">
-            ${model.app.isSaving ? 'Lagrer...' : 'Alt er lagret ✅'}
-        </div>
-      
-        <button class='btn products' onclick='toggleProductView()'>Legg til varer</button>
-        <button class='btn products' onclick="model.app.currentPage = 'shoppingListSettings'; updateView()">rediger liste</button>
+        model.data.shoppingListProducts.push({
+            id: newLinkId,
+            shoppingListId: listId,
+            productId: productId,
+            quantity: 1
+        });
+    }
 
-
-        ${model.app.showProducts ? `
-            <div class='product-input-group'>
-                <input id='productName' type='text' placeholder='Produktnavn'>
-                <button onclick="addProduct()">Legge til </button>
-            </div>
-
-            <table class="product-table">
-            <tr>
-                <th>ID</th>
-                <th>Navn</th>
-                <th></th>
-            </tr>
-            ${CreateProductTableRows()}
-            </table>
-        ` : ''}
-    `;
+    productNameInput.value = '';
+    setSaving();
+    updateView();
 }
 
-function CreateProductTableRows() {
-    let productHtml = '';
-    for (const product of model.data.products) {
-        const isEditing = model.inputs.editProduct?.id === product.id;
-        
-        productHtml += /*HTML*/`
-            <tr>
-                <td>${product.id}</td>
-                <td>
-                    ${isEditing ? `<input value='${model.inputs.editProduct.name}' 
-                                     onchange='model.inputs.editProduct.name = this.value'>`
-                                : product.name}
-                </td>
-                <td class='product-actions'>
-                    ${isEditing ? `<button class='saveButton' onclick='saveEditProduct()'>Lagre </button>` 
-                                : `<button class='editButton' onclick='editProduct(${product.id})'>Redigere</button>`} 
-                    <button class='deleteButton' onclick='deleteProduct(${product.id})'>X</button>   
-                </td>
-            </tr>
-        `;
-
-       
+function deleteProduct(id) {
+    for (let i = 0; i < model.data.products.length; i++) {
+        if (model.data.products[i].id === id) {
+            model.data.products.splice(i, 1);
+            setSaving(); 
+            updateView();
+            return;
+        }
     }
-    return productHtml;
+}
+
+function editProduct(id) {
+    for (let i = 0; i < model.data.products.length; i++) {
+        if (model.data.products[i].id === id) {
+            model.inputs.editProduct = { id: id, name: model.data.products[i].name };
+            updateView();
+            return;
+        }
+    }
+}
+
+function saveEditProduct() {
+    for (let i = 0; i < model.data.products.length; i++) {
+        if (model.data.products[i].id === model.inputs.editProduct.id) {
+            model.data.products[i].name = model.inputs.editProduct.name.trim();
+            model.inputs.editProduct = {};
+            setSaving(); 
+            updateView();
+            return;
+        }
+    }
+}
+
+function setSaving() {
+    model.app.isSaving = true;
+    updateView();
+    setTimeout(() => {
+        saveModel();
+        model.app.isSaving = false;
+        updateView();
+    }, 600); 
 }
 
 function toggleProductView() {

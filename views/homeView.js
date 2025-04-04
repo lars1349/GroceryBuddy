@@ -1,5 +1,6 @@
 function homeView() {
     let html = '<h2>Dine aktive handlelister</h2>';
+    
     const currentUserId = model.app.currentUserId;
     const shoppingLists = model.data.shoppingLists;
 
@@ -26,6 +27,5 @@ function homeView() {
         }
     }
     
-
     return html;
 }
