@@ -1,141 +1,65 @@
-function addProduct() {
-    let productNameInput = document.getElementById('productName');
-    let productName = productNameInput.value.trim();
+function productView() {
+    const list = model.data.shoppingLists.find(
+        l => l.id === model.app.selectedShoppingListId
+    );
+    const listName = list?.name || 'Ukjent liste';
 
-    if (productName === '') {
-        alert('Produktnavnet kan ikke være tomt');
-        return;
+    return /*HTML*/`
+        <h2>${listName}</h2>
+
+        <div id="saveStatus" style="margin-bottom: 10px; color: ${model.app.isSaving ? 'red' : 'green'};">
+            ${model.app.isSaving ? 'Lagrer...' : 'Alt er lagret ✅'}
+        </div>
+      
+        <button class='btn products' onclick='toggleProductView()'>Legg til varer</button>
+        <button class='btn products' onclick="model.app.currentPage = 'shoppingListSettings'; updateView()">rediger liste</button>
+
+
+        ${model.app.showProducts ? `
+            <div class='product-input-group'>
+                <input id='productName' type='text' placeholder='Produktnavn'>
+                <button onclick="addProduct()">Legge til </button>
+            </div>
+
+            <table class="product-table">
+            <tr>
+                <th>ID</th>
+                <th>Navn</th>
+                <th></th>
+            </tr>
+            ${CreateProductTableRows()}
+            </table>
+        ` : ''}
+    `;
+}
+
+function CreateProductTableRows() {
+    let productHtml = '';
+    for (const product of model.data.products) {
+        const isEditing = model.inputs.editProduct?.id === product.id;
+        
+        productHtml += /*HTML*/`
+            <tr>
+                <td>${product.id}</td>
+                <td>
+                    ${isEditing ? `<input value='${model.inputs.editProduct.name}' 
+                                     onchange='model.inputs.editProduct.name = this.value'>`
+                                : product.name}
+                </td>
+                <td class='product-actions'>
+                    ${isEditing ? `<button class='saveButton' onclick='saveEditProduct()'>Lagre </button>` 
+                                : `<button class='editButton' onclick='editProduct(${product.id})'>Redigere</button>`} 
+                    <button class='deleteButton' onclick='deleteProduct(${product.id})'>X</button>   
+                </td>
+            </tr>
+        `;
+
+       
     }
+    return productHtml;
+}
 
-    let listId = model.app.selectedShoppingListId;
-    let existingProduct = getExistingProduct(productName);
-    let productId = getProductId(existingProduct);
-
-    if (existingProduct === null) {
-        model.data.products.push({
-            id: productId,
-            name: productName,
-            isChecked: false
-        });
-    }
-
-    updateShoppingList(listId, productId);
-
-    productNameInput.value = '';
-    setSaving();
+function toggleProductView() {
+    model.app.showProducts = !model.app.showProducts;
     updateView();
-}
-
-function getExistingProduct(productName) {
-    for (let i = 0; i < model.data.products.length; i++) {
-        if (model.data.products[i].name.toLowerCase() === productName.toLowerCase()) {
-            return model.data.products[i];
-        }
-    }
-    return null;
-}
-
-function getProductId(existingProduct) {
-    let productId = 1;
-    
-
-    if (existingProduct !== null) {
-        return existingProduct.id;
-    }
-    // Lag nytt produkt
-    if (model.data.products.length > 0) {
-        for (let i = 0; i < model.data.products.length; i++) {
-            if (model.data.products[i].id >= productId) {
-                productId = model.data.products[i].id + 1;
-            }
-        }
-    }
-    return productId;
-}
-
-function updateShoppingList(listId, productId) {
-    let existingLink = getExistingLink(listId, productId);
-
-    if (existingLink !== null) {
-        existingLink.quantity = existingLink.quantity + 1;
-    } else {
-        let  newLinkId = generateNewLinkId();
-        model.data.shoppingListProducts.push({
-            id: newLinkId,
-            shoppingListId: listId,
-            productId: productId,
-            quantity: 1
-        });
-    }
-}
-
-function getExistingLink(listId, productId) {
-    
-    for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
-        if (model.data.shoppingListProducts[i].shoppingListId === listId &&
-            model.data.shoppingListProducts[i].productId === productId) {
-            return model.data.shoppingListProducts[i];
-        }
-    }
-    return null;
-}
-
-function generateNewLinkId() {
-    let  newLinkId = 1;
-    
-
-    if (model.data.shoppingListProducts.length > 0) {
-        for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
-            if (model.data.shoppingListProducts[i].id >= newLinkId) {
-                newLinkId = model.data.shoppingListProducts[i].id + 1;
-            }
-        }
-    }
-    return newLinkId;
-}
-
-function deleteProduct(id) {
-    
-    for (let i = 0; i < model.data.products.length; i++) {
-        if (model.data.products[i].id === id) {
-            model.data.products.splice(i, 1);
-            setSaving();
-            updateView();
-            return;
-        }
-    }
-}
-
-function editProduct(id) {
-    
-    for (let i = 0; i < model.data.products.length; i++) {
-        if (model.data.products[i].id === id) {
-            model.inputs.editProduct = { id: id, name: model.data.products[i].name };
-            updateView();
-            return;
-        }
-    }
-}
-
-function saveEditProduct() {
-    
-    for (let i = 0; i < model.data.products.length; i++) {
-        if (model.data.products[i].id === model.inputs.editProduct.id) {
-            model.data.products[i].name = model.inputs.editProduct.name.trim();
-            model.inputs.editProduct = {};
-            setSaving();
-            updateView();
-            return;
-        }
-    }
-}
-
-function setSaving() {
-    model.app.isSaving = true;
-    updateView();
-    setTimeout(function() {
-        saveModel();
-        model.app.isSaving = false;
-        updateView();
-    }, 600);
 }
