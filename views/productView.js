@@ -47,7 +47,7 @@ function CreateProductTableRows() {
                                 : product.name}
                 </td>
                 <td class='product-actions'>
-                    ${isEditing ? `<button class='saveButton' onclick='saveEditProduct()'>Spare</button>` 
+                    ${isEditing ? `<button class='saveButton' onclick='saveEditProduct()'>Lagre </button>` 
                                 : `<button class='editButton' onclick='editProduct(${product.id})'>Redigere</button>`} 
                     <button class='deleteButton' onclick='deleteProduct(${product.id})'>X</button>   
                 </td>
