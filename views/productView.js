@@ -1,8 +1,14 @@
 function productView() {
-    const list = model.data.shoppingLists.find(
-        l => l.id === model.app.selectedShoppingListId
-    );
-    const listName = list?.name || 'Ukjent liste';
+    let list = null;
+
+    for (let i = 0; i < model.data.shoppingLists.length; i++) {
+        if (model.data.shoppingLists[i].id === model.app.selectedShoppingListId) {
+            list = model.data.shoppingLists[i];
+            break;
+        }
+    }
+
+    let listName = list ? list.name : 'Ukjent liste';
 
     return /*HTML*/`
         <h2>${listName}</h2>
@@ -12,7 +18,7 @@ function productView() {
         </div>
       
         <button class='btn products' onclick='toggleProductView()'>Legg til varer</button>
-        <button class='btn products' onclick="model.app.currentPage = 'shoppingListSettings'; updateView()">rediger liste</button>
+        <button onclick="model.app.currentPage = 'shoppingListSettings'; updateView()">rediger liste</button>
 
 
         ${model.app.showProducts ? `
@@ -36,7 +42,7 @@ function productView() {
 function CreateProductTableRows() {
     let productHtml = '';
     for (const product of model.data.products) {
-        const isEditing = model.inputs.editProduct?.id === product.id;
+        const isEditing = model.inputs.editProduct && model.inputs.editProduct.id === product.id;
         
         productHtml += /*HTML*/`
             <tr>
@@ -47,7 +53,7 @@ function CreateProductTableRows() {
                                 : product.name}
                 </td>
                 <td class='product-actions'>
-                    ${isEditing ? `<button class='saveButton' onclick='saveEditProduct()'>Lagre </button>` 
+                    ${isEditing ? `<button class='saveButton' onclick='saveEditProduct()'>Lagre</button>` 
                                 : `<button class='editButton' onclick='editProduct(${product.id})'>Redigere</button>`} 
                     <button class='deleteButton' onclick='deleteProduct(${product.id})'>X</button>   
                 </td>
