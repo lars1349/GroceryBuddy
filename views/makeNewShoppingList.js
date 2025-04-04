@@ -8,7 +8,7 @@ function makeNewShoppingList() {
             </button>
         </div>
 
-        <div id='errorMessage' style="color: red; margin-top: 5px;">
+        <div id='errorMessage' >
             ${model.app.errorMessage || ''}
         </div>
     `;
@@ -43,6 +43,9 @@ function addShoppingListName() {
     model.app.selectedShoppingListId = newId;
     model.data.shoppingListHistories.push(newHistory);
     model.app.currentPage = 'products'; // eller 'productView' hvis det er navnet i din app
+
+     model.data.products = [];
+     model.app.showProducts = false;
 
     updateView();
 }

@@ -93,6 +93,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
+  margin-left: 8px;
 }
 
 .product-input-group button {
@@ -116,6 +117,13 @@
   border-collapse: collapse;
   margin-top: 1rem;
   max-width: 600px;
+  text-align: left;
+  margin-left: 8px;
+}
+
+.product-table list{
+  border: solid 2px #81c784;
+  font-weight: bold;
   text-align: left;
 }
 
@@ -183,26 +191,49 @@
   opacity: 0.8;
 }
 
+#errorMessage {
+  margin-top: 1rem;
+  color: red;
 
-.shopping_list_container{
-   border: 2px solid #66bb6a; 
-   width: 100%; 
-   padding: 1rem; 
-   margin-top: 1rem; 
-   border-radius: 8px;
-
-};
-
-.shopping_list_name{
-   margin: 20px;
+  padding: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
 }
 
-.shopping_list_confirm{
 
-   width: 200px;
-   margin: auto;
+/* // handleliste */
+.shopping_list_container {
+  border: 2px solid #66bb6a;
+  width: 315px;
+  padding: 1rem;
+  margin: 5rem auto; /* ← Sentrerer horisontalt og gir topp-marg */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* ← Sentrerer innholdet horisontalt */
 }
 
+.shopping_list_name {
+  flex: 1;
+  max-width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.shopping_list_confirm {
+  width: 200px;
+  padding: 10px 15px;
+  border: solid 2px #66bb6a;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  
+  margin: 1rem auto 0 auto; /* ← Sentrerer knappen inni containeren */
+}
 
 /* Share Code Section */
 .share-code-container {
@@ -279,3 +310,29 @@
 .share-code-button.delete:hover {
   background-color: #d15b5b;
 }
+
+.product-list li{
+  border: solid 2px #66bb6a;
+  padding: 10px 15px;
+  list-style: none;
+  margin: 8px;
+  border-radius: 5px;
+
+}
+.checked-product {
+  text-decoration: line-through;
+  color: red;
+  opacity: 0.7;
+}
+.btn{
+  padding: 10px 15px;
+  border: solid 2px #66bb6a;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 8px;
+}
+.btn:hover{
+   background-color: #5aa65a;
+}
+

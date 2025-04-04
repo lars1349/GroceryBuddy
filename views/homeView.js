@@ -19,7 +19,7 @@ function homeView() {
                         cursor: pointer;
                     ">
                     ${list.name}
-                    <button onclick="toggleListActive(${list.id}, false)">Arkiver</button>
+                    
 
                 </div>
             `;
