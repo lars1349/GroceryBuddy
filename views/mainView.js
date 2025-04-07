@@ -1,5 +1,7 @@
 function updateView() {
     let currentView = '';
+    const hideFooterPages = ['login', 'createUser'];
+    const shouldShowFooter = !hideFooterPages.includes(model.app.currentPage);
 
     switch (model.app.currentPage) {
         case 'history':
@@ -54,11 +56,15 @@ function updateView() {
             ${currentView}
         </main>
 
-        <footer>
-            <button onclick="model.app.currentPage='newShoppingList'; updateView()">Lag ny</button>
-            <button onclick="model.app.currentPage='favouriteProducts'; updateView()">Favoritter</button>
-            <button onclick="model.app.currentPage='history'; updateView()">Historie</button>
-            <button onclick="model.app.currentPage='profile'; updateView()">Profil</button>
-        </footer>
+        ${shouldShowFooter ? `
+            <footer>
+                <button onclick="model.app.currentPage='newShoppingList'; updateView()">Lag ny</button>
+                <button onclick="model.app.currentPage='favouriteProducts'; updateView()">Favoritter</button>
+                <button onclick="model.app.currentPage='history'; updateView()">Historie</button>
+                <button onclick="model.app.currentPage='profile'; updateView()">Profil</button>
+            </footer>
+        ` : ''}
+        
     `;
 }
+
