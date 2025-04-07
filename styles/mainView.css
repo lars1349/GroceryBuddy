@@ -321,7 +321,7 @@
    background-color: #5aa65a;
 }
 
-.create-new-user-btn {
+.login-and-create-user-btn {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   background-color: #66bb6a;
@@ -329,4 +329,11 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.create-user-style {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
 }
