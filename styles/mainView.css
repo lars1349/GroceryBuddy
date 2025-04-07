@@ -67,7 +67,7 @@
   
 
 
-  /*Product section and table */
+  /*Produktdel og borddel */
 
 .product-container h2 {
   color: #333;
@@ -235,7 +235,7 @@
   margin: 1rem auto 0 auto; /* ← Sentrerer knappen inni containeren */
 }
 
-/* Share Code Section */
+/* Delkodeseksjonen */
 .share-code-container {
   background-color: white;
   padding: 1.5rem;
@@ -338,7 +338,7 @@
 
 
 
-/* Favorite Product section */
+/* Favoritt produktseksjon */
 
 
 .favorite-products-container {
@@ -426,7 +426,7 @@
   margin-top: 1rem;
 }
 
-/* login section */
+/* Innloggingsdelen */
 .login-and-create-user-btn {
   margin-top: 1rem;
 }
