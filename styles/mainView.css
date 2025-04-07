@@ -336,32 +336,7 @@
    background-color: #5aa65a;
 }
 
-
-
-/* Favorite Product section */
-
-
-.favorite-products-container {
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid #66bb6a;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  max-width: 600px;
-  margin: 2rem 0 2rem 1rem; 
-  text-align: left;
-}
-
-.favorite-products-container h1 {
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-#favoriteProductsList {
-  list-style: none;
-  padding: 0;
+.login-and-create-user-btn {
   margin-top: 1rem;
 }
 
@@ -413,15 +388,21 @@
   margin-top: 1rem;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
 }
 
-.favorite-products-container button:hover {
-  background-color: #5aa65a;
+.login-and-create-user-btn {
+margin-top: 1rem;
+padding: 0.5rem 1rem;
+background-color: #66bb6a;
+color: white;
+border: none;
+border-radius: 5px;
+cursor: pointer;
 }
 
-.favorite-products-container p {
-  font-size: 15px;
-  color: #666;
-  margin-top: 1rem;
+.create-user-style {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
 }

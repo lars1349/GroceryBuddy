@@ -43,7 +43,7 @@ function loginView() {
                 
 
                 <button type="button" onclick="model.app.currentPage='createUser'; updateView()"
-                        class="create-new-user-btn">
+                        class="login-and-create-user-btn">
                     Opprett ny bruker
                 </button>
             </form>
