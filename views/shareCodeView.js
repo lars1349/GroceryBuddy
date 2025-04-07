@@ -1,9 +1,6 @@
-
 function shareCodeView() {
     let showShareCode = document.getElementById('content');
     showShareCode.innerHTML = createShareCodeHtml();
-    
-    
 }
 
 function createShareCodeHtml() {
@@ -13,7 +10,6 @@ function createShareCodeHtml() {
         const shoppingList = model.data.shoppingLists[i];
         shoppingListOptions += `<option value="${shoppingList.id}">${shoppingList.name}</option>`;
     }
-
     
     let userOptions = '<option value="">Velg Bruker</option>';
     for (let i = 0; i < model.data.users.length; i++) {

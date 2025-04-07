@@ -47,6 +47,7 @@ function shoppingListView() {
     html += `
         <button class='btn' onclick="goHome()">← Tilbake</button>
         <button class='btn' onclick="goToProductView()">✏️ Rediger varer</button>
+        <button class='btn' onClick="toggleListActive(${list.id}, false)">Avslutt handel</button>
     `;
 
     return html;

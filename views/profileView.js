@@ -1,4 +1,4 @@
-function profilView() {
+function profileView() {
     const userId = model.app.currentUserId;
     const user = model.data.users.find(u => u.id === userId);
 

@@ -189,3 +189,8 @@ function setSaving() {
         updateView();
     }, 600);
 }
+
+function toggleProductView() {
+    model.app.showProducts = !model.app.showProducts;
+    updateView();
+}

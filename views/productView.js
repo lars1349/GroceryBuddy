@@ -66,7 +66,4 @@ function CreateProductTableRows() {
     return productHtml;
 }
 
-function toggleProductView() {
-    model.app.showProducts = !model.app.showProducts;
-    updateView();
-}
+
