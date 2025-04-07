@@ -7,24 +7,21 @@ function shoppingListsSettingsView() {
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            justify-content: space-between; 
-            height: 40vh; 
+            justify-content: center; 
+            height: 60vh; 
             padding: 2rem;
             text-align: center;
+            gap: 1.2rem;
+            cursor: pointer;
         ">
-            <div>
-                <h2>Innstillinger for: ${list.name}</h2>
-            </div>
+            <h2>Innstillinger for: <span style="color: #66bb6a">${list.name}</span></h2>
 
-         
-                <button>Slett liste</button>
-                <button onclick="shareCodeView()">Administrer kode</button>
-                <button>legg til fav varer</button>
-                <button onclick="toggleListActive(${list.id}, true)">aktiver</button>
-                <button onclick="toggleListActive(${list.id}, false)">Deaktiver liste</button>
-                <button onclick="goHome()">← Tilbake</button>
-                
-            </div>
+            <button class='btn' onclick="deleteCurrentShoppingList()">🗑️ Slett liste</button>
+            <button class='btn' onclick="model.app.currentPage='shareCode'; updateView()">🔗 Administrer kode</button>
+            <button class='btn'>⭐ Legg til favorittvarer</button>
+            <button class='btn' onclick="toggleListActive(${list.id}, true)">✅ Aktiver</button>
+            <button class='btn' onclick="toggleListActive(${list.id}, false)">🚫 Deaktiver liste</button>
+            <button class='btn' onclick="goHome()">← Tilbake</button>
         </div>
     `;
 }
