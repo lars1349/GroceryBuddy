@@ -24,26 +24,11 @@ function createNewUserView() {
                 
                     <div id="outputMessage" style="margin-top: 1rem; color: red;"></div>
 
-                <button type="submit" style="
-                    margin-top: 1rem;
-                    padding: 0.5rem 1rem;
-                    background-color: #66bb6a;
-                    color: white;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                ">Opprett bruker</button>
+                <button type="submit" class="create-new-user-btn">Opprett bruker</button>
             </form>
 
-            <button onclick="model.app.currentPage='login'; updateView()" style="
-                    margin-top: 1rem;
-                    padding: 0.5rem 1rem;
-                    background-color: #66bb6a;
-                    color: white;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                ">Tilbake</button>
+            <button onclick="model.app.currentPage='login'; updateView()"
+                    class="create-new-user-btn">Tilbake</button>
         </div>
     `;
 }

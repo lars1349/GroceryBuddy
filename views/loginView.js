@@ -42,15 +42,8 @@ function loginView() {
                 </button>
                 
 
-                <button type="button" onclick="model.app.currentPage='createUser'; updateView()" style="
-                    margin-top: 1rem;
-                    padding: 0.5rem 1rem;
-                    border: none;
-                    background-color: #66bb6a;
-                    color: white;
-                    border-radius: 5px;
-                    cursor: pointer;
-                ">
+                <button type="button" onclick="model.app.currentPage='createUser'; updateView()"
+                        class="create-new-user-btn">
                     Opprett ny bruker
                 </button>
             </form>
