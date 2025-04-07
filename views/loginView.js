@@ -15,12 +15,7 @@ function loginView() {
             text-align: center;
         ">
             <h2 style="margin-bottom: 1rem;">Logg inn</h2>
-            <form style="
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: center;
-            ">
+            <form class="login-and-create-user-style">
                 <label for="username">Brukernavn:</label>
                 <input type="text" id="username" />
                 
@@ -29,15 +24,8 @@ function loginView() {
                 
                     <div id="outputMessage" style="margin-top: 1rem;"></div>
 
-                <button type="button" onclick="whenLoginButtonIsClicked()" style="
-                    margin-top: 1rem;
-                    padding: 0.5rem 1rem;
-                    border: none;
-                    background-color: #66bb6a;
-                    color: white;
-                    border-radius: 5px;
-                    cursor: pointer;
-                ">
+                <button type="button" onclick="whenLoginButtonIsClicked()"
+                class="login-and-create-user-btn">
                     Logg inn
                 </button>
                 

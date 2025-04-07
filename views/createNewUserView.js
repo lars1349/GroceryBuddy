@@ -11,7 +11,7 @@ function createNewUserView() {
             <h2 style="margin-bottom: 1rem;">Registrering ny bruker</h2>
 
             <form onsubmit="event.preventDefault(); whenCreateNewUserButtonIsClicked()"
-                    class="create-user-style">
+                    class="login-and-create-user-style">
                 <label for="newUsername">Brukernavn:</label>
                 <input type="text" id="newUsername" name="username" />
 
