@@ -15,16 +15,11 @@ function historyView() {
                 html += /*HTML*/ `
                     <div 
                         onclick="openShoppingList(${list.id})"
-                        style="
-                            border: 2px solid #66bb6a; 
-                            padding: 1rem; 
-                            margin-top: 1rem; 
-                            border-radius: 8px; 
-                            cursor: pointer;
-                        ">
+                        class="history-shopping-list-html-style">
                         ${list.name} <br />
                         <small>Fullført: ${history.completedDate}</small>
-                        <button onclick="toggleListActive(${list.id}, true)">Gjør aktiv</button>
+                        <button class="btn"
+                        onclick="toggleListActive(${list.id}, true)">Gjør aktiv</button>
 
 
                     </div>

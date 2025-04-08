@@ -452,3 +452,11 @@
   height: 60vh;
   text-align: center;
 }
+
+.history-shopping-list-html-style {
+border: 2px solid #66bb6a; 
+padding: 1rem; 
+margin-top: 1rem; 
+border-radius: 8px; 
+cursor: pointer;
+}
