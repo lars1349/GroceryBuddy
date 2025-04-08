@@ -1,37 +1,53 @@
-function addShoppingListName() {
-    let nameInput = document.getElementById('shopping_list_name').value.trim();
 
-    if (!nameInput) {
+function addShoppingListName() {
+    const nameInput = getShoppingListNameInput();
+    if (!nameInput) return;
+
+    const newListId = createShoppingList(nameInput);
+    createEmptyHistory(newListId);
+    switchToNewList(newListId);
+
+    updateView();
+}
+
+function getShoppingListNameInput() {
+    const name = document.getElementById('shopping_list_name').value.trim();
+    if (!name) {
         model.app.errorMessage = '⚠️ Du må skrive inn et navn før du kan bekrefte!';
         updateView();
-        return;
+        return null;
     }
+    return name;
+}
 
+function createShoppingList(name) {
     const newId = generateNewId(model.data.shoppingLists);
-
     const newList = {
         id: newId,
-        name: nameInput,
+        name: name,
         ownerUserId: model.app.currentUserId,
     };
+    model.data.shoppingLists.push(newList);
+    return newId;
+}
 
-      const newHistory = {
+function createEmptyHistory(listId) {
+    const newHistory = {
         id: generateNewId(model.data.shoppingListHistories),
-        shoppingListId: newId,
+        shoppingListId: listId,
         completedDate: null,
         isActive: true,
     };
-
-    model.data.shoppingLists.push(newList);
-    model.app.errorMessage = '';
-    model.app.selectedShoppingListId = newId;
     model.data.shoppingListHistories.push(newHistory);
-    model.app.currentPage = 'products'; // eller 'productView' hvis det er navnet i din app
+}
 
-     model.data.products = [];
-     model.app.showProducts = false;
+function switchToNewList(listId) {
+    model.app.selectedShoppingListId = listId;
+    model.app.errorMessage = '';
+    model.app.currentPage = 'products';
+    model.app.showProducts = false;
+     model.inputs.editProduct = {};
 
-    updateView();
 }
 
 
