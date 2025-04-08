@@ -11,11 +11,12 @@ function goHome() {
 function toggleListActive(listId, setActive) {
     const history = model.data.shoppingListHistories.find(h => h.shoppingListId === listId);
 
-    if (history) {
+   if (history) {
         history.isActive = setActive;
-        history.completedDate = setActive ? null : new Date().toISOString().split('T')[0]; 
+        if (!setActive) {
+            history.completedDate = new Date().toISOString().split('T')[0]; // dagens dato
+        }
     } else {
-       
         model.data.shoppingListHistories.push({
             id: generateNewId(model.data.shoppingListHistories),
             shoppingListId: listId,
@@ -24,11 +25,20 @@ function toggleListActive(listId, setActive) {
         });
     }
 
-    model.app.currentPage = setActive ? 'home' : 'history';
+    model.app.currentPage = setActive ? 'history' : ' home';
     updateView();
 }
 
 function goToProductView() {
     model.app.currentPage = 'products';
+    updateView();
+}
+
+function toggleProductChecked(productId) {
+    const product = model.data.products.find(p => p.id === productId);
+    if (!product) return;
+
+    product.isChecked = !product.isChecked;
+    setSaving();
     updateView();
 }

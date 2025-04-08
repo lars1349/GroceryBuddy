@@ -40,17 +40,25 @@ function productView() {
     `;
 }
 
+
 function CreateProductTableRows() {
+    const listId = model.app.selectedShoppingListId;
     let productHtml = '';
-    for (const product of model.data.products) {
+
+    const linkedProducts = model.data.shoppingListProducts.filter(link => link.shoppingListId === listId);
+
+    for (const link of linkedProducts) {
+        const product = model.data.products.find(p => p.id === link.productId);
+        if (!product) continue;
+
         const isEditing = model.inputs.editProduct && model.inputs.editProduct.id === product.id;
-        
+
         productHtml += /*HTML*/`
             <tr>
                 <td>${product.id}</td>
                 <td>
                     ${isEditing ? `<input value='${model.inputs.editProduct.name}' 
-                                     onchange='model.inputs.editProduct.name = this.value'>`
+                                         onchange='model.inputs.editProduct.name = this.value'>`
                                 : product.name}
                 </td>
                 <td class='product-actions'>
@@ -60,9 +68,8 @@ function CreateProductTableRows() {
                 </td>
             </tr>
         `;
-
-       
     }
+
     return productHtml;
 }
 
