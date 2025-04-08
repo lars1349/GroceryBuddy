@@ -30,7 +30,7 @@ function productView() {
 
             <table class="product-table">
             <tr>
-                <th>ID</th>
+                <th>Antall</th>
                 <th>Navn</th>
                 <th></th>
             </tr>
@@ -55,7 +55,7 @@ function CreateProductTableRows() {
 
         productHtml += /*HTML*/`
             <tr>
-                <td>${product.id}</td>
+                <td>${link.quantity ?? ''}</td>
                 <td>
                     ${isEditing ? `<input value='${model.inputs.editProduct.name}' 
                                          onchange='model.inputs.editProduct.name = this.value'>`

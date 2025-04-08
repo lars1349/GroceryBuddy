@@ -35,7 +35,7 @@ function shoppingListView() {
                             onchange="toggleProductChecked(${product.id})"
                             ${isChecked}
                         >
-                        ID: ${product.id} - ${product.name} - ${quantity} stk
+                        ${product.name} - ${quantity} stk
                     </li>
                 `;
             }
