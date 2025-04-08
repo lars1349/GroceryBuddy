@@ -26,11 +26,11 @@ function generateInvitationCode() {
         }
     }
 
-    //Legg til den nye delingskodeoppføringen i shareCodes
+  
     model.data.shareCodes.push({ id: newId, shoppingListId, shareCode: newShareCode, userId });
 
     
-    // Varsle brukeren med e-posten og delekoden
+ 
     for (let i = 0; i < model.data.users.length; i++) {
         if (model.data.users[i].id === userId) {
             return alert('En invitasjon er sendt til ' + model.data.users[i].email + ' med delingskoden: ' + newShareCode);

@@ -17,7 +17,7 @@ function reuseFavoriteProduct(userId, productId) {
     }
 
     if (existingProduct !== null) {
-        existingProduct.quantity += 1; // Øk mengde hvis allerede i listen
+        existingProduct.quantity += 1; 
     } else {
         let maxId = 0;
         for (let j = 0; j < model.data.shoppingListProducts.length; j++) {
@@ -39,24 +39,21 @@ function reuseFavoriteProduct(userId, productId) {
 }
 
 function removeFavoriteProduct(userId, productId) {
-    let deletedIndex = -1; // to track if a favorite was removed. Starts as -1 to indicate no favorite has been removed yet. It will store the index of the removed item if found.
-    let newFavorites = []; //An empty array to collect all favorite products except the one to be removed.
+    let deletedIndex = -1; 
+    let newFavorites = []; 
 
-    // Bygg ny matrise og spor indeksen til den fjernede favoritten
+  
     for (let i = 0; i < model.data.favoriteProducts.length; i++) {
         if (model.data.favoriteProducts[i].userId === userId && 
             model.data.favoriteProducts[i].productId === productId) {
-            deletedIndex = i; // Sets deletedIndex = i to mark the removal position
+            deletedIndex = i; 
         } else {
             newFavorites.push(model.data.favoriteProducts[i]);
         }
     }
 
     if (deletedIndex !== -1) {
-        
         model.data.favoriteProducts = newFavorites;
-
-        // Tilordne ID-er på nytt sekvensielt fra 1
         for (let i = 0; i < model.data.favoriteProducts.length; i++) {
             model.data.favoriteProducts[i].id = i + 1;
         }

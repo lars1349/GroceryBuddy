@@ -14,7 +14,7 @@ function toggleListActive(listId, setActive) {
    if (history) {
         history.isActive = setActive;
         if (!setActive) {
-            history.completedDate = new Date().toISOString().split('T')[0]; // dagens dato
+            history.completedDate = new Date().toISOString().split('T')[0]; 
         }
     } else {
         model.data.shoppingListHistories.push({
