@@ -9,16 +9,10 @@ function addProduct() {
         return;
     }
 
-    
     let listId = model.app.selectedShoppingListId;
-
-    
     let existingProduct = getExistingProduct(productName);
-
-  
     let productId = getProductId(existingProduct);
 
- 
     if (existingProduct === null) {
         model.data.products.push({
             id: productId,
@@ -28,14 +22,13 @@ function addProduct() {
     }
 
     updateShoppingList(listId, productId);
-
-    
     productNameInput.value = '';
     setSaving();
     updateView();
 }
 
 function getExistingProduct(productName) {
+
     for (let i = 0; i < model.data.products.length; i++) {
         if (model.data.products[i].name.toLowerCase() === productName.toLowerCase()) {
             return model.data.products[i];
@@ -49,12 +42,10 @@ function getProductId(existingProduct) {
     
     let productId = 1;
 
-   
     if (existingProduct !== null) {
         return existingProduct.id;
     }
 
- 
     if (model.data.products.length > 0) {
         for (let i = 0; i < model.data.products.length; i++) {
             if (model.data.products[i].id >= productId) {
@@ -70,10 +61,8 @@ function updateShoppingList(listId, productId) {
     let existingLink = getExistingLink(listId, productId);
 
     if (existingLink !== null) {
-
         existingLink.quantity += 1;
     } else {
-
         let newLinkId = generateNewLinkId();
         model.data.shoppingListProducts.push({
             id: newLinkId,
@@ -97,10 +86,8 @@ function getExistingLink(listId, productId) {
 }
 
 function generateNewLinkId() {
-    
     let newLinkId = 1;
 
- 
     if (model.data.shoppingListProducts.length > 0) {
         for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
             if (model.data.shoppingListProducts[i].id >= newLinkId) {
@@ -123,7 +110,6 @@ function deleteProduct(id) {
         }
     }
 
- 
     if (deletedIndex !== -1) {
         
         for (let i = 0; i < model.data.products.length; i++) {
@@ -143,7 +129,6 @@ function deleteProduct(id) {
             }
         }
 
-        
         setSaving();
         updateView();
     }
@@ -153,7 +138,6 @@ function editProduct(id) {
     
     for (let i = 0; i < model.data.products.length; i++) {
         if (model.data.products[i].id === id) {
-
             model.inputs.editProduct = { id: id, name: model.data.products[i].name };
             updateView();
             return;
@@ -162,7 +146,6 @@ function editProduct(id) {
 }
 
 function saveEditProduct() {
-
     for (let i = 0; i < model.data.products.length; i++) {
         if (model.data.products[i].id === model.inputs.editProduct.id) {
             model.data.products[i].name = model.inputs.editProduct.name.trim();
@@ -179,7 +162,6 @@ function setSaving() {
     model.app.isSaving = true;
     updateView();
 
-    
     setTimeout(function() {
         saveModel();
         model.app.isSaving = false;

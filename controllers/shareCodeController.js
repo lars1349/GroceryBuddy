@@ -25,12 +25,8 @@ function generateInvitationCode() {
             newId = model.data.shareCodes[j].id + 1;
         }
     }
-
-  
     model.data.shareCodes.push({ id: newId, shoppingListId, shareCode: newShareCode, userId });
 
-    
- 
     for (let i = 0; i < model.data.users.length; i++) {
         if (model.data.users[i].id === userId) {
             return alert('En invitasjon er sendt til ' + model.data.users[i].email + ' med delingskoden: ' + newShareCode);
@@ -39,7 +35,6 @@ function generateInvitationCode() {
 
     alert('Bruker ikke funnet.');
 }
-
 function deleteShareCode() {
     let shoppingListId = parseInt(document.getElementById('shoppingListId').value);
     let userId = parseInt(document.getElementById('userId').value);
