@@ -1,6 +1,6 @@
 function reuseFavoriteProduct(userId, productId) {
-    let listId = model.app.selectedShoppingListId;
-    if (!listId) {
+    let currentListId = model.app.selectedShoppingListId;
+    if (!currentListId) {
         
         model.app.currentPage = 'shoppingListView';
         updateView();
@@ -9,7 +9,7 @@ function reuseFavoriteProduct(userId, productId) {
 
     var existingProduct = null;
     for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
-        if (model.data.shoppingListProducts[i].shoppingListId === listId && 
+        if (model.data.shoppingListProducts[i].shoppingListId === currentListId && 
             model.data.shoppingListProducts[i].productId === productId) {
             existingProduct = model.data.shoppingListProducts[i];
             break;
@@ -27,7 +27,7 @@ function reuseFavoriteProduct(userId, productId) {
         }
         model.data.shoppingListProducts.push({
             id: maxId + 1,
-            shoppingListId: listId,
+            shoppingListId: currentListId,
             productId: productId,
             quantity: 1
         });
@@ -39,14 +39,14 @@ function reuseFavoriteProduct(userId, productId) {
 }
 
 function removeFavoriteProduct(userId, productId) {
-    let deletedIndex = -1;
-    let newFavorites = [];
+    let deletedIndex = -1; // to track if a favorite was removed. Starts as -1 to indicate no favorite has been removed yet. It will store the index of the removed item if found.
+    let newFavorites = []; //An empty array to collect all favorite products except the one to be removed.
 
     // Bygg ny matrise og spor indeksen til den fjernede favoritten
     for (let i = 0; i < model.data.favoriteProducts.length; i++) {
         if (model.data.favoriteProducts[i].userId === userId && 
             model.data.favoriteProducts[i].productId === productId) {
-            deletedIndex = i; 
+            deletedIndex = i; // Sets deletedIndex = i to mark the removal position
         } else {
             newFavorites.push(model.data.favoriteProducts[i]);
         }
@@ -68,6 +68,6 @@ function removeFavoriteProduct(userId, productId) {
 }
 
 function goBack() {
-    model.app.currentPage = 'shoppingListView';
+    model.app.currentPage = 'newShoppingList';
     updateView();
 }
