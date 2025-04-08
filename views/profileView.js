@@ -7,14 +7,7 @@ function profileView() {
     }
 
     return /*HTML*/ `
-        <div style="
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            height: 70vh;
-            text-align: center;
-        ">
+        <div class="page-content-align-setup">
             <h2>Min profil</h2>
             <p><strong>Bruker-ID:</strong> ${user.id}</p>
             <p><strong>E-post:</strong> ${user.email}</p>

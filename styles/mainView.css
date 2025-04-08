@@ -429,10 +429,6 @@
 /* Innloggingsdelen */
 .login-and-create-user-btn {
   margin-top: 1rem;
-}
-
-.login-and-create-user-btn {
-  margin-top: 1rem;
   padding: 0.5rem 1rem;
   background-color: #66bb6a;
   color: white;
@@ -441,9 +437,18 @@
   cursor: pointer;
   }
   
-  .login-and-create-user-style {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-  }
+.login-and-create-user-style {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.page-content-align-setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  height: 60vh;
+  text-align: center;
+}
