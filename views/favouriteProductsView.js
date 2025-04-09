@@ -9,7 +9,6 @@ function favoriteProductsView() {
         }
     }
 
-    
     return /*HTML*/`
         <div class="favorite-products-container">
             <h1>Dine Favorittprodukter</h1>

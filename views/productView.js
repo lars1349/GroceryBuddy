@@ -1,7 +1,6 @@
 function productView() {
     let list = null;
 
-    
     for (let i = 0; i < model.data.shoppingLists.length; i++) {
         if (model.data.shoppingLists[i].id === model.app.selectedShoppingListId) {
             list = model.data.shoppingLists[i];

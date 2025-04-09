@@ -11,3 +11,12 @@ function loadModel() {
     }
 }
 
+function goHome() {
+    model.app.currentPage = 'home';
+    updateView();
+}
+
+function goToProductView() {
+    model.app.currentPage = 'products';
+    updateView();
+}

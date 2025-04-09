@@ -207,12 +207,12 @@
   border: 2px solid #66bb6a;
   width: 315px;
   padding: 1rem;
-  margin: 5rem auto; /* ← Sentrerer horisontalt og gir topp-marg */
+  margin: 5rem auto; 
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* ← Sentrerer innholdet horisontalt */
+  align-items: center; 
 }
 
 .shopping_list_name {
@@ -232,7 +232,7 @@
   font-size: 14px;
   cursor: pointer;
   
-  margin: 1rem auto 0 auto; /* ← Sentrerer knappen inni containeren */
+  margin: 1rem auto 0 auto; 
 }
 
 /* Delkodeseksjonen */
@@ -459,4 +459,33 @@ padding: 1rem;
 margin-top: 1rem; 
 border-radius: 8px; 
 cursor: pointer;
+}
+
+.setting_view{
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  height: 60vh; 
+  padding: 2rem;
+  text-align: center;
+  gap: 1.2rem;
+  cursor: pointer;
+}
+.logout-btn{
+  margin-top: 2rem;
+  padding: 0.5rem 1.5rem;
+  background-color: #e57373;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.open_shopping_list{
+   border: 2px solid #66bb6a; 
+    padding: 1rem; 
+    margin-top: 1rem; 
+    border-radius: 8px; 
+    cursor: pointer;
 }
