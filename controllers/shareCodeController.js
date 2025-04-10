@@ -10,31 +10,32 @@ function createShareCode() {
 
 
 function generateInvitationCode() {
-    let shoppingListId = parseInt(document.getElementById('shoppingListId').value);
-    let userId = parseInt(document.getElementById('userId').value);
+    const shoppingListId = model.app.selectedShoppingListId;
+    const userId = parseInt(document.getElementById('userId')?.value);
 
-    if (!shoppingListId || !userId || isNaN(shoppingListId) || isNaN(userId)) {
+    if (!shoppingListId || !userId || isNaN(userId)) {
+        alert("Du må velge en bruker.");
         return;
     }
 
-    let newShareCode = createShareCode();
-    let newId = 1;
+    const newShareCode = createShareCode();
+    const newId = model.data.shareCodes.length > 0
+        ? Math.max(...model.data.shareCodes.map(sc => sc.id)) + 1
+        : 1;
 
-    for (let j = 0; j < model.data.shareCodes.length; j++) {
-        if (model.data.shareCodes[j].id >= newId) {
-            newId = model.data.shareCodes[j].id + 1;
-        }
-    }
-    model.data.shareCodes.push({ id: newId, shoppingListId, shareCode: newShareCode, userId });
+    model.data.shareCodes.push({
+        id: newId,
+        shoppingListId,
+        userId,
+        shareCode: newShareCode
+    });
 
-    for (let i = 0; i < model.data.users.length; i++) {
-        if (model.data.users[i].id === userId) {
-            return alert('En invitasjon er sendt til ' + model.data.users[i].email + ' med delingskoden: ' + newShareCode);
-        }
-    }
-
-    alert('Bruker ikke funnet.');
+    const user = model.data.users.find(u => u.id === userId);
+    alert(`✅ En invitasjon er sendt til ${user.email} med delingskoden: ${newShareCode}`);
+    
+    shareCodeView(); 
 }
+
 function deleteShareCode() {
     let shoppingListId = parseInt(document.getElementById('shoppingListId').value);
     let userId = parseInt(document.getElementById('userId').value);
@@ -64,3 +65,5 @@ function deleteShareCode() {
     updateView()
     return;
 }
+
+
