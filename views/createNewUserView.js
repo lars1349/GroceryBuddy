@@ -1,13 +1,6 @@
 function createNewUserView() {
     return /*HTML*/ `
-        <div style="
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            height: 60vh;
-            text-align: center;
-        ">
+        <div class="page-content-align-setup">
             <h2 style="margin-bottom: 1rem;">Registrering ny bruker</h2>
 
             <form onsubmit="event.preventDefault(); whenCreateNewUserButtonIsClicked()"

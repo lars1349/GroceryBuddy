@@ -58,8 +58,10 @@ function updateView() {
 
         ${shouldShowFooter ? `
             <footer>
-                <button onclick="model.app.currentPage='newShoppingList'; updateView()">Lag ny</button>
-                <button onclick="model.app.currentPage='favouriteProducts'; updateView()">Favoritter</button>
+             ${ ['newShoppingList', 'products'].includes(model.app.currentPage)
+                ? `<button onclick="goHome()">Hjem</button>`
+                 : `<button onclick="model.app.currentPage='newShoppingList'; updateView()">Lag ny</button>`}
+                 <button onclick="model.app.currentPage='favouriteProducts'; updateView()">Favoritter</button>
                 <button onclick="model.app.currentPage='history'; updateView()">Historie</button>
                 <button onclick="model.app.currentPage='profile'; updateView()">Profil</button>
             </footer>

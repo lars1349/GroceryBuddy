@@ -9,7 +9,6 @@ function favoriteProductsView() {
         }
     }
 
-    
     return /*HTML*/`
         <div class="favorite-products-container">
         <button class="btn back" onclick="goBack()">Tilbake</button>

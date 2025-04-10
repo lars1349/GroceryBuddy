@@ -6,14 +6,7 @@ const userData = {
 
 function loginView() {
     return /*HTML*/ `
-        <div style="
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            height: 60vh;
-            text-align: center;
-        ">
+        <div class="page-content-align-setup">
             <h2 style="margin-bottom: 1rem;">Logg inn</h2>
             <form class="login-and-create-user-style">
                 <label for="username">Brukernavn:</label>

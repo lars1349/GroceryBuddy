@@ -64,6 +64,13 @@
   footer button:hover {
     color: #66bb6a;
   }
+
+  .open_shopping_list{
+   border: 2px solid #66bb6a; 
+    padding: 1rem; 
+    margin-top: 1rem; 
+    border-radius: 8px; 
+    cursor: pointer;}
   
 
 
@@ -470,12 +477,8 @@ container {
   transform: scale(1.2);
   color: #ffd54f;
 }
-
+ 
 /* Innloggingsdelen */
-.login-and-create-user-btn {
-  margin-top: 1rem;
-}
-
 .login-and-create-user-btn {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
@@ -486,9 +489,28 @@ container {
   cursor: pointer;
   }
   
-  .login-and-create-user-style {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-  }
+.login-and-create-user-style {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.page-content-align-setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  height: 60vh;
+  text-align: center;
+}
+
+.logout-btn{
+  margin-top: 2rem;
+  padding: 0.5rem 1.5rem;
+  background-color: #e57373;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

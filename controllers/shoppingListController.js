@@ -3,10 +3,6 @@ function openShoppingList(listId) {
     model.app.currentPage = 'shoppingListView';
     updateView();
 }
-function goHome() {
-    model.app.currentPage = 'home';
-    updateView();
-}
 
 function toggleListActive(listId, setActive) {
     const history = model.data.shoppingListHistories.find(h => h.shoppingListId === listId);
@@ -14,7 +10,7 @@ function toggleListActive(listId, setActive) {
    if (history) {
         history.isActive = setActive;
         if (!setActive) {
-            history.completedDate = new Date().toISOString().split('T')[0]; // dagens dato
+            history.completedDate = new Date().toISOString().split('T')[0]; 
         }
     } else {
         model.data.shoppingListHistories.push({
@@ -29,10 +25,6 @@ function toggleListActive(listId, setActive) {
     updateView();
 }
 
-function goToProductView() {
-    model.app.currentPage = 'products';
-    updateView();
-}
 
 function toggleProductChecked(productId) {
     const product = model.data.products.find(p => p.id === productId);

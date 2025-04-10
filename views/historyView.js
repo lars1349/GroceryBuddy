@@ -1,40 +1,30 @@
 function historyView() {
-    let html = '<h2>Dine eldre handlelister</h2>';
     const currentUserId = model.app.currentUserId;
-    const histories = model.data.shoppingListHistories;
-    let hasHistory = false;
+    const inactiveLists = getInactiveShoppingListsForUser(currentUserId);
 
-    for (const history of histories) {
-        if (!history.isActive) {
-            const list = model.data.shoppingLists.find(
-                l => l.id === history.shoppingListId && l.ownerUserId === currentUserId
-            );
+    let html = '<h2>Dine eldre handlelister</h2>';
 
-            if (list) {
-                hasHistory = true;
-                html += /*HTML*/ `
-                    <div 
-                        onclick="openShoppingList(${list.id})"
-                        style="
-                            border: 2px solid #66bb6a; 
-                            padding: 1rem; 
-                            margin-top: 1rem; 
-                            border-radius: 8px; 
-                            cursor: pointer;
-                        ">
-                        ${list.name} <br />
-                        <small>Fullført: ${history.completedDate}</small>
-                        <button onclick="toggleListActive(${list.id}, true)">Gjør aktiv</button>
-
-
-                    </div>
-                `;
-            }
-        }
+    if (inactiveLists.length === 0) {
+        html += `<p>Det finnes ingen handlelister i historikken.</p>`;
+        return html;
     }
 
-    if (!hasHistory) {
-        html += `<p>Det finnes ingen handlelister i historikken.</p>`;
+    for (const list of inactiveLists) {
+        html += /*HTML*/ `
+            <div 
+                onclick="openShoppingList(${list.id})"
+                style="
+                    border: 2px solid #66bb6a; 
+                    padding: 1rem; 
+                    margin-top: 1rem; 
+                    border-radius: 8px; 
+                    cursor: pointer;
+                ">
+                ${list.name} <br />
+                <small>Fullført: ${list.completedDate}</small>
+                <button onclick="toggleListActive(${list.id}, true)">Gjør aktiv</button>
+            </div>
+        `;
     }
 
     return html;

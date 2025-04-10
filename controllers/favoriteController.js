@@ -17,7 +17,7 @@ function reuseFavoriteProduct(userId, productId) {
     }
 
     if (existingProduct !== null) {
-        existingProduct.quantity += 1; // Øk mengde hvis allerede i listen
+        existingProduct.quantity += 1; 
     } else {
         let maxId = 0;
         for (let j = 0; j < model.data.shoppingListProducts.length; j++) {
@@ -42,7 +42,7 @@ function removeFavoriteProduct(userId, productId) {
     let deletedIndex = -1; 
     let newFavorites = []; 
 
-    // Bygg ny matrise og spor indeksen til den fjernede favoritten
+  
     for (let i = 0; i < model.data.favoriteProducts.length; i++) {
         if (model.data.favoriteProducts[i].userId === userId && 
             model.data.favoriteProducts[i].productId === productId) {
@@ -53,10 +53,7 @@ function removeFavoriteProduct(userId, productId) {
     }
 
     if (deletedIndex !== -1) {
-        
         model.data.favoriteProducts = newFavorites;
-
-        // Tilordne ID-er på nytt sekvensielt fra 1
         for (let i = 0; i < model.data.favoriteProducts.length; i++) {
             model.data.favoriteProducts[i].id = i + 1;
         }

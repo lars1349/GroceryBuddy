@@ -14,15 +14,8 @@ function homeView() {
 
         if (list.ownerUserId === currentUserId && isActive) {
             html += /*HTML*/ `
-                <div 
-                    onclick="openShoppingList(${list.id})"
-                    style="
-                        border: 2px solid #66bb6a; 
-                        padding: 1rem; 
-                        margin-top: 1rem; 
-                        border-radius: 8px; 
-                        cursor: pointer;
-                    ">
+                <div class="open_shopping_list" 
+                    onclick="openShoppingList(${list.id})">
                     ${list.name}
                 </div>
             `;

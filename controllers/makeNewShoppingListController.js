@@ -10,6 +10,7 @@ function addShoppingListName() {
     updateView();
 }
 
+
 function getShoppingListNameInput() {
     const name = document.getElementById('shopping_list_name').value.trim();
     if (!name) {
@@ -46,7 +47,7 @@ function switchToNewList(listId) {
     model.app.errorMessage = '';
     model.app.currentPage = 'products';
     model.app.showProducts = false;
-     model.inputs.editProduct = {};
+    model.inputs.editProduct = {};
 
 }
 
