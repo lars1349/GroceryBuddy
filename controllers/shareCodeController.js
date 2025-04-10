@@ -52,11 +52,11 @@ function deleteShareCode() {
     let removed = false;
     
     for (let i = 0; i < model.data.shareCodes.length; i = i + 1) {
-        const entry = model.data.shareCodes[i];
-        if (entry.shoppingListId === shoppingListId && entry.userId === userId) {
+        let  shareCodeEntry = model.data.shareCodes[i];
+        if (shareCodeEntry.shoppingListId === shoppingListId && shareCodeEntry.userId === userId) {
             removed = true;
         } else {
-            updatedShareCodes.push(entry);
+            updatedShareCodes.push(shareCodeEntry);
         }
     }
 

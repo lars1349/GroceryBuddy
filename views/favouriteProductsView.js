@@ -12,10 +12,10 @@ function favoriteProductsView() {
     
     return /*HTML*/`
         <div class="favorite-products-container">
+        <button class="btn back" onclick="goBack()">Tilbake</button>
             <h1>Dine Favorittprodukter</h1>
-            <button class="btn back" onclick="goBack()">Tilbake</button>
             <ul id="favoriteProductsList">
-                ${userFavorites.length === 0 
+                    ${userFavorites.length === 0 
                     ? '<p>Ingen favorittprodukter funnet.</p>' 
                     : model.data.products.length === 0 
                         ? '<p>Ingen produkter tilgjengelig i systemet.</p>' 
@@ -27,7 +27,7 @@ function favoriteProductsView() {
 
 function createFavoriteListProducts(favorites, userId) {
     let favoriteProductHtml = '';
-    for (const favorite of favorites) {
+    for (let favorite of favorites) {
         let product = null;
         for (let k = 0; k < model.data.products.length; k++) {
             if (model.data.products[k].id === favorite.productId) {

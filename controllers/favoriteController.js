@@ -39,14 +39,14 @@ function reuseFavoriteProduct(userId, productId) {
 }
 
 function removeFavoriteProduct(userId, productId) {
-    let deletedIndex = -1; // to track if a favorite was removed. Starts as -1 to indicate no favorite has been removed yet. It will store the index of the removed item if found.
-    let newFavorites = []; //An empty array to collect all favorite products except the one to be removed.
+    let deletedIndex = -1; 
+    let newFavorites = []; 
 
     // Bygg ny matrise og spor indeksen til den fjernede favoritten
     for (let i = 0; i < model.data.favoriteProducts.length; i++) {
         if (model.data.favoriteProducts[i].userId === userId && 
             model.data.favoriteProducts[i].productId === productId) {
-            deletedIndex = i; // Sets deletedIndex = i to mark the removal position
+            deletedIndex = i; 
         } else {
             newFavorites.push(model.data.favoriteProducts[i]);
         }
@@ -68,6 +68,6 @@ function removeFavoriteProduct(userId, productId) {
 }
 
 function goBack() {
-    model.app.currentPage = 'newShoppingList';
+    model.app.currentPage = 'home';
     updateView();
 }
