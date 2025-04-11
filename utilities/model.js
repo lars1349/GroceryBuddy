@@ -1,11 +1,10 @@
 const model = {
   app: {
     currentPage: 'login',
-     errorMessage: '',
+    errorMessage: '',
     showProducts :'',
     currentUserId: 1,
     selectedShoppingListId: null,
-
   },
 
   inputs: {
@@ -19,7 +18,7 @@ const model = {
       username: '',
       password: '',
     },
-    
+
     newShoppingList: {
       titleName: '',
     },
@@ -31,10 +30,24 @@ const model = {
 
   data: {
 
-    
     users: [
-      { id: 1, email: 'rebecka@getacademy.no', passWord: '***' },
-      { id: 2, email: 'roar@getacademy.no', passWord: '***' },
+      { id: 1,
+        username: 'Rebecka',
+        password: '123',
+      },
+      { id: 2,
+        username: 'Roar',
+        password: '123',
+      },
+    ],
+
+    loggedInUser: [
+      {
+        username: 'Rebecka',  
+      },
+      {
+        username: 'Roar',  
+      },
     ],
 
     shoppingLists: [
@@ -44,8 +57,7 @@ const model = {
         ownerUserId: 1,
         sharedWithUserId: 1,
         isFavorite: true,
-        
-        
+
       },
       {
         id: 2,
@@ -97,6 +109,4 @@ const model = {
       { id: 2, shoppingListId: 2, shareCode: 'xyz456', userId: 1 },
     ],
   },
-
-  
 };

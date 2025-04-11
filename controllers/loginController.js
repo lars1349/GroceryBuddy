@@ -1,5 +1,7 @@
 function loginInput(username, password) {
-    if (username === userData.username && password === userData.password) {
+    const user = model.data.users.find
+        (u => u.username === username && u.password === password);
+    if (user) {
         model.app.currentPage = 'home'; 
         updateView();
     } else {
