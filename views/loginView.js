@@ -1,9 +1,3 @@
-// userData skal bort etterhvert
-const userData = {
-    username: "Rebecka",
-    password: "123",
-};
-
 function loginView() {
     return /*HTML*/ `
         <div class="page-content-align-setup">
