@@ -1,5 +1,4 @@
 
-
 /* // handleliste */
 .shopping_list_container {
   border: 2px solid #66bb6a;
@@ -33,15 +32,6 @@
   margin: 1rem auto 0 auto; 
 }
 
-
-.product-list li{
-  border: solid 2px #66bb6a;
-  padding: 10px 15px;
-  list-style: none;
-  margin: 8px;
-  border-radius: 5px;
-
-}
 
 
   /*Produktdel og borddel */
@@ -178,22 +168,35 @@
   border-radius: 5px;
 }
 
+  .open_shopping_list{
+   border: 2px solid #66bb6a; 
+    padding: 1rem; 
+    margin-top: 1rem; 
+    border-radius: 8px; 
+    cursor: pointer;}
 
+    
 
+.product-list li{
+  border: solid 2px #66bb6a;
+  padding: 10px 15px;
+  list-style: none;
+  margin: 8px;
+  border-radius: 5px;
+
+}
 .checked-product {
   text-decoration: line-through;
   color: red;
   opacity: 0.7;
 }
-.btn{
-  padding: 10px 15px;
-  border: solid 2px #66bb6a;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  margin: 8px;
-}
-.btn:hover{
-   background-color: #5aa65a;
-}
+  
 
+
+/* ShoppingLIst setting */
+.setting_view{
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
