@@ -1,0 +1,10 @@
+.open_shopping_list_history {
+    background-color: #fdfdff;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    color: rgb(5, 5, 5);
+    cursor: pointer;
+    border: 1px solid green,
+  }
+  
