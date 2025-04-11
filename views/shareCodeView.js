@@ -40,7 +40,6 @@ function createShareCodeHtml() {
             <h1 class="share-code-title"><span style="color: #66bb6a">${list?.name || 'Ukjent liste'}</span></h1>
 
      
-
             <div class="share-code-field">
                 <label for="userId">Bruker:</label>
                 <select id="userId" class="share-code-select">${userOptions}</select>
