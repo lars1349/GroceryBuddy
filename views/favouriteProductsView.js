@@ -1,43 +1,45 @@
 function favoriteProductsView() {
-    let userId = model.app.currentUserId;
+    let currentUserId = model.app.currentUserId;
     let userFavorites = [];
 
-    // Samle brukerens favorittprodukter
     for (let i = 0; i < model.data.favoriteProducts.length; i++) {
-        if (model.data.favoriteProducts[i].userId === userId) {
+        if (model.data.favoriteProducts[i].userId === currentUserId) {
             userFavorites.push(model.data.favoriteProducts[i]);
         }
     }
 
-    return /*HTML*/`
+    return `
         <div class="favorite-products-container">
-        <button class="btn back" onclick="goBack()">Tilbake</button>
+            <button class="btn back" onclick="goBack()">← Tilbake</button>
             <h1>Dine Favorittprodukter</h1>
             <ul id="favoriteProductsList">
-                    ${userFavorites.length === 0 
+                ${userFavorites.length === 0 
                     ? '<p>Ingen favorittprodukter funnet.</p>' 
                     : model.data.products.length === 0 
                         ? '<p>Ingen produkter tilgjengelig i systemet.</p>' 
-                        : createFavoriteListProducts(userFavorites, userId)}
+                        : createFavoriteListProducts(userFavorites, currentUserId)}
             </ul>
         </div>
     `;
 }
 
 function createFavoriteListProducts(favorites, userId) {
-    let favoriteProductHtml = '';
-    for (let favorite of favorites) {
+    let favoriteHtml = '';
+
+    for (let i = 0; i < favorites.length; i++) {
+        let favorite = favorites[i];
         let product = null;
-        for (let k = 0; k < model.data.products.length; k++) {
-            if (model.data.products[k].id === favorite.productId) {
-                product = model.data.products[k];
+
+        for (let j = 0; j < model.data.products.length; j++) {
+            if (model.data.products[j].id === favorite.productId) {
+                product = model.data.products[j];
                 break;
             }
         }
 
-        favoriteProductHtml += /*HTML*/`
+        favoriteHtml += `
             <li>
-                ${product !== null 
+                ${product 
                     ? `${product.name} 
                        <button class="reuse-button" onclick="reuseFavoriteProduct(${userId}, ${product.id})">Bruk</button>
                        <button class="remove-button" onclick="removeFavoriteProduct(${userId}, ${product.id})">Fjern</button>`
@@ -45,5 +47,6 @@ function createFavoriteListProducts(favorites, userId) {
             </li>
         `;
     }
-    return favoriteProductHtml;
+
+    return favoriteHtml;
 }

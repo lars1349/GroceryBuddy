@@ -1,69 +1,96 @@
 function productView() {
-    let list = null;
+    let selectedListId = model.app.selectedShoppingListId;
+    let listName = 'Ukjent liste';
 
     for (let i = 0; i < model.data.shoppingLists.length; i++) {
-        if (model.data.shoppingLists[i].id === model.app.selectedShoppingListId) {
-            list = model.data.shoppingLists[i];
+        if (model.data.shoppingLists[i].id === selectedListId) {
+            listName = model.data.shoppingLists[i].name;
             break;
         }
     }
 
-    let listName = list ? list.name : 'Ukjent liste';
-
-    return /*HTML*/`
+    return `
         <h2>${listName}</h2>
-
         <div id="saveStatus" style="margin-bottom: 10px; color: ${model.app.isSaving ? 'red' : 'green'};">
             ${model.app.isSaving ? 'Lagrer...' : 'Alt er lagret ✅'}
         </div>
-      
-        <button class='btn products' onclick='toggleProductView()'>Legg til varer</button>
-        <button class='btn products' onclick="model.app.currentPage = 'shoppingListSettings'; updateView()">Rediger liste</button>
-
-
+        <button class="btn products" onclick="toggleProductView()">Legg til varer</button>
+        <button class="btn products" onclick="goToSettings()">Rediger liste</button>
         ${model.app.showProducts ? `
-            <div class='product-input-group'>
-                <input id='productName' type='text' placeholder='Produktnavn'>
-                <button onclick="addProduct()">Legge til </button>
+            <div class="product-input-group">
+                <input id="productName" type="text" placeholder="Produktnavn">
+                <button onclick="addProduct()">Legge til</button>
             </div>
-
             <table class="product-table">
-            <tr>
-                <th>Antall</th>
-                <th>Navn</th>
-                <th></th>
-            </tr>
-            ${CreateProductTableRows()}
+                <tr>
+                    <th>Antall</th>
+                    <th>Navn</th>
+                    <th></th>
+                </tr>
+                ${createProductTableRows()}
             </table>
         ` : ''}
     `;
 }
 
-
-function CreateProductTableRows() {
-    const listId = model.app.selectedShoppingListId;
+function createProductTableRows() {
+    let currentListId = model.app.selectedShoppingListId;
+    let currentUserId = model.app.currentUserId;
     let productHtml = '';
 
-    const linkedProducts = model.data.shoppingListProducts.filter(link => link.shoppingListId === listId);
+    let linkedProducts = [];
+    for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
+        if (model.data.shoppingListProducts[i].shoppingListId === currentListId) {
+            linkedProducts.push(model.data.shoppingListProducts[i]);
+        }
+    }
 
-    for (const link of linkedProducts) {
-        const product = model.data.products.find(p => p.id === link.productId);
-        if (!product) continue;
+    for (let i = 0; i < linkedProducts.length; i++) {
+        let link = linkedProducts[i];
+        let product = null;
+        for (let j = 0; j < model.data.products.length; j++) {
+            if (model.data.products[j].id === link.productId) {
+                product = model.data.products[j];
+                break;
+            }
+        }
+        if (!product) {
+            continue;
+        }
 
-        const isEditing = model.inputs.editProduct && model.inputs.editProduct.id === product.id;
+        let isEditing = model.inputs.editProduct && model.inputs.editProduct.id === product.id;
+        let isFavorite = false;
+        for (let j = 0; j < model.data.favoriteProducts.length; j++) {
+            if (model.data.favoriteProducts[j].userId === currentUserId && model.data.favoriteProducts[j].productId === product.id) {
+                isFavorite = true;
+                break;
+            }
+        }
 
-        productHtml += /*HTML*/`
+        let starIcon = isFavorite ? '⭐' : '☆';
+        let displayQuantity = Number.isFinite(link.quantity) ? link.quantity : '';
+
+        productHtml += `
             <tr>
-                <td>${link.quantity ?? ''}</td>
+                <td>
+                    <button class="quantity-btn" onclick="decreaseQuantity(${link.id})">-</button>
+                    ${displayQuantity}
+                    <button class="quantity-btn" onclick="increaseQuantity(${link.id})">+</button>
+                </td>
                 <td>
                     ${isEditing ? `<input value='${model.inputs.editProduct.name}' 
-                                         onchange='model.inputs.editProduct.name = this.value'>`
+                                         onchange='updateEditProductName(this.value)'>`
                                 : product.name}
                 </td>
                 <td class='product-actions'>
-                    ${isEditing ? `<button class='saveButton' onclick='saveEditProduct()'>Lagre</button>` 
-                                : `<button class='editButton' onclick='editProduct(${product.id})'>Redigere</button>`} 
-                    <button class='deleteButton' onclick='deleteProduct(${product.id})'>X</button>   
+                    <span class="favorite-icon" onclick="toggleFavoriteProduct(${product.id})">${starIcon}</span>
+                    ${isEditing ? `
+                        <button class='saveButton' onclick='saveEditProduct()'>Lagre</button>
+                        <button class='cancelButton' onclick='cancelEditProduct()'>Avbryt</button>
+                    ` : `
+                        <button class='editButton' onclick='editProduct(${product.id})'>Redigere</button>
+                    `}
+                    <button class='deleteButton' onclick='deleteProduct(${product.id})'>X</button>
                 </td>
             </tr>
         `;
@@ -71,5 +98,3 @@ function CreateProductTableRows() {
 
     return productHtml;
 }
-
-

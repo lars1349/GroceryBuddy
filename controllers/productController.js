@@ -1,19 +1,17 @@
 function addProduct() {
-    
     let productNameInput = document.getElementById('productName');
     let productName = productNameInput.value.trim();
 
-    
     if (productName === '') {
         alert('Produktnavnet kan ikke være tomt');
         return;
     }
 
-    let listId = model.app.selectedShoppingListId;
+    let currentListId = model.app.selectedShoppingListId;
     let existingProduct = getExistingProduct(productName);
-    let productId = getProductId(existingProduct);
+    let productId = existingProduct ? existingProduct.id : getNextProductId();
 
-    if (existingProduct === null) {
+    if (!existingProduct) {
         model.data.products.push({
             id: productId,
             name: productName,
@@ -21,51 +19,39 @@ function addProduct() {
         });
     }
 
-    updateShoppingList(listId, productId);
+    updateShoppingList(currentListId, productId);
     productNameInput.value = '';
     setSaving();
-    updateView();
 }
 
 function getExistingProduct(productName) {
-
+    let lowerName = productName.toLowerCase();
     for (let i = 0; i < model.data.products.length; i++) {
-        if (model.data.products[i].name.toLowerCase() === productName.toLowerCase()) {
+        if (model.data.products[i].name.toLowerCase() === lowerName) {
             return model.data.products[i];
         }
     }
-    
     return null;
 }
 
-function getProductId(existingProduct) {
-    
-    let productId = 1;
-
-    if (existingProduct !== null) {
-        return existingProduct.id;
-    }
-
-    if (model.data.products.length > 0) {
-        for (let i = 0; i < model.data.products.length; i++) {
-            if (model.data.products[i].id >= productId) {
-                productId = model.data.products[i].id + 1;
-            }
+function getNextProductId() {
+    let maxId = 0;
+    for (let i = 0; i < model.data.products.length; i++) {
+        if (model.data.products[i].id > maxId) {
+            maxId = model.data.products[i].id;
         }
     }
-    return productId;
+    return maxId + 1;
 }
 
 function updateShoppingList(listId, productId) {
-
     let existingLink = getExistingLink(listId, productId);
 
-    if (existingLink !== null) {
+    if (existingLink) {
         existingLink.quantity += 1;
     } else {
-        let newLinkId = generateNewLinkId();
         model.data.shoppingListProducts.push({
-            id: newLinkId,
+            id: getNextLinkId(),
             shoppingListId: listId,
             productId: productId,
             quantity: 1
@@ -74,71 +60,39 @@ function updateShoppingList(listId, productId) {
 }
 
 function getExistingLink(listId, productId) {
-
     for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
-        if (model.data.shoppingListProducts[i].shoppingListId === listId &&
-            model.data.shoppingListProducts[i].productId === productId) {
-            return model.data.shoppingListProducts[i];
+        let link = model.data.shoppingListProducts[i];
+        if (link.shoppingListId === listId && link.productId === productId) {
+            return link;
         }
     }
-    
     return null;
 }
 
-function generateNewLinkId() {
-    let newLinkId = 1;
-
-    if (model.data.shoppingListProducts.length > 0) {
-        for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
-            if (model.data.shoppingListProducts[i].id >= newLinkId) {
-                newLinkId = model.data.shoppingListProducts[i].id + 1;
-            }
+function getNextLinkId() {
+    let maxId = 0;
+    for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
+        if (model.data.shoppingListProducts[i].id > maxId) {
+            maxId = model.data.shoppingListProducts[i].id;
         }
     }
-    return newLinkId;
+    return maxId + 1;
 }
 
-function deleteProduct(id) {
-    
-    let deletedIndex = -1;
-
-    for (let i = 0; i < model.data.products.length; i++) {
-        if (model.data.products[i].id === id) {
-            deletedIndex = i;
-            model.data.products.splice(i, 1);
-            break;
-        }
-    }
-
-    if (deletedIndex !== -1) {
-        
-        for (let i = 0; i < model.data.products.length; i++) {
-            model.data.products[i].id = i + 1;
-        }
-
-
-        for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
-            let link = model.data.shoppingListProducts[i];
-            if (link.productId === id) {
-
-                model.data.shoppingListProducts.splice(i, 1);
-                i--; 
-            } else if (link.productId > id) {
-                
-                link.productId -= 1;
-            }
-        }
-
-        setSaving();
-        updateView();
+function updateEditProductName(value) {
+    if (model.inputs.editProduct) {
+        model.inputs.editProduct.name = value;
     }
 }
 
-function editProduct(id) {
-    
+function editProduct(productId) {
     for (let i = 0; i < model.data.products.length; i++) {
-        if (model.data.products[i].id === id) {
-            model.inputs.editProduct = { id: id, name: model.data.products[i].name };
+        if (model.data.products[i].id === productId) {
+            model.inputs.editProduct = {
+                id: productId,
+                name: model.data.products[i].name
+            };
+            model.app.currentPage = 'addFavoriteProducts';
             updateView();
             return;
         }
@@ -146,19 +100,111 @@ function editProduct(id) {
 }
 
 function saveEditProduct() {
-    for (let i = 0; i < model.data.products.length; i++) {
-        if (model.data.products[i].id === model.inputs.editProduct.id) {
-            model.data.products[i].name = model.inputs.editProduct.name.trim();
-            model.inputs.editProduct = {}; 
+    if (model.inputs.editProduct) {
+        for (let i = 0; i < model.data.products.length; i++) {
+            if (model.data.products[i].id === model.inputs.editProduct.id) {
+                model.data.products[i].name = model.inputs.editProduct.name.trim();
+                model.inputs.editProduct = null;
+                model.app.currentPage = 'addFavoriteProducts';
+                setSaving();
+                return;
+            }
+        }
+    }
+}
+
+function cancelEditProduct() {
+    model.inputs.editProduct = null;
+    model.app.currentPage = 'addFavoriteProducts';
+    updateView();
+}
+
+function deleteProduct(productId) {
+    let listId = model.app.selectedShoppingListId;
+    let userId = model.app.currentUserId;
+
+    let i = 0;
+    while (i < model.data.shoppingListProducts.length) {
+        let link = model.data.shoppingListProducts[i];
+        if (link.shoppingListId === listId && link.productId === productId) {
+            model.data.shoppingListProducts.splice(i, 1);
+        } else {
+            i++;
+        }
+    }
+
+    i = 0;
+    while (i < model.data.favoriteProducts.length) {
+        let fav = model.data.favoriteProducts[i];
+        if (fav.userId === userId && fav.productId === productId) {
+            model.data.favoriteProducts.splice(i, 1);
+        } else {
+            i++;
+        }
+    }
+
+    setSaving();
+}
+
+function toggleFavoriteProduct(productId) {
+    let userId = model.app.currentUserId;
+
+    for (let i = 0; i < model.data.favoriteProducts.length; i++) {
+        if (model.data.favoriteProducts[i].userId === userId && model.data.favoriteProducts[i].productId === productId) {
+            model.data.favoriteProducts.splice(i, 1);
             setSaving();
-            updateView();
+            return;
+        }
+    }
+
+    let maxId = 0;
+    for (let i = 0; i < model.data.favoriteProducts.length; i++) {
+        if (model.data.favoriteProducts[i].id > maxId) {
+            maxId = model.data.favoriteProducts[i].id;
+        }
+    }
+    model.data.favoriteProducts.push({
+        id: maxId + 1,
+        userId: userId,
+        productId: productId
+    });
+
+    setSaving();
+}
+
+function decreaseQuantity(linkId) {
+    for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
+        let link = model.data.shoppingListProducts[i];
+        if (link.id === linkId) {
+            if (link.quantity > 1) {
+                link.quantity -= 1;
+            } else {
+                model.data.shoppingListProducts.splice(i, 1);
+            }
+            setSaving();
             return;
         }
     }
 }
 
+function increaseQuantity(linkId) {
+    for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
+        let link = model.data.shoppingListProducts[i];
+        if (link.id === linkId) {
+            link.quantity += 1;
+            setSaving();
+            return;
+        }
+    }
+}
+
+function toggleProductView() {
+    let showProducts = model.app.showProducts || false;
+    model.app.showProducts = !showProducts;
+    updateView();
+}
+
 function setSaving() {
-    
     model.app.isSaving = true;
     updateView();
 
@@ -167,9 +213,4 @@ function setSaving() {
         model.app.isSaving = false;
         updateView();
     }, 600);
-}
-
-function toggleProductView() {
-    model.app.showProducts = !model.app.showProducts;
-    updateView();
 }

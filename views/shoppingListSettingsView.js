@@ -10,7 +10,8 @@ function shoppingListsSettingsView() {
             <button class='btn' onclick="shareCodeView()">🔗 Administrer kode</button>
 
 
-            <button class='btn' onclick='addFavoriteProductsView()';updateView()'>⭐ Legg til favorittvarer</button>
+             <button class='btn' onclick="addFavoriteProductsView()">⭐ Legg til favorittvarer</button>
+             
             <button class='btn' onclick="toggleListActive(${list.id}, true)">✅ Aktiver</button>
             <button class='btn' onclick="toggleListActive(${list.id}, false)">🚫 Deaktiver liste</button>
             <button class='btn' onclick="goHome()">← Tilbake</button>
