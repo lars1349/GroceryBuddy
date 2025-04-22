@@ -1,5 +1,6 @@
 function updateView() {
     let currentView = '';
+    let username = localStorage.getItem('username');
     const hideFooterPages = ['login', 'createUser'];
     const shouldShowFooter = !hideFooterPages.includes(model.app.currentPage);
 
@@ -52,7 +53,7 @@ function updateView() {
         <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;">
             <img src="/img/GroceryBuddy.png" alt="App Logo" style="border-radius: 15px; width: 80px;" />
             <h1>GroceryBuddy</h1>
-            
+            ${username ? `<p style="margin-left: 10px; font-size: 1.4em;">Velkommen, ${username}!</p>` : ''}
         </header>
 
         <main id="content">
