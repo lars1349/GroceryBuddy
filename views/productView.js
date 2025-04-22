@@ -18,7 +18,13 @@ function productView() {
         <button class="btn products" onclick="goToSettings()">Rediger liste</button>
         ${model.app.showProducts ? `
             <div class="product-input-group">
-                <input id="productName" type="text" placeholder="Produktnavn">
+               <div class="autocomplete-wrapper">
+  <input type="text" id="productName" placeholder="Skriv produkt..." oninput="showSuggestions(this.value)">
+  <ul id="autocompleteList" class="autocomplete-list"></ul>
+</div>
+
+
+
                 <button onclick="addProduct()">Legge til</button>
             </div>
             <table class="product-table">
