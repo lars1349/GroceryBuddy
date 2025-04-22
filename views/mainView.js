@@ -51,7 +51,7 @@ function updateView() {
         
     document.getElementById('app').innerHTML = /*HTML*/ `
         <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;">
-            <img src="/img/GroceryBuddy.png" alt="App Logo" style="border-radius: 15px; width: 80px;" />
+            <img src="/img/GroceryBuddy.png" alt="App Logo" style="border-radius: 15px;" />
             <h1>GroceryBuddy</h1>
             ${username ? `<p style="margin-left: 10px; font-size: 1.4em;">Velkommen, ${username}!</p>` : ''}
         </header>

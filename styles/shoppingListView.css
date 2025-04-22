@@ -1,15 +1,15 @@
 
 /* // handleliste */
 .shopping_list_container {
-  border: 2px solid #66bb6a;
-  width: 315px;
-  padding: 1rem;
-  margin: 5rem auto; 
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center; 
+  align-items: center;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 2px solid #66bb6a;
+  border-radius: 8px;
+  background-color: white;
 }
 
 .shopping_list_name {
