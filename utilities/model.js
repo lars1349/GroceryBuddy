@@ -16,6 +16,7 @@ const model = {
 
     register: {
       username: '',
+      email: '',
       password: '',
     },
 
@@ -33,10 +34,12 @@ const model = {
     users: [
       { id: 1,
         username: 'Rebecka',
+        email: 'rebecka@grocerybuddy.no',
         password: '123',
       },
       { id: 2,
         username: 'Roar',
+        email: 'roar@grocerybuddy.no',
         password: '123',
       },
     ],

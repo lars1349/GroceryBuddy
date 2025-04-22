@@ -8,6 +8,9 @@ function createNewUserView() {
                 <label for="newUsername">Brukernavn:</label>
                 <input type="text" id="newUsername" name="username" />
 
+                <label for="newEmail">Epost:</label>
+                <input type="text" id="newEmail" name="email" />
+
                 <label for="newPassword">Passord:</label>
                 <input type="password" id="newPassword" name="password" />
                 
