@@ -214,3 +214,24 @@ function setSaving() {
         updateView();
     }, 600);
 }
+
+function showSuggestions(input) {
+    const suggestionsContainer = document.getElementById('autocompleteList');
+    suggestionsContainer.innerHTML = '';
+
+    if (!input || input.trim() === '') return;
+
+    const matches = model.data.products
+        .filter(p => p.name.toLowerCase().startsWith(input.toLowerCase()))
+        .slice(0, 5); 
+
+    for (const match of matches) {
+        const li = document.createElement('li');
+        li.textContent = match.name;
+        li.onclick = function () {
+            document.getElementById('productName').value = match.name;
+            suggestionsContainer.innerHTML = ''; 
+        };
+        suggestionsContainer.appendChild(li);
+    }
+}

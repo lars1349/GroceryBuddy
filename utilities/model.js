@@ -76,13 +76,23 @@ const model = {
     ],
 
     products: [
-      // { id: 1, name: 'Brød' },
-      // { id: 2, name: 'Fiskepinner' },
-      // { id: 3, name: 'Melk' },
-      // { id: 4, name: 'Brus' },
-      // { id: 5, name: 'Skinke' },
-      // { id: 6, name: 'Ost' },
+      { id: 1, name: 'Melk' },
+      { id: 2, name: 'Brød' },
+      { id: 3, name: 'Egg' },
+      { id: 4, name: 'Ost' },
+      { id: 5, name: 'Smør' },
+      { id: 6, name: 'Kaffe' },
+      { id: 7, name: 'Te' },
+      { id: 8, name: 'Toalettpapir' },
+      { id: 9, name: 'Kjøttdeig' },
+      { id: 10, name: 'Pasta' },
+      { id: 11, name: 'Ris' },
+      { id: 12, name: 'Poteter' },
+      { id: 13, name: 'Løk' },
+      { id: 14, name: 'Tomater' },
+      { id: 15, name: 'Eple' }
     ],
+    
 
     shoppingListHistories: [
       {
@@ -101,6 +111,7 @@ const model = {
 
     favoriteProducts: [
       { id: 1, userId: 1, productId: 1 },
+      { id: 1, userId: 1, productId: 2 },
       { id: 2, userId: 2, productId: 3 },
     ],
 
