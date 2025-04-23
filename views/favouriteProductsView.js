@@ -41,7 +41,7 @@ function createFavoriteListProducts(favorites, userId) {
             <li>
                 ${product 
                     ? `${product.name} 
-                       <button class="reuse-button" onclick="reuseFavoriteProduct(${userId}, ${product.id})">Bruk</button>
+                       
                        <button class="remove-button" onclick="removeFavoriteProduct(${userId}, ${product.id})">Fjern</button>`
                     : `Produkt med ID ${favorite.productId} ikke funnet`}
             </li>
