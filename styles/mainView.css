@@ -165,10 +165,9 @@
   padding: 0;
   margin: 0;
   position: absolute;
-  top: 100%; 
+  top: 112%; 
   left: 0;
   right: 0;
-  border: 1px solid #e8f5e9;
   background-color: white;
   max-height: 200px;
   overflow-y: auto;
@@ -180,6 +179,7 @@
 .autocomplete-list li {
   padding: 8px 12px;
   cursor: pointer;
+  border: 1px solid #e8f5e9;
 }
 
 .autocomplete-list li:hover {

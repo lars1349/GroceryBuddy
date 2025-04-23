@@ -201,6 +201,8 @@
   flex-direction: column;
 }
 
+
+/* Mobile version */
 @media screen and (max-width: 600px){
   .product-table th, .product-table td {
   padding: 8px;
