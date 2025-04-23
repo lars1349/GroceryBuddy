@@ -27,6 +27,6 @@ function getWelcomeMessage() {
     const currentPage = model.app.currentPage;
 
     if (!username || hiddenOnPages.includes(currentPage)) return '';
-    return `<p style="margin-left: 10px; font-size: 1.4em;">Velkommen, ${username}!</p>`;
+    return `<p class='velkommen'>Velkommen, ${username}!</p>`;
 }
 
