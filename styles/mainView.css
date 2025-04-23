@@ -187,3 +187,34 @@
 .autocomplete-list li:hover {
   background-color: #f0f0f0;
 }
+
+
+@media (max-width: 600px) {
+  main {
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .shopping_list_container {
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  .product-input-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .product-input-group input {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .product-table {
+    margin-left: 0;
+    font-size: 13px;
+  }
+  .btn{
+    display: block;
+  }
+}
