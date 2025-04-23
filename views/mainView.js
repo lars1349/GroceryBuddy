@@ -1,5 +1,6 @@
 function updateView() {
     let currentView = '';
+    let username = localStorage.getItem('username');
     const hideFooterPages = ['login', 'createUser'];
     const shouldShowFooter = !hideFooterPages.includes(model.app.currentPage);
 
@@ -37,6 +38,9 @@ function updateView() {
         case 'addFavoriteProducts':
             currentView = addFavoriteProductsViewContent() ;
             break;
+        case 'addedFavoriteListView':
+            currentView = addedFavoriteListView() ;
+            break;
         case 'shoppingListSettings':
             currentView = shoppingListsSettingsView();
             break;
@@ -50,9 +54,9 @@ function updateView() {
         
     document.getElementById('app').innerHTML = /*HTML*/ `
         <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;">
-            <img src="/img/GroceryBuddy.png" alt="App Logo" style="border-radius: 15px; width: 80px;" />
-            <h1>GroceryBuddy</h1>
-            
+            <img src="/img/GroceryBuddy.png" alt="App Logo" style="border-radius: 15px;" />
+            <h1 class='logo' >GroceryBuddy</h1>
+            ${getWelcomeMessage()}
         </header>
 
         <main id="content">

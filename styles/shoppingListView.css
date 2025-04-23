@@ -1,15 +1,15 @@
 
 /* // handleliste */
 .shopping_list_container {
-  border: 2px solid #66bb6a;
-  width: 315px;
-  padding: 1rem;
-  margin: 5rem auto; 
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center; 
+  align-items: center;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 2px solid #66bb6a;
+  border-radius: 8px;
+  background-color: white;
 }
 
 .shopping_list_name {
@@ -85,7 +85,7 @@
   margin-top: 1rem;
   max-width: 600px;
   text-align: left;
-  margin-left: 8px;
+
 }
 
 .product-table list{
@@ -97,7 +97,7 @@
 .product-table th, .product-table td {
   border: 1px solid #ddd;
   text-align: left;
-  padding: 12px;
+  padding: 10px;
   font-size: 14px;
 }
 
@@ -199,4 +199,18 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+
+/* Mobile version */
+@media screen and (max-width: 600px){
+  .product-table th, .product-table td {
+  padding: 8px;
+}
+}
+
+@media (max-width: 390px){
+.product-table th, .product-table td {
+  padding: 4px;
+}
 }

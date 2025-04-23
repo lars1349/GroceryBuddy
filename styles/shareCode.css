@@ -89,3 +89,15 @@
 .share-code-button.delete:hover {
   background-color: #d15b5b;
 }
+
+@media (max-width: 390px){
+
+  .share-code-container{
+    width: 90%;
+  }
+  .share-code-button{
+    padding: 10px 10px;
+  }
+
+}
+

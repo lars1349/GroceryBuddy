@@ -1,4 +1,4 @@
-function productView() {
+function addedFavoriteListView() {
     let selectedListId = model.app.selectedShoppingListId;
     let listName = 'Ukjent liste';
 
@@ -14,16 +14,13 @@ function productView() {
         <div id="saveStatus" style="margin-bottom: 10px; color: ${model.app.isSaving ? 'red' : 'green'};">
             ${model.app.isSaving ? 'Lagrer...' : 'Alt er lagret ✅'}
         </div>
-        <button class="btn products" onclick="toggleProductView()">Legg til varer</button>
-        <button class="btn products" onclick="goToSettings()">Rediger liste</button>
-        ${model.app.showProducts ? `
-            <div class="product-input-group">
-               <div class="autocomplete-wrapper">
-  <input type="text" id="productName" placeholder="Skriv produkt..." oninput="showSuggestions(this.value)">
-  <ul id="autocompleteList" class="autocomplete-list"></ul>
-</div>
-
-
+      
+            ${model.app.showProducts ? `
+                  <div class="product-input-group">
+                     <div class="autocomplete-wrapper">
+                     <input type="text" id="productName" placeholder="Skriv produkt..." oninput="showSuggestions(this.value)">
+                     <ul id="autocompleteList" class="autocomplete-list"></ul>
+                     </div>
 
                 <button onclick="addProduct()">Legge til</button>
             </div>

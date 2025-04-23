@@ -8,7 +8,7 @@ function addFavoriteProductsViewContent() {
     return `
         <div class="container">
             <button class="btnback" onclick="goBack()">← Tilbake</button>
-            ${productView()}
+              ${addedFavoriteListView()}
         </div>
     `;
 }

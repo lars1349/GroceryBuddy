@@ -11,7 +11,7 @@
   border: 1px solid  #66bb6a; /* #66bb6a;*/
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   max-width: 600px;
-  margin: 2rem 0 2rem 1rem;
+  margin: auto;
   text-align: left;
 }
 
