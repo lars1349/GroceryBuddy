@@ -29,6 +29,7 @@
   
  
   main {
+
   padding: 1rem;
   border-radius: 10px;
   margin: 1rem;
@@ -115,7 +116,6 @@
   border: 1px solid #66bb6a;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   max-width: 600px;
-  margin: 2rem 0 2rem 1rem; 
   text-align: left;
 }
 
@@ -185,7 +185,6 @@
 .autocomplete-list li:hover {
   background-color: #f0f0f0;
 }
-
 .velkommen{
 font-size: 1.4em;
 padding: 8px;
@@ -193,7 +192,7 @@ padding: 8px;
 
 
 /* Mobile version */
-@media (max-width: 600px) {
+@media  (max-width: 600px) {
   main {
     margin: 0.5rem;
     padding: 0.75rem;
@@ -214,18 +213,19 @@ padding: 8px;
     margin-left: 0;
   }
 
-  .product-table {
-    margin-left: 0;
-    font-size: 13px;
+  .product-table th, .product-table td  {
+  padding: 6px;
   }
   .btn{
     display: block;
   }
-   .logo{
+  .logo{
     font-size: 22px;
   }
-   .velkommen{
+  .velkommen{
   font-size: 15px;
+}
+.container{
   padding: 8px;
 }
 }
@@ -236,6 +236,9 @@ padding: 8px;
   }
   .velkommen{
   font-size: 12px;
-   padding: 8px;
+  padding: 8px;
+}
+.container{
+  padding: 4px;
 }
 }

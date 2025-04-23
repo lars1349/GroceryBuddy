@@ -38,6 +38,9 @@ function updateView() {
         case 'addFavoriteProducts':
             currentView = addFavoriteProductsViewContent() ;
             break;
+        case 'addedFavoriteListView':
+            currentView = addedFavoriteListView() ;
+            break;
         case 'shoppingListSettings':
             currentView = shoppingListsSettingsView();
             break;
@@ -52,7 +55,7 @@ function updateView() {
     document.getElementById('app').innerHTML = /*HTML*/ `
         <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;">
             <img src="/img/GroceryBuddy.png" alt="App Logo" style="border-radius: 15px;" />
-             <h1 class='logo' >GroceryBuddy</h1>
+            <h1 class='logo' >GroceryBuddy</h1>
             ${getWelcomeMessage()}
         </header>
 
