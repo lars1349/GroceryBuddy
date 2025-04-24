@@ -1,16 +1,16 @@
 function profileView() {
-    const userId = model.app.currentUserId;
-    const user = model.data.users.find(u => u.id === userId);
+    const username = localStorage.getItem('username');
+    const email = localStorage.getItem('email');
 
-    if (!user) {
-        return `<p>Bruker ikke funnet.</p>`;
+    if (!username || !email) {
+        return `<p>Bruker ikke funnet</p>`;
     }
 
     return /*HTML*/ `
         <div class="page-content-align-setup">
-            <h2>Min profil</h2>
-            <p><strong>Bruker-ID:</strong> ${user.id}</p>
-            <p><strong>E-post:</strong> ${user.email}</p>
+            <h2>Min profil</h2><br/>
+            <p><strong>Brukernavn:</strong> ${username}</p><br/>
+            <p><strong>E-post:</strong> ${email}</p>
 
             <button class="logout-btn" onclick="logout()">Logg ut</button>
         </div>
