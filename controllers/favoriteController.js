@@ -1,35 +1,3 @@
-function reuseFavoriteProduct(userId, productId) {
-    let currentListId = model.app.selectedShoppingListId;
-    if (!currentListId) {
-        return;
-    }
-
-    for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
-        let link = model.data.shoppingListProducts[i];
-        if (link.shoppingListId === currentListId && link.productId === productId) {
-            link.quantity += 1;
-            setSaving();
-            return;
-        }
-    }
-
-    let nextLinkId = 0;
-    for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
-        if (model.data.shoppingListProducts[i].id > nextLinkId) {
-            nextLinkId = model.data.shoppingListProducts[i].id;
-        }
-    }
-
-    model.data.shoppingListProducts.push({
-        id: nextLinkId + 1,
-        shoppingListId: currentListId,
-        productId: productId,
-        quantity: 1
-    });
-
-    setSaving();
-}
-
 function removeFavoriteProduct(userId, productId) {
     let updatedFavorites = [];
 
