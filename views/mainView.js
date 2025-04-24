@@ -1,6 +1,5 @@
 function updateView() {
     let currentView = '';
-    let username = localStorage.getItem('username');
     const hideFooterPages = ['login', 'createUser'];
     const shouldShowFooter = !hideFooterPages.includes(model.app.currentPage);
 
