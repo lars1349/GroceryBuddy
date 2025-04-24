@@ -4,7 +4,7 @@ function homeView() {
 
 
     const hasAnyList = shoppingLists.some(list => list.ownerUserId === currentUserId);
-    if (!hasAnyList) return '<p>Du har ingen handlelister ennå.</p>';
+    if (!hasAnyList) return '<h2>Dine aktive handlelister</h2>';
 
     let html = '<h2>Dine aktive handlelister</h2>';
 
