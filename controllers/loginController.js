@@ -1,8 +1,9 @@
 function loginInput(username, password) {
-    const user = model.data.users.find
-        (u => u.username === username && u.password === password);
+    const user = model.data.users.find(u => u.username === username && u.password === password);
+
     if (user) {
-         localStorage.setItem('username', user.username);
+        localStorage.setItem('username', user.username);
+        localStorage.setItem('email', user.email);
         model.app.currentPage = 'home'; 
         updateView();
     } else {
