@@ -230,6 +230,10 @@
   padding: 1rem;
 }
 
+.input-continer .btn {
+  display: inline;
+}
+
 
 
 /* Mobile version */
@@ -237,9 +241,7 @@
   .product-table th, .product-table td {
   padding: 8px;
 }
-.input-continer{
-  
-}
+
 }
 
 @media (max-width: 390px){
