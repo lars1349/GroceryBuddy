@@ -66,16 +66,18 @@
 .product-input-group button {
   padding: 10px 15px;
   border: none;
-  background-color: #66bb6a;
-  color: white;
+  background-color: transparent;
+  border: 1px solid #66bb6a;
+  color: #66bb6a;
   font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+
 }
 
 .product-input-group button:hover {
-  background-color: #5aa65a;
+ background-color: #e8f5e9;
+  text-decoration: underline;
 }
 
 
@@ -194,12 +196,40 @@
 
 
 /* ShoppingLIst setting */
-.setting_view{
-   display: flex;
+.setting_view .btn {
+  width: 100%; /* eller f.eks. 250px for fast størrelse */
+  max-width: 300px;
+  padding: 12px;
+  margin: 8px 0;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+ background-color: transparent;
+  border: 1px solid #66bb6a;
+  color: #66bb6a;
+  cursor: pointer;
+}
+
+.setting_view .btn:hover{
+  background-color: #e8f5e9;
+  text-decoration: underline;
+}
+
+.setting_view h2{
+  margin-bottom: 8px;
+}
+
+.setting_view {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
 }
+
 
 
 /* Mobile version */
@@ -207,10 +237,21 @@
   .product-table th, .product-table td {
   padding: 8px;
 }
+.input-continer{
+  
+}
 }
 
 @media (max-width: 390px){
 .product-table th, .product-table td {
   padding: 4px;
+}
+.setting_view .btn {
+    width: 100%;
+    font-size: 14px;
+  }
+  .setting_view h2{
+    font-size: 18px;
+  margin-bottom: 8px;
 }
 }
