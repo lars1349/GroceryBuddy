@@ -123,3 +123,14 @@ function deleteShareCode() {
     shareCodeView();
     return;
 }
+
+function deleteSharedUser(shoppingListId, userId) {
+    const confirmed = confirm("Er du sikker på at du vil fjerne deling med denne brukeren?");
+    if (!confirmed) return;
+
+    model.data.shareCodes = model.data.shareCodes.filter(
+        code => !(code.shoppingListId === shoppingListId && code.userId === userId)
+    );
+
+    shareCodeView(); 
+}

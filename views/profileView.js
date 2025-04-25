@@ -9,9 +9,8 @@ function profileView() {
     return /*HTML*/ `
         <div class="page-content-align-setup">
             <h2>Min profil</h2><br/>
-            <p><strong>Brukernavn:</strong> ${username}</p><br/>
-            <p><strong>E-post:</strong> ${email}</p>
-
+            <p><strong>Brukernavn:</strong> ${username} |<strong> E-post:</strong> ${email}</p><br/>
+        
             <button class="logout-btn" onclick="logout()">Logg ut</button>
         </div>
     `;
