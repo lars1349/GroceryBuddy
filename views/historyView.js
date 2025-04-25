@@ -15,7 +15,6 @@ function historyView() {
                 onclick="openShoppingList(${list.id})">
                 ${list.name} <br />
                 <small>Fullført: ${list.completedDate}</small>
-                <button onclick="toggleListActive(${list.id}, true)">Gjør aktiv</button>
             </div>
         `;
     }
