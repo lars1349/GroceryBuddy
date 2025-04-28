@@ -68,8 +68,6 @@ function updateView() {
                 ? `<button onclick="goHome()">Hjem</button>`
                  : `<button onclick="model.app.currentPage='newShoppingList'; updateView()">Lag ny</button>`}
                  <button onclick="model.app.currentPage='favouriteProducts';goToFavoriteProducts(); updateView()">Favoritter</button>
-                <button onclick="model.app.currentPage='history'; updateView()">Historie</button>
-                 <button onclick="model.app.currentPage='favouriteProducts'; updateView()">Favoritter</button>
                 <button onclick="model.app.currentPage='history'; updateView()">Historikk</button>
                 <button onclick="model.app.currentPage='profile'; updateView()">Profil</button>
             </footer>
