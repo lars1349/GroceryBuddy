@@ -192,6 +192,56 @@
 font-size: 1.4em;
 padding: 8px;
 }
+/* profilsharedlists */
+.leave-btn {
+  background-color: #e57373;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.leave-btn:hover {
+  background-color: #d15b5b;
+}
+
+
+.profile-section {
+  border: 1px solid #66bb6a;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.profile-section-member {
+  border: 1px solid #4a6feb;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-list {
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.profile-list li {
+  padding: 4px 6px;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-list li:last-child {
+  border-bottom: none;
+}
+
+
 
 
 /* Mobile version */
