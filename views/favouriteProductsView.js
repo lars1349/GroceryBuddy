@@ -1,3 +1,4 @@
+
 function favoriteProductsView() {
     let currentUserId = model.app.currentUserId;
     let userFavorites = [];
@@ -8,10 +9,13 @@ function favoriteProductsView() {
         }
     }
 
+    
+
     return `
         <div class="favorite-products-container">
             <button class="btn back" onclick="goBack()">← Tilbake</button>
             <h1>Dine Favorittprodukter</h1>
+           
             <ul id="favoriteProductsList">
                 ${userFavorites.length === 0 
                     ? '<p>Ingen favorittprodukter funnet.</p>' 
@@ -22,6 +26,7 @@ function favoriteProductsView() {
         </div>
     `;
 }
+
 
 function createFavoriteListProducts(favorites, userId) {
     let favoriteHtml = '';
@@ -37,16 +42,45 @@ function createFavoriteListProducts(favorites, userId) {
             }
         }
 
-        favoriteHtml += `
-            <li>
-                ${product 
-                    ? `${product.name} 
-                       
-                       <button class="remove-button" onclick="removeFavoriteProduct(${userId}, ${product.id})">Fjern</button>`
-                    : `Produkt med ID ${favorite.productId} ikke funnet`}
-            </li>
-        `;
+        if (product) {
+            
+            let quantity = model.temp.favoriteQuantities[product.id] ?? 1;
+            // Hent lagret listevalg, eller bruk gjeldende valgte liste som standard
+            let selectedListId = model.temp.selectedLists[product.id] ?? model.app.selectedShoppingListId;
+
+            favoriteHtml += `
+                <li>
+                    <div class="favorite-item">
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="decreaseFavoriteProduct(${userId}, ${product.id})">-</button>
+                            <span id="quantity-${product.id}" class="quantity">${quantity}</span>
+                            <button class="quantity-btn" onclick="increaseFavoriteProduct(${userId}, ${product.id})">+</button>
+                        </div>
+                        <span class="product-name">${product.name}</span>
+                        <select id="select-list-${product.id}" class="list-selector">
+                            ${createListOptions(selectedListId)} <!-- Pass the selectedListId -->
+                        </select>
+                        <button class="reuse-button" onclick="reuseFavoriteProduct(${userId}, ${product.id}, parseInt(document.getElementById('quantity-${product.id}').innerText))">Bruk</button>
+                        <button class="remove-button" onclick="removeFavoriteProduct(${userId}, ${product.id})">Fjern</button>
+                    </div>
+                </li>
+            `;
+        } else {
+            favoriteHtml += `<li>Produkt med ID ${favorite.productId} ikke funnet</li>`;
+        }
     }
 
     return favoriteHtml;
 }
+
+// Opprett alternativer for rullegardinmenyen for listevalg
+function createListOptions(selectedListId) {
+    let options = '';
+    for (let i = 0; i < model.data.shoppingLists.length; i++) {
+        let list = model.data.shoppingLists[i];
+        let selected = list.id === selectedListId ? 'selected' : '';
+        options += `<option value="${list.id}" ${selected}>${list.name}</option>`;
+    }
+    return options;
+}
+

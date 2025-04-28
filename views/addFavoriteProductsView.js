@@ -5,6 +5,8 @@ function addFavoriteProductsViewContent() {
         model.app.favoriteProductsAdded = true;
     }
 
+    model.app.showProducts = true;
+    
     return `
         <div class="container">
             <button class="btnback" onclick="goBack()">← Tilbake</button>
