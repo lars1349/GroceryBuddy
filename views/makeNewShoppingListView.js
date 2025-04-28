@@ -2,10 +2,14 @@ function makeNewShoppingListView() {
     return /*HTML*/ `
         <h2>Ny handleliste</h2>
         <div class='shopping_list_container'>
-            <input type='text' class='shopping_list_name' id='shopping_list_name' placeholder='Navn på handleliste'>
-            <button onclick='addShoppingListName()'class='shopping_list_confirm' id='shopping_list_confirm'>
+        <div class='input-continer'>
+        <input type='text' class='shopping_list_name' id='shopping_list_name' 
+       placeholder='Navn på handleliste'
+       onkeydown="if(event.key === 'Enter'){ event.preventDefault(); addShoppingListName(); }">
+
+            <button onclick='addShoppingListName()'class='btn' id='shopping_list_confirm'>
                 Bekreft
-            </button>
+            </button></div>
         </div>
 
         <div id='errorMessage' >

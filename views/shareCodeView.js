@@ -20,10 +20,12 @@ function createShareCodeHtml() {
             for (let code of sharedCodes) {
                 let user = model.data.users.find(user => user.id === code.userId);
                 if (user) {
-                    sharedUsersHTML += `<li>${user.email}</li>`;
+                    sharedUsersHTML += `<li>${user.email} 
+                    <button class='deleteButton' onclick='deleteSharedUser(${code.shoppingListId}, ${user.id})'>X</button>
+                    </li>`;
                 }
             }
-            sharedUsersHTML += `</ul></div>`;
+            sharedUsersHTML += `</ul></div>` ;
         }
     }
 

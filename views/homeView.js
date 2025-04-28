@@ -1,25 +1,24 @@
 function homeView() {
     const currentUserId = model.app.currentUserId;
-    const shoppingLists = model.data.shoppingLists;
+    const shoppingLists = model.data.shoppingLists.filter(list => list.ownerUserId === currentUserId);
 
+    let html = '<h2>Dine aktive handlelister:</h2>';
 
-    const hasAnyList = shoppingLists.some(list => list.ownerUserId === currentUserId);
-    if (!hasAnyList) return '<h2>Dine aktive handlelister</h2>';
-
-    let html = '<h2>Dine aktive handlelister</h2>';
-
-    for (const list of shoppingLists) {
+    const activeLists = shoppingLists.filter(list => {
         const history = model.data.shoppingListHistories.find(h => h.shoppingListId === list.id);
-        const isActive = history?.isActive ?? true;
+        return history?.isActive ?? true;
+    });
 
-        if (list.ownerUserId === currentUserId && isActive) {
-            html += /*HTML*/ `
-                <div class="open_shopping_list" 
-                    onclick="openShoppingList(${list.id})">
+    if (activeLists.length === 0) {
+        html += `<br/><p>Ingen aktive handlelister.</p>`;
+    } else {
+        activeLists.forEach(list => {
+            html += `
+                <div class="open_shopping_list" onclick="openShoppingList(${list.id})">
                     ${list.name}
                 </div>
             `;
-        }
+        });
     }
 
     return html;

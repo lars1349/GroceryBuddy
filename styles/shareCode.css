@@ -90,6 +90,20 @@
   background-color: #d15b5b;
 }
 
+.deleteButton {
+  background-color: #e57373;
+  color: white;
+  border: none;
+  margin-left: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  background-color: #d15b5b;
+}
+
 @media (max-width: 390px){
 
   .share-code-container{

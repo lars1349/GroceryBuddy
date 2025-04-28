@@ -71,14 +71,17 @@
 
 .btn{
   padding: 10px 15px;
-  border: solid 2px #66bb6a;
+   background-color: transparent;
+  border: 1px solid #66bb6a;
+  color: #66bb6a;
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
   margin: 8px;
 }
 .btn:hover{
-   background-color: #5aa65a;
+ background-color: #e8f5e9;
+  text-decoration: underline;
 }
 
 
@@ -189,6 +192,56 @@
 font-size: 1.4em;
 padding: 8px;
 }
+/* profilsharedlists */
+.leave-btn {
+  background-color: #e57373;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.leave-btn:hover {
+  background-color: #d15b5b;
+}
+
+
+.profile-section {
+  border: 1px solid #66bb6a;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.profile-section-member {
+  border: 1px solid #4a6feb;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-list {
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.profile-list li {
+  padding: 4px 6px;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-list li:last-child {
+  border-bottom: none;
+}
+
+
 
 
 /* Mobile version */
@@ -219,6 +272,7 @@ padding: 8px;
   .btn{
     display: block;
   }
+ 
   .logo{
     font-size: 22px;
   }
@@ -241,4 +295,7 @@ padding: 8px;
 .container{
   padding: 4px;
 }
+ .btn{
+      padding: 8px 12px;
+  }
 }
