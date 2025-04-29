@@ -60,8 +60,8 @@ function createFavoriteListProducts(favorites, userId) {
                         <select id="select-list-${product.id}" class="list-selector">
                             ${createListOptions(selectedListId)} <!-- Pass the selectedListId -->
                         </select>
-                        <button class="reuse-button" onclick="reuseFavoriteProduct(${userId}, ${product.id}, parseInt(document.getElementById('quantity-${product.id}').innerText))">Bruk</button>
-                        <button class="remove-button" onclick="removeFavoriteProduct(${userId}, ${product.id})">Fjern</button>
+                        <button class="reuse-button" onclick="reuseFavoriteProduct(${userId}, ${product.id}, parseInt(document.getElementById('quantity-${product.id}').innerText))">Legge til</button>
+                        <button class="remove-button" onclick="removeFavoriteProduct(${userId}, ${product.id})">X</button>
                     </div>
                 </li>
             `;

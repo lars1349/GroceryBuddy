@@ -152,16 +152,19 @@
 /* Legg til valgte favoritter-knapp */
 
 .favorite-selection-button {
-  margin-bottom: 1rem;
-  background-color: transparent;
-  border: 1px solid #66bb6a;
-  color: #66bb6a;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  background-color: #66bb6a;
+  color: white;
+  border: none;
+  padding: 10px 15px;
   font-size: 14px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: block;
+  margin: 0 auto;
 }
 
 .favorite-selection-button button:hover {
-  background-color: #ccc;
+  background-color: #5aa65a;
 }
+

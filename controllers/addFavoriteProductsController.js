@@ -1,3 +1,5 @@
+
+
 function addSelectedFavorites() {
     let selectedProductIds = [];
 
@@ -52,6 +54,7 @@ function getUserFavoriteProducts(userId) {
     }
     return favorites;
 }
+
 
 
 function isValidProduct(productId) {

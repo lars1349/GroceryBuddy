@@ -1,23 +1,28 @@
 
+let favoriteProductsAdded = false;
+function addFavoriteProductsViewContent() {
+    let selectedListId = model.app.selectedShoppingListId;
+    
+    let favoriteSelectionHtml = selectFavoriteProductsView();
+    let addedFavoritesHtml = addedFavoriteListView();
 
-function  addFavoriteProductsView() {
+    if (!model.app.favoriteProductsAdded) {
+        model.app.favoriteProductsAdded = true;
+    }
+      
     
     let listName = 'Ukjent liste';
-    let selectedListId = model.app.selectedShoppingListId;
-
     for (let i = 0; i < model.data.shoppingLists.length; i++) {
         if (model.data.shoppingLists[i].id === selectedListId) {
             listName = model.data.shoppingLists[i].name;
             break;
         }
     }
-
-    let favoriteSelectionHtml = selectFavoriteProductsView();
-    let addedFavoritesHtml=productView(false);
+    model.app.showProducts = true;
 
     return `
         <div class="mainContainer">
-            <button class="btnback" onclick="goHome()">← Tilbake</button>
+            <button class="btnback" onclick="goBack()">← Tilbake</button>
             <h2>Din liste: ${listName}</h2>
             <div id="saveStatus" style="margin-bottom: 10px; color: ${model.app.isSaving ? 'red' : 'green'};">
                 ${model.app.isSaving ? 'Lagrer...' : 'Alt er lagret ✅'}
@@ -35,12 +40,18 @@ function  addFavoriteProductsView() {
 }
 
 
+function addFavoriteProductsView() {
+    model.app.currentPage = 'addFavoriteProducts';
+    model.app.favoriteProductsAdded = false;
+    model.inputs.selectedFavoriteProductIds = []; 
+    updateView();
+}
 function selectFavoriteProductsView() {
     let currentUserId = model.app.currentUserId;
     let favorites = getUserFavoriteProducts(currentUserId);
 
     if (favorites.length === 0) {
-        return `<p>Du har ingen favoritter</p>`;
+        return `<p>Du har ingen favoritter.</p>`;
     }
 
     let favoriteListHtml = '';
@@ -61,7 +72,7 @@ function selectFavoriteProductsView() {
 
     return `
         <div>
-            <h4>Velg favoritter å legge til</h4>
+            <h2>Velg favoritter å legge til</h2>
             <div class="favorite-selection">
                 ${favoriteListHtml}
             </div>

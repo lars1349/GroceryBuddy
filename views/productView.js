@@ -8,7 +8,7 @@ function productView(showHeaderAndButtons = true) {
             break;
         }
     }
-
+    
     return `
         ${showHeaderAndButtons ? `
             <h2>${listName}</h2>
@@ -25,7 +25,7 @@ function productView(showHeaderAndButtons = true) {
                     <input type="text" id="productName" placeholder="Skriv produkt..." oninput="showSuggestions(this.value)">
                     <ul id="autocompleteList" class="autocomplete-list"></ul>
                 </div>
-                <button onclick="addProduct()">Legg til</button>
+                <button onclick="addProduct()">legge til</button>
             </div>
             <table class="product-table">
                 <tr>
@@ -38,8 +38,6 @@ function productView(showHeaderAndButtons = true) {
         ` : ''}
     `;
 }
-
-
 
 
 function createProductTableRows() {
