@@ -1,6 +1,3 @@
-
-
-
 function addSelectedFavorites() {
     let selectedProductIds = [];
 
@@ -39,10 +36,10 @@ function addSelectedFavorites() {
             quantity: 1
         });
     }
-    setSaving();
+
     model.app.favoriteProductsAdded = true;
 
-    addFavoriteProductsView();
+    updateView();
 }
 
 
@@ -55,7 +52,6 @@ function getUserFavoriteProducts(userId) {
     }
     return favorites;
 }
-
 
 
 function isValidProduct(productId) {

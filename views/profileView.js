@@ -11,7 +11,7 @@ function profileView() {
    return /*HTML*/ `
         <div class="profile-container">
 
-            <div class="profile-sidebar">
+             <div class="profile-sidebar">
             <div class="profile-header">
             <h2>Min profil:</h2> 
             <button class="profile-button logout-button" onclick="logout()">Logg ut</button>

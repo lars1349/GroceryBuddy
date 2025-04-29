@@ -1,11 +1,7 @@
-function addFavoriteProductsViewContent() {
-        
-    
-    
-    let favoriteSelectionHtml = selectFavoriteProductsView();
-    let addedFavoritesHtml = productView(false);
 
-          
+
+function  addFavoriteProductsView() {
+    
     let listName = 'Ukjent liste';
     let selectedListId = model.app.selectedShoppingListId;
 
@@ -16,33 +12,20 @@ function addFavoriteProductsViewContent() {
         }
     }
 
-    model.app.showProducts = true;
+    let favoriteSelectionHtml = selectFavoriteProductsView();
 
     return `
         <div class="mainContainer">
-            <button class="btnback" onclick="goBack()">← Tilbake</button>
+            <button class="btnback" onclick="goHome()">← Tilbake</button>
             <h2>Din liste: ${listName}</h2>
-            <div id="saveStatus" style="margin-bottom: 10px; color: ${model.app.isSaving ? 'red' : 'green'};">
-                ${model.app.isSaving ? 'Lagrer...' : 'Alt er lagret ✅'}
-            </div> 
             
             <div class="container">
                 ${favoriteSelectionHtml}
             </div>
 
-            <div class="container">
-                ${addedFavoritesHtml}
-            </div> 
+           
         </div>
-        
     `;
-}
-
-
-function addFavoriteProductsView() {
-    model.app.currentPage = 'addFavoriteProducts';
-    model.app.showProducts = true; 
-    updateView();
 }
 
 
@@ -55,14 +38,15 @@ function selectFavoriteProductsView() {
     }
 
     let favoriteListHtml = '';
-
+    
+    // Gå gjennom favoritter og generer HTML
     for (let i = 0; i < favorites.length; i++) {
         let productId = favorites[i].productId;
         let product = model.data.products.find(product => product.id === productId);
         if (!product) continue;
-
+        
         favoriteListHtml += `
-            <div class="favorite-item">
+            <div class="favorite-checkbox">
                 <input type="checkbox" id="favorite-${productId}" value="${productId}">
                 <label for="favorite-${productId}">${product.name}</label>
             </div>
@@ -70,11 +54,8 @@ function selectFavoriteProductsView() {
     }
 
     return `
-        <div id="favorite-selection-container">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="margin: 0;">Velg favoritter å legge til</h3>
-                
-            </div>
+        <div>
+            <h4>Velg favoritter å legge til</h4>
             <div class="favorite-selection">
                 ${favoriteListHtml}
             </div>
