@@ -12,7 +12,7 @@ function shoppingListsSettingsView() {
 
         <button class='btn' onclick="deleteCurrentShoppingList()">🗑️ Slett liste</button>
         <button class='btn' onclick="shareCodeView()">🔗 Administrer kode</button>
-        <button class='btn' onclick="addFavoriteProductsView()">⭐ Legg til favorittvarer</button>
+        <button class='btn' onclick="model.app.currentPage = 'addFavoriteProducts'; updateView()">⭐ Legg til favorittvarer</button>
 
         ${!isActive
             ? `<button class='btn' onclick="toggleListActive(${list.id}, true)">✅ Aktiver</button>`

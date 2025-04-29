@@ -215,6 +215,11 @@ function setSaving() {
     }, 600);
 }
 
+function goToSettings() {
+    model.app.currentPage = 'shoppingListSettings';
+    updateView();
+}
+
 function showSuggestions(input) {
     const suggestionsContainer = document.getElementById('autocompleteList');
     suggestionsContainer.innerHTML = '';

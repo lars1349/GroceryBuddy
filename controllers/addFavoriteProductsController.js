@@ -1,29 +1,49 @@
-function addFavoriteProducts() {
+function addSelectedFavorites() {
+    let selectedProductIds = [];
+
     let currentUserId = model.app.currentUserId;
-    let currentListId = model.app.selectedShoppingListId;
+    let favorites = getUserFavoriteProducts(currentUserId);
 
-    if (!currentListId || !isShoppingListActive(currentListId)) {
-        return;
-    }
-
-    let favorites = getUserFavorites(currentUserId);
-    if (favorites.length === 0) {
-        return;
-    }
-
-    addFavoritesToList(currentListId, favorites);
-}
-
-function isShoppingListActive(listId) {
-    for (let i = 0; i < model.data.shoppingListHistories.length; i++) {
-        if (model.data.shoppingListHistories[i].shoppingListId === listId) {
-            return model.data.shoppingListHistories[i].isActive;
+    for (let i = 0; i < favorites.length; i++) {
+        let productId = favorites[i].productId;
+        let checkbox = document.getElementById('favorite-' + productId);
+        if (checkbox && checkbox.checked) {
+            selectedProductIds.push(parseInt(checkbox.value));
         }
     }
-    return false;
+
+    if (selectedProductIds.length === 0) {
+        alert('Vennligst velg minst ett favorittprodukt.');
+        return;
+    }
+
+    let  listId = model.app.selectedShoppingListId;
+
+    for (let i = 0; i < selectedProductIds.length; i++) {
+        let productId = selectedProductIds[i];
+        if (!isValidProduct(productId)) continue;
+
+        // Sjekk om det allerede finnes
+        let alreadyExists = model.data.shoppingListProducts.some(
+            product => product.shoppingListId === listId && product.productId === productId
+        );
+        if (alreadyExists) continue;
+
+        model.data.shoppingListProducts.push({
+            id: getNextLinkId(),
+            shoppingListId: listId,
+            productId: productId,
+            quantity: 1
+        });
+    }
+
+    model.app.favoriteProductsAdded = true;
+
+    updateView();
 }
 
-function getUserFavorites(userId) {
+
+function getUserFavoriteProducts(userId) {
     let favorites = [];
     for (let i = 0; i < model.data.favoriteProducts.length; i++) {
         if (model.data.favoriteProducts[i].userId === userId) {
@@ -33,14 +53,6 @@ function getUserFavorites(userId) {
     return favorites;
 }
 
-function isProductInList(listId, productId, links) {
-    for (let i = 0; i < links.length; i++) {
-        if (links[i].productId === productId) {
-            return true;
-        }
-    }
-    return false;
-}
 
 function isValidProduct(productId) {
     for (let i = 0; i < model.data.products.length; i++) {
@@ -59,37 +71,4 @@ function getNextLinkId() {
         }
     }
     return maxId + 1;
-}
-
-function addFavoritesToList(listId, favorites) {
-    let existingLinks = [];
-    for (let i = 0; i < model.data.shoppingListProducts.length; i++) {
-        if (model.data.shoppingListProducts[i].shoppingListId === listId) {
-            existingLinks.push(model.data.shoppingListProducts[i]);
-        }
-    }
-
-    for (let i = 0; i < favorites.length; i++) {
-        let productId = favorites[i].productId;
-
-        if (!isValidProduct(productId) || isProductInList(listId, productId, existingLinks)) {
-            continue;
-        }
-
-        model.data.shoppingListProducts.push({
-            id: getNextLinkId(),
-            shoppingListId: listId,
-            productId: productId,
-            quantity: 1
-        });
-        existingLinks.push({
-            shoppingListId: listId,
-            productId: productId
-        });
-    }
-}
-
-function goToSettings() {
-    model.app.currentPage = 'shoppingListSettings';
-    updateView();
 }
