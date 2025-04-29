@@ -72,7 +72,7 @@ function selectFavoriteProductsView() {
     return `
         <div id="favorite-selection-container">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2 style="margin: 0;">Velg favoritter å legge til</h2>
+                <h3 style="margin: 0;">Velg favoritter å legge til</h3>
                 
             </div>
             <div class="favorite-selection">
