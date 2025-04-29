@@ -10,9 +10,15 @@ function historyView() {
         inactiveLists.forEach(list => {
             html += `
                 <div class="open_shopping_list_history">
-                    <span>${list.name}</span><br/>
+                <div>
+                <span>${list.name}</span><br/>
                     <small>Fullført: ${list.completedDate}</small><br/>
-                    <button class='btn' onclick="toggleListActive(${list.id}, true)">Gjør aktiv</button>
+                </div>
+                    
+                    <div>
+                     <button class='btn btn-historikk' onclick="toggleListActive(${list.id}, true)">Gjør aktiv</button>
+                     </div>
+                   
                 </div>
                 <br/>
             `;

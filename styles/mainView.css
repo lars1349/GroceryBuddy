@@ -25,6 +25,7 @@
     width: 50px;
     height: 40px;
     margin-right: 0.75rem;
+    border-radius: 50%;
   }
   
  
@@ -123,7 +124,6 @@
 }
 
 .container h3 {
-  font-size: 1.6rem;
   color: #333;
   margin-bottom: 1rem;
   text-align: left;
@@ -145,16 +145,6 @@
   text-decoration: underline;
 }
 
-.favorite-icon {
-  font-size: 20px;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
-
-.favorite-icon:hover {
-  transform: scale(1.2);
-  color: #ffd54f;
-}
 
 .autocomplete-wrapper {
   position: relative;
@@ -208,6 +198,12 @@ padding: 8px;
   background-color: #d15b5b;
 }
 
+.shared-info {
+    font-size: 0.8em;
+    color: gray;
+    margin-top: 2px;
+}
+
 
 
 /* Mobile version */
@@ -245,9 +241,7 @@ padding: 8px;
   .velkommen{
   font-size: 15px;
 }
-.container{
-  padding: 8px;
-}
+
 }
 
 @media (max-width: 390px){
@@ -258,9 +252,7 @@ padding: 8px;
   font-size: 12px;
   padding: 8px;
 }
-.container{
-  padding: 4px;
-}
+
  .btn{
       padding: 8px 12px;
   }

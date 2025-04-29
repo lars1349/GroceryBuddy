@@ -43,7 +43,7 @@ function createShareCodeHtml() {
 
             <div class="share-code-field">
                 <label for="newEmail">Ny bruker:</label>
-                <input type="email" id="newEmail" class="share-code-input" placeholder="Skriv inn ny e-post">
+                <input class="code-share-epost" type="email" id="newEmail" class="share-code-input" placeholder="Skriv inn ny e-post">
             </div>
 
             <div class="share-code-buttons">

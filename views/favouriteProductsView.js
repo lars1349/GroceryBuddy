@@ -56,10 +56,12 @@ function createFavoriteListProducts(favorites, userId) {
                             <span id="quantity-${product.id}" class="quantity">${quantity}</span>
                             <button class="quantity-btn" onclick="increaseFavoriteProduct(${userId}, ${product.id})">+</button>
                         </div>
-                        <span class="product-name">${product.name}</span>
+                        <div>
+                         <span class="product-name">${product.name}</span>
                         <select id="select-list-${product.id}" class="list-selector">
                             ${createListOptions(selectedListId)} <!-- Pass the selectedListId -->
                         </select>
+                        </div>
                       <div class="fav-btn">
                         <button class="reuse-button" onclick="reuseFavoriteProduct(${userId}, ${product.id}, parseInt(document.getElementById('quantity-${product.id}').innerText))">Legg til</button>
                         <button class="remove-button" onclick="removeFavoriteProduct(${userId}, ${product.id})">X</button>
