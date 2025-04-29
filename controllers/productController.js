@@ -215,11 +215,6 @@ function setSaving() {
     }, 600);
 }
 
-function goToSettings() {
-    model.app.currentPage = 'shoppingListSettings';
-    updateView();
-}
-
 function showSuggestions(input) {
     const suggestionsContainer = document.getElementById('autocompleteList');
     suggestionsContainer.innerHTML = '';
@@ -239,4 +234,9 @@ function showSuggestions(input) {
         };
         suggestionsContainer.appendChild(li);
     }
+}
+
+function goToSettings() {
+    model.app.currentPage = 'shoppingListSettings';
+    updateView();
 }

@@ -13,23 +13,17 @@ function  addFavoriteProductsView() {
     }
 
     let favoriteSelectionHtml = selectFavoriteProductsView();
-    let addedFavoritesHtml=productView(false);
 
     return `
         <div class="mainContainer">
             <button class="btnback" onclick="goHome()">← Tilbake</button>
             <h2>Din liste: ${listName}</h2>
-            <div id="saveStatus" style="margin-bottom: 10px; color: ${model.app.isSaving ? 'red' : 'green'};">
-                ${model.app.isSaving ? 'Lagrer...' : 'Alt er lagret ✅'}
-            </div> 
             
             <div class="container">
                 ${favoriteSelectionHtml}
             </div>
 
-            <div class="container">
-                ${addedFavoritesHtml}
-            </div>
+           
         </div>
     `;
 }

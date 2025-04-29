@@ -1,14 +1,13 @@
 function whenCreateNewUserButtonIsClicked() {
-    
-    let newUsername = document.getElementById('newUsername').value;
-    let newEmail = document.getElementById('newEmail').value;
-    let newPassword = document.getElementById('newPassword').value;
+    let newUsername = document.getElementById('newUsername').value.trim();
+    let newEmail = document.getElementById('newEmail').value.trim();
+    let newPassword = document.getElementById('newPassword').value.trim();
 
-    const emailVertification = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const emailVerification = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
     if (newUsername && newEmail && newPassword) {
-        if (!emailVertification.test(newEmail)) {
-            document.getElementById('outputMessage').textContent = "Du må skrive inn gyldig e-post adresse";
+        if (!emailVerification.test(newEmail)) {
+            document.getElementById('outputMessage').textContent = "Du må skrive inn gyldig e-postadresse";
             document.getElementById('outputMessage').style.color = 'red';
             return;
         }
@@ -19,9 +18,29 @@ function whenCreateNewUserButtonIsClicked() {
             return;
         }
 
-        localStorage.setItem('username', newUsername);
-        localStorage.setItem('email', newEmail);
-        model.app.currentPage = 'home'; 
+        const existingUser = model.data.users.find(u => u.username === newUsername || u.email === newEmail);
+        if (existingUser) {
+            document.getElementById('outputMessage').textContent = "Brukernavn eller e-post er allerede registrert.";
+            document.getElementById('outputMessage').style.color = 'red';
+            return;
+        }
+
+       
+        const newId = model.data.users.length > 0 
+            ? Math.max(...model.data.users.map(u => u.id)) + 1 
+            : 1;
+
+        model.data.users.push({
+            id: newId,
+            username: newUsername,
+            email: newEmail,
+            password: newPassword,
+        });
+
+        saveModel();
+        model.app.currentUserId = newId;
+        localStorage.setItem('currentUserId', newId);
+        model.app.currentPage = 'home';
         updateView();
 
     } else {

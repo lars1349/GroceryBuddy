@@ -1,8 +1,10 @@
 function logout() {
+    localStorage.removeItem('currentUserId')
     model.app.currentUserId = null;
     model.app.currentPage = 'login';
     updateView();
 }
+
 function ownedLists() {
     const currentUserId = model.app.currentUserId;
     const shoppingLists = model.data.shoppingLists;
@@ -59,8 +61,20 @@ function sharedLists() {
     return html;
 }
 
-
-
+function restoreLoggedInUser() {
+    const savedUserId = localStorage.getItem('currentUserId');
+    if (savedUserId) {
+        const userExists = model.data.users.find(u => u.id == savedUserId);
+        if (userExists) {
+            model.app.currentUserId = parseInt(savedUserId);
+        } else {
+            model.app.currentUserId = null;
+            localStorage.removeItem('currentUserId');
+        }
+    } else {
+        model.app.currentUserId = null;
+    }
+}
 
 function leaveSharedList(listId) {
     const confirmed = confirm("Er du sikker på at du vil forlate denne listen?");
@@ -73,6 +87,19 @@ function leaveSharedList(listId) {
     updateView(); 
 }
 
+function deleteCurrentUser() {
+    const userId = model.app.currentUserId;
+    if (!userId) return;
 
+    model.data.users = model.data.users.filter(u => u.id !== userId);
+    saveModel();
+    logout();
+}
+
+function confirmDeleteUser(){
+    if(confirm("Er du sikker på at du vil slette brukeren din?")) {
+        deleteCurrentUser();
+    }
+}
 
 

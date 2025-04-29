@@ -34,3 +34,9 @@ function toggleProductChecked(productId) {
     setSaving();
     updateView();
 }
+
+
+function goToProductView(){
+    model.app.currentPage = 'products'
+    updateView();
+}
