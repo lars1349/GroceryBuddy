@@ -39,7 +39,7 @@ function addFavoriteProductsViewContent() {
 
 function addFavoriteProductsView() {
     model.app.currentPage = 'addFavoriteProducts';
-    //model.app.showProducts = true; 
+    
     updateView();
 }
 
