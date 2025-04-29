@@ -25,22 +25,36 @@
 
 /* Gjør overskriftene litt mindre */
 .profile-section h2,
-.profile-section-member h2,
-.profile-sidebar h2 {
+.profile-section-member h2
+{
   font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 
+
 /* Styling av knappene */
 .profile-button {
   display: block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
+  width: 80px;
+  padding: 4px;
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 12px;
   cursor: pointer;
+}
+
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.profile-button.small-button {
+  font-size: 0.75rem;
+  padding: 5px 8px;
+  width: auto;
 }
 
 .logout-button {
