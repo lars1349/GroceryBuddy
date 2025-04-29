@@ -13,7 +13,7 @@ function favoriteProductsView() {
 
     return `
         <div class="favorite-products-container">
-            <button class="btn back" onclick="goHome()">← Tilbake</button>
+            <button class="btn back" onclick="goBack()">← Tilbake</button>
             <h1>Dine Favorittprodukter</h1>
            
             <ul id="favoriteProductsList">
@@ -58,7 +58,7 @@ function createFavoriteListProducts(favorites, userId) {
                         </div>
                         <span class="product-name">${product.name}</span>
                         <select id="select-list-${product.id}" class="list-selector">
-                            ${createListOptions(selectedListId)} <!-- Pass the selectedListId -->
+                            ${createListOptions(selectedListId)} 
                         </select>
                         <button class="reuse-button" onclick="reuseFavoriteProduct(${userId}, ${product.id}, parseInt(document.getElementById('quantity-${product.id}').innerText))">Legge til</button>
                         <button class="remove-button" onclick="removeFavoriteProduct(${userId}, ${product.id})">X</button>

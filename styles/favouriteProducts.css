@@ -29,7 +29,7 @@
 
 #favoriteProductsList li {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #f4fdf4;
   border: 1px solid #e0f2e0;
@@ -136,6 +136,7 @@
   align-items: center;
   gap: 10px;
   font-size: 14px;
+
 }
 
 .favorite-item input[type="checkbox"] {
@@ -149,9 +150,14 @@
   color: #555;
 }
 
-/* Legg til valgte favoritter-knapp */
+/* Add selected favorites button */
 
 .favorite-selection-button {
+  background-color: #66bb6a;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
   background-color: #66bb6a;
   color: white;
   border: none;
@@ -162,9 +168,26 @@
   transition: background-color 0.2s ease;
   display: block;
   margin: 0 auto;
+  transition: background-color 0.2s ease;
+  display: block;
+  margin: 0 auto;
 }
 
 .favorite-selection-button button:hover {
   background-color: #5aa65a;
 }
 
+.favorite-item li{
+  display: flex;
+  align-items: center;
+}
+
+@media  (max-width: 600px) {
+.favorite-item{
+  flex-direction: column;
+  width: 100%;
+  background-color: #5aa65a;
+}
+
+
+}

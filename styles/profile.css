@@ -1,0 +1,75 @@
+.profile-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.profile-sidebar {
+  flex: 1 1 250px;
+  max-width: 300px;
+}
+
+.profile-main {
+  flex: 2 1 600px;
+}
+
+.profile-section,
+.profile-section-member {
+  border: 1px solid #66bb6a;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Gjør overskriftene litt mindre */
+.profile-section h2,
+.profile-section-member h2,
+.profile-sidebar h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Styling av knappene */
+.profile-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.logout-button {
+  background-color: #4a6feb;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #3b58c2;
+}
+
+.delete-button {
+  background-color: #e53935;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c62828;
+}
+
+.profile-list li{
+  margin-left: 20px
+}
+
+
+
+/* Responsiv på mobil */
+@media (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+  }
+}

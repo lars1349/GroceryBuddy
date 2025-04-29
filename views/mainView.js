@@ -1,8 +1,11 @@
 function updateView() {
     let currentView = '';
-    const hideFooterPages = ['login', 'createUser'];
-    const shouldShowFooter = !hideFooterPages.includes(model.app.currentPage);
-
+    const shouldShowFooter = model.app.currentUserId && !['login', 'createUser'].includes(model.app.currentPage);
+    
+    if (!model.app.currentUserId && model.app.currentPage !== 'login' && model.app.currentPage !== 'createUser') {
+        model.app.currentPage = 'login';
+    }
+  
     switch (model.app.currentPage) {
         case 'history':
             currentView = historyView();
@@ -48,31 +51,28 @@ function updateView() {
             break;
             
         } 
-        
-
-        
+    
     document.getElementById('app').innerHTML = /*HTML*/ `
-        <header onclick="model.app.currentPage='home'; updateView()" style="cursor: pointer;">
-            <img src="/img/GroceryBuddy.png" alt="App Logo" style="border-radius: 15px;" />
-            <h1 class='logo' >GroceryBuddy</h1>
+      <header>
+            <img src="/img/GroceryBuddy.png" alt="App Logo" ${model.app.currentUserId ? 'onclick="handleLogoClick()"' : ''} />
+            <h1 class='logo' ${model.app.currentUserId ? 'onclick="handleLogoClick()"' : ''}>GroceryBuddy</h1>
             ${getWelcomeMessage()}
-        </header>
-
+       </header>
         <main id="content">
             ${currentView}
         </main>
 
-        ${shouldShowFooter ? `
-            <footer>
-             ${ ['newShoppingList', 'products'].includes(model.app.currentPage)
-                ? `<button onclick="goHome()">Hjem</button>`
-                 : `<button onclick="model.app.currentPage='newShoppingList'; updateView()">Lag ny</button>`}
-                 <button onclick="model.app.currentPage='favouriteProducts';goToFavoriteProducts(); updateView()">Favoritter</button>
-                <button onclick="model.app.currentPage='history'; updateView()">Historikk</button>
+      ${shouldShowFooter ? `
+    <footer>
+        ${
+            model.app.currentPage === 'home'
+                ? `<button onclick="model.app.currentPage='newShoppingList'; updateView()">Lag ny</button>`
+                : `<button onclick="goHome()">Hjem</button>`
+        }
+                <button onclick="model.app.currentPage='favouriteProducts'; updateView()">Favoritter</button>
+                <button onclick="model.app.currentPage='history'; updateView()">Historie</button>
                 <button onclick="model.app.currentPage='profile'; updateView()">Profil</button>
-            </footer>
-        ` : ''}
-        
+    </footer>
+` : ''}
     `;
 }
-

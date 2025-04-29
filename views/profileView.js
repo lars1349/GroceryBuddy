@@ -1,35 +1,42 @@
 function profileView() {
-    const username = localStorage.getItem('username');
-    const email = localStorage.getItem('email');
+    const user = model.data.users.find(u => u.id === model.app.currentUserId);
 
-    if (!username || !email) {
+    if (!user) {
         return `<p>Bruker ikke funnet</p>`;
     }
 
     const ownedListsHtml = ownedLists();
     const sharedListsHtml = sharedLists();
 
-    return /*HTML*/ `
-        <div class="page-content-align-setup">
-            <h2>Min profil</h2><br/>
-            <p><strong>Brukernavn:</strong> ${username} | <strong>E-post:</strong> ${email}</p><br/>
+   return /*HTML*/ `
+        <div class="profile-container">
 
-            <h2 class="profile-section" >Mine handlelister:</h2>
-            <ul class="profile-list">
-            <li>${ownedListsHtml}</li>
-            
+            <div class="profile-sidebar">
+                <h2>Min profil:</h2><br/>
+                <p><strong>Brukernavn:</strong><br/>${user.username}</p><br/>
+                <p><strong>E-post:</strong><br/>${user.email}</p><br/>
 
-            <br>
+                <button class="profile-button logout-button" onclick="logout()">Logg ut</button>
+                <button class="profile-button delete-button" onclick="confirmDeleteUser()">Slett bruker</button>
+            </div>
 
-            <h2 class="profile-section-member">Medlem av :</h2>
-            <ul class="profile-list">
-            <li> ${sharedListsHtml}</li>
-           
+            <div class="profile-main">
+                <div class="profile-section">
+                    <h2>Mine handlelister:</h2>
+                    <ul class="profile-list">
+                        ${ownedListsHtml}
+                    </ul>
+                </div>
 
-            <br/>
-            <button class="logout-btn" onclick="logout()">Logg ut</button>
+                <div class="profile-section-member">
+                    <h2>Medlem av:</h2>
+                    <ul class="profile-list">
+                        ${sharedListsHtml}
+                    </ul>
+                </div>
+            </div>
+
         </div>
     `;
 }
-
 
