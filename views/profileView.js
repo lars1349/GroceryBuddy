@@ -12,12 +12,16 @@ function profileView() {
         <div class="profile-container">
 
             <div class="profile-sidebar">
-                <h2>Min profil:</h2><br/>
+            <div class="profile-header">
+            <h2>Min profil:</h2> 
+            <button class="profile-button logout-button" onclick="logout()">Logg ut</button>
+            <button class="profile-button delete-button" onclick="confirmDeleteUser()">Slett bruker</button>
+            </div>
+                            
                 <p><strong>Brukernavn:</strong><br/>${user.username}</p><br/>
                 <p><strong>E-post:</strong><br/>${user.email}</p><br/>
 
-                <button class="profile-button logout-button" onclick="logout()">Logg ut</button>
-                <button class="profile-button delete-button" onclick="confirmDeleteUser()">Slett bruker</button>
+               
             </div>
 
             <div class="profile-main">
