@@ -19,7 +19,7 @@ function addFavoriteProductsViewContent() {
     model.app.showProducts = true;
 
     return `
-        < class="mainContainer">
+        <div class="mainContainer">
             <button class="btnback" onclick="goBack()">← Tilbake</button>
             <h2>Din liste: ${listName}</h2>
             <div id="saveStatus" style="margin-bottom: 10px; color: ${model.app.isSaving ? 'red' : 'green'};">
@@ -33,7 +33,7 @@ function addFavoriteProductsViewContent() {
             <div class="container">
                 ${addedFavoritesHtml}
             </div> 
-            
+        </div>
         
     `;
 }

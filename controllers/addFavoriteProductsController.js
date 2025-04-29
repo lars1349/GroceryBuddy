@@ -39,7 +39,7 @@ function addSelectedFavorites() {
             quantity: 1
         });
     }
-
+    setSaving();
     model.app.favoriteProductsAdded = true;
 
     addFavoriteProductsView();
