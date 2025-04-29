@@ -29,7 +29,7 @@
 
 #favoriteProductsList li {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #f4fdf4;
   border: 1px solid #e0f2e0;
@@ -136,6 +136,7 @@
   align-items: center;
   gap: 10px;
   font-size: 14px;
+
 }
 
 .favorite-item input[type="checkbox"] {
@@ -166,4 +167,17 @@
 
 .favorite-selection-button button:hover {
   background-color: #5aa65a;
+}
+
+.favorite-item li{
+  display: flex;
+  align-items: center;
+}
+
+@media  (max-width: 600px) {
+.favorite-item{
+  flex-direction: column;
+  width: 100%;
+}
+
 }
