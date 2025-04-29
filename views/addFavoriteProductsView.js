@@ -1,17 +1,14 @@
-
-let favoriteProductsAdded = false;
 function addFavoriteProductsViewContent() {
-    let selectedListId = model.app.selectedShoppingListId;
+        
+    
     
     let favoriteSelectionHtml = selectFavoriteProductsView();
-    let addedFavoritesHtml = addedFavoriteListView();
+    let addedFavoritesHtml = productView(false);
 
-    if (!model.app.favoriteProductsAdded) {
-        model.app.favoriteProductsAdded = true;
-    }
-      
-    
+          
     let listName = 'Ukjent liste';
+    let selectedListId = model.app.selectedShoppingListId;
+
     for (let i = 0; i < model.data.shoppingLists.length; i++) {
         if (model.data.shoppingLists[i].id === selectedListId) {
             listName = model.data.shoppingLists[i].name;
@@ -19,13 +16,15 @@ function addFavoriteProductsViewContent() {
         }
     }
 
-    //let favoriteSelectionHtml = selectFavoriteProductsView();
     model.app.showProducts = true;
 
     return `
-        <div class="mainContainer">
+        < class="mainContainer">
             <button class="btnback" onclick="goBack()">← Tilbake</button>
             <h2>Din liste: ${listName}</h2>
+            <div id="saveStatus" style="margin-bottom: 10px; color: ${model.app.isSaving ? 'red' : 'green'};">
+                ${model.app.isSaving ? 'Lagrer...' : 'Alt er lagret ✅'}
+            </div> 
             
             <div class="container">
                 ${favoriteSelectionHtml}
@@ -33,34 +32,35 @@ function addFavoriteProductsViewContent() {
 
             <div class="container">
                 ${addedFavoritesHtml}
-            </div>
-        </div>
+            </div> 
+            
+        
     `;
 }
 
 
 function addFavoriteProductsView() {
     model.app.currentPage = 'addFavoriteProducts';
-    model.app.favoriteProductsAdded = false;
-    model.inputs.selectedFavoriteProductIds = []; 
+    model.app.showProducts = true; 
     updateView();
 }
+
+
 function selectFavoriteProductsView() {
     let currentUserId = model.app.currentUserId;
     let favorites = getUserFavoriteProducts(currentUserId);
 
     if (favorites.length === 0) {
-        return `<p>Du har ingen favoritter.</p>`;
+        return `<p>Du har ingen favoritter</p>`;
     }
 
     let favoriteListHtml = '';
-    
-    // Gå gjennom favoritter og generer HTML
+
     for (let i = 0; i < favorites.length; i++) {
         let productId = favorites[i].productId;
         let product = model.data.products.find(product => product.id === productId);
         if (!product) continue;
-        
+
         favoriteListHtml += `
             <div class="favorite-item">
                 <input type="checkbox" id="favorite-${productId}" value="${productId}">
@@ -70,8 +70,11 @@ function selectFavoriteProductsView() {
     }
 
     return `
-        <div>
-            <h2>Velg favoritter å legge til</h2>
+        <div id="favorite-selection-container">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="margin: 0;">Velg favoritter å legge til</h2>
+                
+            </div>
             <div class="favorite-selection">
                 ${favoriteListHtml}
             </div>

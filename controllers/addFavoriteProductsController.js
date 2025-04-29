@@ -1,5 +1,6 @@
 
 
+
 function addSelectedFavorites() {
     let selectedProductIds = [];
 
@@ -41,7 +42,7 @@ function addSelectedFavorites() {
 
     model.app.favoriteProductsAdded = true;
 
-    updateView();
+    addFavoriteProductsView();
 }
 
 
