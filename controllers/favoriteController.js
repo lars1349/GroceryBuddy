@@ -12,6 +12,7 @@ function reuseFavoriteProduct(userId, productId, quantity) {
         if (link.shoppingListId === selectedListId && link.productId === productId) {
             link.quantity += quantity;
             setSaving();
+            alert('Favorittproduktmengden ble oppdatert i handlelisten ✅');
             return;
         }
     }
@@ -31,6 +32,7 @@ function reuseFavoriteProduct(userId, productId, quantity) {
     });
 
     setSaving();
+    alert('Favorittproduktmengden ble oppdatert i handlelisten✅');
 }
 
 
@@ -46,7 +48,7 @@ function removeFavoriteProduct(userId, productId) {
     if (updatedFavorites.length < model.data.favoriteProducts.length) {
         model.data.favoriteProducts = updatedFavorites;
 
-        // Reassign IDs
+        // Tildel ID-er på nytt
         for (let i = 0; i < model.data.favoriteProducts.length; i++) {
             model.data.favoriteProducts[i].id = i + 1;
         }

@@ -20,13 +20,12 @@ function addSelectedFavorites() {
         return;
     }
 
-    let  listId = model.app.selectedShoppingListId;
+    let listId = model.app.selectedShoppingListId;
 
     for (let i = 0; i < selectedProductIds.length; i++) {
         let productId = selectedProductIds[i];
         if (!isValidProduct(productId)) continue;
 
-        // Sjekk om det allerede finnes
         let alreadyExists = model.data.shoppingListProducts.some(
             product => product.shoppingListId === listId && product.productId === productId
         );
@@ -39,11 +38,13 @@ function addSelectedFavorites() {
             quantity: 1
         });
     }
-    setSaving();
-    model.app.favoriteProductsAdded = true;
 
-    addFavoriteProductsView();
+    model.app.favoriteProductsAdded = true;
+    model.app.currentPage = 'products'; 
+    model.app.showProducts = true;
+    updateView(); 
 }
+
 
 
 function getUserFavoriteProducts(userId) {

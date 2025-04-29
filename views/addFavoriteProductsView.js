@@ -3,7 +3,7 @@ function addFavoriteProductsViewContent() {
     
     
     let favoriteSelectionHtml = selectFavoriteProductsView();
-    let addedFavoritesHtml = productView(false);
+    
 
           
     let listName = 'Ukjent liste';
@@ -30,9 +30,7 @@ function addFavoriteProductsViewContent() {
                 ${favoriteSelectionHtml}
             </div>
 
-            <div class="container">
-                ${addedFavoritesHtml}
-            </div> 
+            
         </div>
         
     `;
@@ -41,7 +39,7 @@ function addFavoriteProductsViewContent() {
 
 function addFavoriteProductsView() {
     model.app.currentPage = 'addFavoriteProducts';
-    model.app.showProducts = true; 
+    //model.app.showProducts = true; 
     updateView();
 }
 
