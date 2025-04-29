@@ -15,7 +15,7 @@ function addFavoriteProductsViewContent() {
             break;
         }
     }
-
+    
     model.app.showProducts = true;
 
     return `
@@ -37,11 +37,6 @@ function addFavoriteProductsViewContent() {
 }
 
 
-function addFavoriteProductsView() {
-    model.app.currentPage = 'addFavoriteProducts';
-    
-    updateView();
-}
 
 
 function selectFavoriteProductsView() {

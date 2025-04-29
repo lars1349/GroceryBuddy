@@ -38,7 +38,7 @@ function updateView() {
             currentView = favoriteProductsView();
             break;
         case 'addFavoriteProducts':
-            currentView =  addFavoriteProductsView() ;
+            currentView =  addFavoriteProductsViewContent() ;
             break;
         case 'addedFavoriteListView':
             currentView = addedFavoriteListView() ;

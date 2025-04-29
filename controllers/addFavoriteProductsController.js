@@ -35,18 +35,15 @@ function addSelectedFavorites() {
             quantity: 1
         });
     }
-<<<<<<< HEAD
 
     model.app.favoriteProductsAdded = true;
     model.app.currentPage = 'products'; 
     model.app.showProducts = true;
     updateView(); 
-=======
 
     model.app.favoriteProductsAdded = true;
 
     updateView();
->>>>>>> 4d21c89b792b44afb1a7b34a2474e4003d73c9d8
 }
 
 
