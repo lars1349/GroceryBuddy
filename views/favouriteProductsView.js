@@ -13,7 +13,7 @@ function favoriteProductsView() {
 
     return `
         <div class="favorite-products-container">
-            <button class="btn back" onclick="goBack()">← Tilbake</button>
+            <button class="btn back" onclick="goHome()">← Tilbake</button>
             <h1>Dine Favorittprodukter</h1>
            
             <ul id="favoriteProductsList">

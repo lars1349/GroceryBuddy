@@ -61,7 +61,7 @@ function selectFavoriteProductsView() {
 
     return `
         <div>
-            <h3>Velg favoritter å legge til</h3>
+            <h4>Velg favoritter å legge til</h4>
             <div class="favorite-selection">
                 ${favoriteListHtml}
             </div>
