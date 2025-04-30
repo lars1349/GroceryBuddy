@@ -1,4 +1,6 @@
 function productView() {
+    model.app.isSaving = true;
+    
     let selectedListId = model.app.selectedShoppingListId;
     let listName = 'Ukjent liste';
 

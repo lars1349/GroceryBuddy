@@ -1,6 +1,6 @@
 function addFavoriteProductsViewContent() {
         
-    
+    model.app.isSaving = true;
     
     let favoriteSelectionHtml = selectFavoriteProductsView();
     

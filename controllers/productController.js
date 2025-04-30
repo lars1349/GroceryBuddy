@@ -92,7 +92,7 @@ function editProduct(productId) {
                 id: productId,
                 name: model.data.products[i].name
             };
-            model.app.currentPage = 'addFavoriteProducts';
+           // model.app.currentPage = 'addFavoriteProducts';
             updateView();
             return;
         }
@@ -235,6 +235,7 @@ function showSuggestions(input) {
         suggestionsContainer.appendChild(li);
     }
 }
+
 
 function goToSettings() {
     model.app.currentPage = 'shoppingListSettings';
