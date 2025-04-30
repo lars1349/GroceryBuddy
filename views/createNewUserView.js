@@ -6,13 +6,13 @@ function createNewUserView() {
             <form onsubmit="event.preventDefault(); whenCreateNewUserButtonIsClicked()"
                     class="login-and-create-user-style">
                 <label for="newUsername">Brukernavn:</label>
-                <input type="text" id="newUsername" name="username" />
+                <input class="reg-input"  type="text" id="newUsername" name="username" />
 
                 <label for="newEmail">Epost:</label>
-                <input type="text" id="newEmail" name="email" />
+                <input class="reg-input" type="text" id="newEmail" name="email" />
 
                 <label for="newPassword">Passord:</label>
-                <input type="password" id="newPassword" name="password" />
+                <input class="reg-input" type="password" id="newPassword" name="password" />
                 
                     <div id="outputMessage" style="margin-top: 1rem; color: red;"></div>
 

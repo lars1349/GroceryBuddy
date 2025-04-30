@@ -4,10 +4,10 @@ function loginView() {
             <h2 style="margin-bottom: 1rem;">Logg inn</h2>
             <form class="login-and-create-user-style" method="POST">
                 <label for="username">Brukernavn:</label>
-                <input type="text" id="username" name="username" autocomplete="username" required>
+                <input class="login-input"  type="text" id="username" name="username" autocomplete="username" required>
                 
                 <label for="password">Passord:</label>
-                <input type="password" id="password" name="password" autocomplete="current-password" required>
+                <input class="login-input" type="password" id="password" name="password" autocomplete="current-password" required>
                 
                     <div id="outputMessage" style="margin-top: 1rem;"></div>
 

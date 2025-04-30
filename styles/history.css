@@ -6,4 +6,16 @@
   margin-top: 1rem;
   border-radius: 8px;
   cursor: pointer;
+  display: flex;
 }
+
+.btn-historikk {
+  font-size: 15px;
+}
+
+@media  (max-width: 600px){
+  .btn-historikk {
+  font-size: 10px;
+}
+}
+

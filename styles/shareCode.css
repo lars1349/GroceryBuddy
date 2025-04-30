@@ -67,6 +67,11 @@
   margin-top: 1rem;
 }
 
+.code-share-epost{
+  padding: 4px;
+  border-radius: 5px;
+}
+
 .share-code-button {
   padding: 10px 15px;
   background-color: #66bb6a;

@@ -139,6 +139,17 @@
 
 }
 
+.favorite-item-check{
+  background-color: #f4fdf4;
+  border: 1px solid #e0f2e0;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
 .favorite-item input[type="checkbox"] {
   transform: scale(1.2);
   cursor: pointer;
@@ -183,6 +194,23 @@
 .favorite-item li{
   display: flex;
   align-items: center;
+}
+
+
+.favorite-icon {
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.favorite-icon:hover {
+  transform: scale(1.2);
+  color: #ffd54f;
+}
+
+.list-selector{
+    padding: 2px;
+  border-radius: 5px;
 }
 
 @media  (max-width: 600px) {

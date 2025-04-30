@@ -22,9 +22,6 @@ function addFavoriteProductsViewContent() {
         <div class="mainContainer">
             <button class="btnback" onclick="goBack()">← Tilbake</button>
             <h2>Din liste: ${listName}</h2>
-            <div id="saveStatus" style="margin-bottom: 10px; color: ${model.app.isSaving ? 'red' : 'green'};">
-                ${model.app.isSaving ? 'Lagrer...' : 'Alt er lagret ✅'}
-            </div> 
             
             <div class="container">
                 ${favoriteSelectionHtml}
@@ -55,7 +52,7 @@ function selectFavoriteProductsView() {
         if (!product) continue;
 
         favoriteListHtml += `
-            <div class="favorite-item">
+            <div class="favorite-item-check">
                 <input type="checkbox" id="favorite-${productId}" value="${productId}">
                 <label for="favorite-${productId}">${product.name}</label>
             </div>
@@ -63,9 +60,9 @@ function selectFavoriteProductsView() {
     }
 
     return `
-        <div id="favorite-selection-container">
+        <div id="favorite-selection-container-check">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="margin: 0;">Velg favoritter å legge til</h3>
+                <h3>Velg favoritter å legge til</h3>
                 
             </div>
             <div class="favorite-selection">

@@ -257,3 +257,9 @@
   margin-bottom: 8px;
 }
 }
+
+@media (max-width: 360px){
+  .product-table th, .product-table td {
+  padding: 2px;
+}
+}
