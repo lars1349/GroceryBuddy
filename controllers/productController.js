@@ -105,13 +105,17 @@ function saveEditProduct() {
             if (model.data.products[i].id === model.inputs.editProduct.id) {
                 model.data.products[i].name = model.inputs.editProduct.name.trim();
                 model.inputs.editProduct = null;
-                model.app.currentPage = 'addFavoriteProducts';
-                setSaving();
+
+                setSavingAndThen(() => {
+                    model.app.currentPage = 'addFavoriteProducts';
+                    updateView();
+                });
                 return;
             }
         }
     }
 }
+
 
 function cancelEditProduct() {
     model.inputs.editProduct = null;
@@ -241,3 +245,16 @@ function goToSettings() {
     model.app.currentPage = 'shoppingListSettings';
     updateView();
 }
+
+function setSavingAndThen(callback) {
+    model.app.isSaving = true;
+    updateView();
+
+    setTimeout(function () {
+        saveModel();
+        model.app.isSaving = false;
+        updateView();
+        if (callback) callback();
+    }, 600);
+}
+
