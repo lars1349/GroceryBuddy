@@ -53,5 +53,6 @@ function createShareCodeHtml() {
 
             ${sharedUsersHTML}
         </div>
+        <button class="btnback" onclick="goBack()">← Tilbake</button>
     `;
 }
